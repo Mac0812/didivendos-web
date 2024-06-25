@@ -32,27 +32,12 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
       rel="stylesheet"
     />
-    <!-- Include React and ReactDOM from a CDN -->
-    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
 
     <!-- Include Babel -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <!-- Include moment.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-
-    <!-- Include react-big-calendar -->
-    <script src="https://unpkg.com/react-big-calendar/dist/react-big-calendar.min.js"></script>
-
-    <!-- Include the styles for react-big-calendar -->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/react-big-calendar/lib/css/react-big-calendar.css"
-    />
-
-    <!-- Include react-modal -->
-    <script src="https://unpkg.com/react-modal/dist/react-modal.min.js"></script>
 
     <style>
       body {
@@ -61,17 +46,18 @@
       .calendar {
         display: flex;
         flex-direction: column;
+        justify-content: center;
         align-items: center;
+        width: 70%;
       }
       .calendar-header {
         display: flex;
         justify-content: space-between;
-        width: 100%;
-        max-width: 600px;
+        width: 600px;
         margin-bottom: 10px;
       }
       .calendar-header button {
-        background-color: #4caf50;
+        background-color: #41e2ba;
         color: white;
         border: none;
         padding: 10px;
@@ -82,7 +68,6 @@
         grid-template-columns: repeat(7, 1fr);
         gap: 5px;
         max-width: 600px;
-        width: 100%;
       }
       .calendar-cell {
         padding: 20px;
@@ -93,7 +78,67 @@
         background-color: #f0f0f0;
       }
       .calendar-cell-today {
-        background-color: #b0e57c;
+        background-color: #41e2ba;
+      }
+      .modal {
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        position: fixed;
+        height: 100%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        align-items: center;
+      }
+      .calendar-cell-event {
+        position: relative;
+      }
+
+      .calendar-cell-event::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: red;
+      }
+
+      .modal-content {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        width: 30%;
+        height: 100%;
+        margin-left: auto;
+      }
+      .event-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 5px;
+      }
+
+      .event-item {
+        background-color: #41e2ba;
+        padding: 5px 10px;
+        border-radius: 5px;
+        margin-bottom: 5px;
+        cursor: pointer;
+      }
+
+      .event-item:hover {
+        background-color: #2e865f;
+      }
+
+      .event-item:last-child {
+        margin-bottom: 0;
       }
     </style>
   </head>
@@ -103,115 +148,16 @@
       <nav id="sidebar" class="sidebar js-sidebar">
         <div class="sidebar-content js-simplebar">
           <a class="sidebar-brand" href="index.html">
-            <span class="align-middle">AdminKit</span>
+            <span class="align-middle">+Dividendos</span>
           </a>
-
           <ul class="sidebar-nav">
-            <li class="sidebar-header">Pages</li>
-
             <li class="sidebar-item">
-              <a class="sidebar-link" href="index.html">
-                <i class="align-middle" data-feather="sliders"></i>
-                <span class="align-middle">Dashboard</span>
-              </a>
-            </li>
-
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="pages-profile.html">
-                <i class="align-middle" data-feather="user"></i>
-                <span class="align-middle">Profile</span>
-              </a>
-            </li>
-
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="pages-sign-in.html">
-                <i class="align-middle" data-feather="log-in"></i>
-                <span class="align-middle">Sign In</span>
-              </a>
-            </li>
-
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="pages-sign-up.html">
-                <i class="align-middle" data-feather="user-plus"></i>
-                <span class="align-middle">Sign Up</span>
-              </a>
-            </li>
-
-            <li class="sidebar-item active">
               <a class="sidebar-link" href="pages-blank.html">
                 <i class="align-middle" data-feather="book"></i>
                 <span class="align-middle">Agenda Dividendos</span>
               </a>
             </li>
-
-            <li class="sidebar-header">Tools & Components</li>
-
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="ui-buttons.html">
-                <i class="align-middle" data-feather="square"></i>
-                <span class="align-middle">Buttons</span>
-              </a>
-            </li>
-
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="ui-forms.html">
-                <i class="align-middle" data-feather="check-square"></i>
-                <span class="align-middle">Forms</span>
-              </a>
-            </li>
-
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="ui-cards.html">
-                <i class="align-middle" data-feather="grid"></i>
-                <span class="align-middle">Cards</span>
-              </a>
-            </li>
-
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="ui-typography.html">
-                <i class="align-middle" data-feather="align-left"></i>
-                <span class="align-middle">Typography</span>
-              </a>
-            </li>
-
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="icons-feather.html">
-                <i class="align-middle" data-feather="coffee"></i>
-                <span class="align-middle">Icons</span>
-              </a>
-            </li>
-
-            <li class="sidebar-header">Plugins & Addons</li>
-
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="charts-chartjs.html">
-                <i class="align-middle" data-feather="bar-chart-2"></i>
-                <span class="align-middle">Charts</span>
-              </a>
-            </li>
-
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="maps-google.html">
-                <i class="align-middle" data-feather="map"></i>
-                <span class="align-middle">Maps</span>
-              </a>
-            </li>
           </ul>
-
-          <div class="sidebar-cta">
-            <div class="sidebar-cta-content">
-              <strong class="d-inline-block mb-2">Upgrade to Pro</strong>
-              <div class="mb-3 text-sm">
-                Are you looking for more components? Check out our premium
-                version.
-              </div>
-              <div class="d-grid">
-                <a href="upgrade-to-pro.html" class="btn btn-primary"
-                  >Upgrade to Pro</a
-                >
-              </div>
-            </div>
-          </div>
         </div>
       </nav>
 
@@ -459,9 +405,7 @@
                 <h2 id="calendar-title"></h2>
                 <button onclick="nextMonth()">Siguiente</button>
               </div>
-              <div class="calendar-grid" id="calendar-grid">
-                <!-- Aquí se generará el calendario -->
-              </div>
+              <div class="calendar-grid" id="calendar-grid"></div>
             </div>
 
             <div id="event-modal" class="modal">
@@ -469,6 +413,7 @@
                 <span class="close" onclick="closeModal()">&times;</span>
                 <h2 id="event-title"></h2>
                 <p id="event-description"></p>
+                <p id="event-costo"></p>
               </div>
             </div>
 
@@ -477,6 +422,7 @@
               const calendarTitle = document.getElementById("calendar-title");
               const eventModal = document.getElementById("event-modal");
               const eventTitle = document.getElementById("event-title");
+              const eventCosto = document.getElementById("event-costo");
               const eventDescription =
                 document.getElementById("event-description");
               const daysOfWeek = [
@@ -492,21 +438,126 @@
 
               const events = [
                 {
-                  title: "Evento 1",
-                  date: new Date("2024-06-06"),
-                  description: "Descripción del evento 1",
+                  title: "Dividendo: FCFE - CFECapital, S. de R.L. de C.V",
+                  costo: "$0.6502",
+                  ex_derecho: new Date("2024-06-27"),
+                  date: new Date("2024-06-28"),
+                  description: "GMXT*",
                 },
                 {
-                  title: "Evento 2",
-                  date: new Date("2024-06-15"),
-                  description: "Descripción del evento 2",
+                  title: "ASURB",
+                  costo: "$0.6502",
+                  date: new Date("2024-06-27"),
+                  description: "ASURB",
                 },
                 {
-                  title: "Evento 3",
+                  title: "FRES*",
+                  date: new Date("2024-06-29"),
+                  description: "FRES*",
+                },
+                {
+                  title: "SITES1 A-1",
+                  date: new Date("2024-06-30"),
+                  description: "SITES1 A-1",
+                },
+                {
+                  title: "TLEVISACPO",
+                  date: new Date("2024-06-31"),
+                  description: "TLEVISACPO",
+                },
+                {
+                  title: "URBI*",
+                  date: new Date("2024-06-31"),
+                  description: "URBI*",
+                },
+                {
+                  title: "GISSAA",
+                  date: new Date("2024-06-03"),
+                  description: "GISSAA",
+                },
+                {
+                  title: "CIEB",
+                  date: new Date("2024-06-05"),
+                  description: "CIEB",
+                },
+                {
+                  title: "FIBRAMQ12",
+                  date: new Date("2024-06-17"),
+                  description: "FIBRAMQ12",
+                },
+                {
+                  title: "CEMEXCPO",
+                  date: new Date("2024-06-18"),
+                  description: "CEMEXCPO",
+                },
+                {
+                  title: "FVIA16",
                   date: new Date("2024-06-20"),
-                  description: "Descripción del evento 3",
+                  description: "FVIA16",
+                },
+                {
+                  title: "LABB",
+                  date: new Date("2024-06-21"),
+                  description: "LABB",
+                },
+                {
+                  title: "ASURB",
+                  date: new Date("2024-06-26"),
+                  description: "ASURB",
+                },
+                {
+                  title: "FIDEAL20",
+                  date: new Date("2024-06-26"),
+                  description: "FIDEAL20",
+                },
+                {
+                  title: "FCFE18",
+                  date: new Date("2024-06-28"),
+                  description: "FCFE18",
+                },
+                {
+                  title: "FMTY14",
+                  date: new Date("2024-06-28"),
+                  description: "FMTY14",
+                },
+                {
+                  title: "GCARSOA-1",
+                  date: new Date("2024-06-28"),
+                  description: "GCARSOA-1",
+                },
+                {
+                  title: "GFNORTEO",
+                  date: new Date("2024-06-28"),
+                  description: "GFNORTEO",
                 },
               ];
+
+              function prevMonth() {
+                date.setMonth(date.getMonth() - 1);
+                renderCalendar();
+              }
+
+              function nextMonth() {
+                date.setMonth(date.getMonth() + 1);
+                renderCalendar();
+              }
+
+              function showModal(event) {
+                eventTitle.textContent = event.title;
+                eventCosto.textContent = event.costo;
+                eventDescription.textContent = event.description;
+                eventModal.style.display = "block";
+              }
+
+              function closeModal() {
+                eventModal.style.display = "none";
+              }
+
+              window.onclick = function (event) {
+                if (event.target == eventModal) {
+                  closeModal();
+                }
+              };
 
               function renderCalendar() {
                 calendarGrid.innerHTML = "";
@@ -549,66 +600,38 @@
                   cell.textContent = i;
 
                   // Resaltar el día actual
-                  const today = new Date();
-                  if (
-                    i === today.getDate() &&
-                    date.getMonth() === today.getMonth() &&
-                    date.getFullYear() === today.getFullYear()
-                  ) {
-                    cell.classList.add("calendar-cell-today");
-                  }
 
                   // Agregar eventos
-                  const event = events.find(
+                  const eventsOfDay = events.filter(
                     (e) =>
                       e.date.getDate() === i &&
                       e.date.getMonth() === date.getMonth() &&
                       e.date.getFullYear() === date.getFullYear()
                   );
-                  if (event) {
+                  if (eventsOfDay.length > 0) {
                     cell.classList.add("calendar-cell-event");
-                    cell.addEventListener("click", () => {
-                      showModal(event);
+                    const eventList = document.createElement("div");
+                    eventList.classList.add("event-list");
+                    eventsOfDay.forEach((event) => {
+                      const eventItem = document.createElement("div");
+                      eventItem.classList.add("event-item");
+                      eventItem.textContent = event.title;
+                      eventItem.addEventListener("click", () => {
+                        showModal(event);
+                      });
+                      eventList.appendChild(eventItem);
                     });
+                    cell.appendChild(eventList);
                   }
 
                   calendarGrid.appendChild(cell);
                 }
               }
 
-              function prevMonth() {
-                date.setMonth(date.getMonth() - 1);
-                renderCalendar();
-              }
-
-              function nextMonth() {
-                date.setMonth(date.getMonth() + 1);
-                renderCalendar();
-              }
-
-              function showModal(event) {
-                eventTitle.textContent = event.title;
-                eventDescription.textContent = event.description;
-                eventModal.style.display = "block";
-              }
-
-              function closeModal() {
-                eventModal.style.display = "none";
-              }
-
-              window.onclick = function (event) {
-                if (event.target == eventModal) {
-                  closeModal();
-                }
-              };
-
               renderCalendar();
             </script>
           </div>
         </main>
-        <div id="root"></div>
-        <script src="https://unpkg.com/react-big-calendar/dist/react-big-calendar.min.js"></script>
-        <script src="https://unpkg.com/react-modal/dist/react-modal.min.js"></script>
 
         <footer class="footer">
           <div class="container-fluid">
@@ -666,7 +689,5 @@
     </div>
 
     <script src="js/app.js"></script>
-    <script src="https://unpkg.com/react-big-calendar/dist/react-big-calendar.min.js"></script>
-    <script src="https://unpkg.com/react-modal/dist/react-modal.min.js"></script>
   </body>
 </html>
