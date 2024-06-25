@@ -413,6 +413,7 @@
                 <span class="close" onclick="closeModal()">&times;</span>
                 <h2 id="event-title"></h2>
                 <p id="event-description"></p>
+                <p id="event-costo"></p>
               </div>
             </div>
 
@@ -421,6 +422,7 @@
               const calendarTitle = document.getElementById("calendar-title");
               const eventModal = document.getElementById("event-modal");
               const eventTitle = document.getElementById("event-title");
+              const eventCosto = document.getElementById("event-costo");
               const eventDescription =
                 document.getElementById("event-description");
               const daysOfWeek = [
@@ -436,12 +438,15 @@
 
               const events = [
                 {
-                  title: "GMXT*",
-                  date: new Date("2024-06-27"),
+                  title: "Dividendo: FCFE - CFECapital, S. de R.L. de C.V",
+                  costo: "$0.6502",
+                  ex_derecho: new Date("2024-06-27"),
+                  date: new Date("2024-06-28"),
                   description: "GMXT*",
                 },
                 {
                   title: "ASURB",
+                  costo: "$0.6502",
                   date: new Date("2024-06-27"),
                   description: "ASURB",
                 },
@@ -539,6 +544,7 @@
 
               function showModal(event) {
                 eventTitle.textContent = event.title;
+                eventCosto.textContent = event.costo;
                 eventDescription.textContent = event.description;
                 eventModal.style.display = "block";
               }
