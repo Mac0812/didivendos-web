@@ -106,12 +106,11 @@
         left: 0;
         width: 100%;
         height: 2px;
-        background-color: red;
+        background-color: rgb(111, 200, 186);
       }
 
       .modal-content {
-        background-color: white;
-        padding: 20px;
+        background-color: rgb(225, 251, 240);
         border-radius: 8px;
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
         width: 30%;
@@ -134,11 +133,47 @@
       }
 
       .event-item:hover {
-        background-color: #2e865f;
+        background-color: #0ad8a1;
       }
 
       .event-item:last-child {
         margin-bottom: 0;
+      }
+
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      .content-title {
+        background-color: #41e2ba;
+        height: 100px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        padding: 20px;
+        border-radius: 8px 8px 0 0;
+      }
+      .content-modal {
+        background-color: rgb(225, 251, 240);
+        padding: 20px;
+        border-radius: 8px;
+      }
+      #event-title {
+        width: 75%;
+        font-size: 22px;
+        margin-top: 20px;
       }
     </style>
   </head>
@@ -155,6 +190,12 @@
               <a class="sidebar-link" href="pages-blank.html">
                 <i class="align-middle" data-feather="book"></i>
                 <span class="align-middle">Agenda Dividendos</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="pages-admin.php">
+                <i class="align-middle" data-feather="book"></i>
+                <span class="align-middle">Edición</span>
               </a>
             </li>
           </ul>
@@ -410,10 +451,24 @@
 
             <div id="event-modal" class="modal">
               <div class="modal-content">
-                <span class="close" onclick="closeModal()">&times;</span>
-                <h2 id="event-title"></h2>
-                <p id="event-description"></p>
-                <p id="event-costo"></p>
+                <div class="content-title">
+                  <h2 id="event-title"></h2>
+                  <span class="close" onclick="closeModal()">&times;</span>
+                </div>
+                <div class="content-modal">
+                  <p id="event-description"></p>
+                  <label>Monto: </label>
+                  <p id="event-costo"></p>
+                  <label>Ticker: </label>
+                  <p id="event-ticker"></p>
+                  <label>Fecha ex-derecho: </label>
+                  <p id="event-ex"></p>
+                  <label>Fecha pago: </label>
+                  <p id="event-date"></p>
+                  <label>Link aviso: </label>
+                  <p id="event-aviso"></p>
+                  <input type="text" />
+                </div>
               </div>
             </div>
 
@@ -423,6 +478,10 @@
               const eventModal = document.getElementById("event-modal");
               const eventTitle = document.getElementById("event-title");
               const eventCosto = document.getElementById("event-costo");
+              const eventTicker = document.getElementById("event-ticker");
+              const eventExDerecho = document.getElementById("event-ex");
+              const eventDate = document.getElementById("event-date");
+              const eventAviso = document.getElementById("event-aviso");
               const eventDescription =
                 document.getElementById("event-description");
               const daysOfWeek = [
@@ -436,19 +495,32 @@
               ];
               const date = new Date();
 
+              function formatDate(date) {
+                return `${date.getDate()}/${String(
+                  date.getMonth() + 1
+                ).padStart(2, "0")}/${date.getFullYear()}`;
+              }
+
               const events = [
                 {
                   title: "Dividendo: FCFE - CFECapital, S. de R.L. de C.V",
-                  costo: "$0.6502",
+                  ticker: "123456",
+                  monto: "$0.6502",
                   ex_derecho: new Date("2024-06-27"),
                   date: new Date("2024-06-28"),
                   description: "GMXT*",
+                  aviso: "Aviso Prueba",
+                  comentario: "",
                 },
                 {
                   title: "ASURB",
-                  costo: "$0.6502",
-                  date: new Date("2024-06-27"),
-                  description: "ASURB",
+                  ticker: "123456",
+                  monto: "$0.6502",
+                  ex_derecho: new Date("2024-06-27"),
+                  date: new Date("2024-06-28"),
+                  description: "GMXT*",
+                  aviso: "Aviso Prueba",
+                  comentario: "",
                 },
                 {
                   title: "FRES*",
@@ -542,10 +614,15 @@
                 renderCalendar();
               }
 
+              eventModal.style.display = "none";
+
               function showModal(event) {
                 eventTitle.textContent = event.title;
-                eventCosto.textContent = event.costo;
-                eventDescription.textContent = event.description;
+                eventCosto.textContent = event.monto;
+                eventTicker.textContent = event.ticker;
+                eventExDerecho.textContent = formatDate(event.ex_derecho);
+                eventDate.textContent = formatDate(event.date);
+                eventAviso.textContent = event.aviso;
                 eventModal.style.display = "block";
               }
 
