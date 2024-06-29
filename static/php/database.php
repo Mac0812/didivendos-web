@@ -1,5 +1,5 @@
 <?php
-$conexion = mysqli_connect("localhost", "root", "", "dividendosMX");
+$conexion = mysqli_connect("localhost", "root", "", "login_register_bd");
 
 // Verificar la conexión
 if ($conexion->connect_error) {
