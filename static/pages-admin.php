@@ -1,3 +1,17 @@
+<?php
+session_start();
+if (!isset($_SESSION['usuario'])) {
+    echo '
+		<script> 
+		alert("Por favor, debes iniciar sesión para acceder a esta página");
+		 window.location = "../static/pages-sign-in.php";
+		</script>
+		';
+    session_destroy();
+    die();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +25,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link rel="shortcut icon" href="img/icons/icon-48x48.png" />
     <link rel="canonical" href="https://demo-basic.adminkit.io/pages-blank.html" />
-    <title>Edición genda de Dividendos</title>
+    <title>Edición Agenda de Dividendos</title>
     <link href="css/app.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -227,12 +241,6 @@
                     <span class="align-middle">+Dividendos</span>
                 </a>
                 <ul class="sidebar-nav">
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="pages-blank.html">
-                            <i class="align-middle" data-feather="book"></i>
-                            <span class="align-middle">Agenda Dividendos</span>
-                        </a>
-                    </li>
                     <li class="sidebar-item">
                         <a class="sidebar-link" href="pages-admin.php">
                             <i class="align-middle" data-feather="book"></i>
@@ -519,6 +527,7 @@
                                 closeModal();
                             }
                         };
+                        eventModal.style.display = "none";
 
                         function showModal(event) {
                             currentEvent = event;
@@ -552,47 +561,37 @@
                             eventModal.style.display = "block";
                         }
 
-                        function updateEvent() {
-                            if (currentEvent) {
-                                currentEvent.empresa = eventEmpresa.value;
-                                currentEvent.monto = eventCosto.value;
-                                currentEvent.ticker = eventTicker.value;
-                                currentEvent.comentario = eventComentario.value;
-                                currentEvent.exento_impuesto = eventExento.value;
-                                currentEvent.fecha_pago = new Date(eventDate.value);
-                                currentEvent.fecha_ex_derecho = new Date(eventExDerecho.value);
-                                currentEvent.fecha_limite = new Date(eventLimite.value);
-                                currentEvent.precio_titulo = eventPrecio.value;
-                                currentEvent.rendimiento = eventRendimiento.value;
-                                currentEvent.link_aviso = eventAviso.value;
-                            } else {
-                                const newEvent = {
-                                    empresa: eventEmpresa.value,
-                                    monto: eventCosto.value,
-                                    ticker: eventTicker.value,
-                                    comentario: eventComentario.value,
-                                    exento_impuesto: eventExento.value,
-                                    fecha_pago: new Date(eventDate.value),
-                                    fecha_ex_derecho: new Date(eventExDerecho.value),
-                                    fecha_limite: new Date(eventLimite.value),
-                                    precio_titulo: eventPrecio.value,
-                                    rendimiento: eventRendimiento.value,
-                                    link_aviso: eventAviso.value,
-                                };
-                                events.push(newEvent);
-                            }
-                            closeModal();
-                            renderCalendar();
-                        }
-
                         function deleteEvent() {
                             if (!currentEvent) return;
-                            const index = events.indexOf(currentEvent);
-                            if (index > -1) {
-                                events.splice(index, 1);
-                                closeModal();
-                                renderCalendar();
-                            }
+                            const formData = new FormData();
+                            formData.append('event-id', currentEvent.id);
+                            fetch('php/delete_event.php', {
+                                    method: 'POST',
+                                    body: formData
+                                })
+                                .then(response => {
+                                    if (!response.ok) {
+                                        throw new Error('Network response was not ok ' + response.statusText);
+                                    }
+                                    return response.json();
+                                })
+                                .then(data => {
+                                    if (data.success) {
+                                        alert('Evento eliminado correctamente');
+                                        const index = events.indexOf(currentEvent);
+                                        if (index > -1) {
+                                            events.splice(index, 1);
+                                            renderCalendar();
+                                        }
+                                    } else {
+                                        alert('Error al eliminar el evento: ' + data.message);
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error('Error:', error);
+                                    alert('Error al eliminar el evento: ' + error.message);
+                                });
+                            closeModal();
                         }
 
                         function saveEvent() {
@@ -613,6 +612,7 @@
                                 .then(data => {
                                     if (data.success) {
                                         alert('Evento guardado correctamente');
+                                        loadEventsFromDatabase();
                                         closeModal();
                                         renderCalendar();
                                     } else {
@@ -688,6 +688,7 @@
                                 .then((data) => {
                                     data.forEach((event) => {
                                         const formattedEvent = {
+                                            id: event.id,
                                             empresa: event.empresa,
                                             monto: event.monto,
                                             ticker: event.ticker,
@@ -703,6 +704,7 @@
                                         events.push(formattedEvent);
                                     });
                                     renderCalendar();
+                                   
                                 })
                                 .catch((error) => console.error("Error cargando eventos:", error));
                         }
