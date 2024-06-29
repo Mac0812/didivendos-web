@@ -421,7 +421,8 @@
                     class="avatar img-fluid rounded me-1"
                     alt="Charles Hall"
                   />
-                  <span class="text-dark">monse</span>
+                  <span class="text-dark"><?php echo htmlspecialchars($_SESSION['nombre_usuario']); ?></span>
+                  </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
                   <a class="dropdown-item" href="pages-profile.html"
@@ -445,7 +446,7 @@
                     Help Center</a
                   >
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Log out</a>
+                  <a class="dropdown-item" href="/static/php/cerrar_sesion.php">Cerrar sesión</a>
                 </div>
               </li>
             </ul>
