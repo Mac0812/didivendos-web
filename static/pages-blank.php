@@ -182,20 +182,14 @@
     <div class="wrapper">
       <nav id="sidebar" class="sidebar js-sidebar">
         <div class="sidebar-content js-simplebar">
-          <a class="sidebar-brand" href="index.html">
+          <a class="sidebar-brand" href="index.php">
             <span class="align-middle">+Dividendos</span>
           </a>
           <ul class="sidebar-nav">
             <li class="sidebar-item">
-              <a class="sidebar-link" href="pages-blank.html">
+              <a class="sidebar-link" href="pages-blank.php">
                 <i class="align-middle" data-feather="book"></i>
                 <span class="align-middle">Agenda Dividendos</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="pages-admin.php">
-                <i class="align-middle" data-feather="book"></i>
-                <span class="align-middle">Edición</span>
               </a>
             </li>
           </ul>
