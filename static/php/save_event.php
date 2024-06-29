@@ -1,6 +1,6 @@
 <?php
 // Conexión a la base de datos
-$conexion = mysqli_connect("localhost", "root", "", "login_register_bd");
+$conexion = mysqli_connect("localhost", "root", "", "dividendosMX");
 if ($conexion->connect_error) {
     die("Conexión fallida: " . $conexion->connect_error);
 }
