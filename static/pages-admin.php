@@ -8,23 +8,14 @@
     <meta name="description" content="Responsive Admin & Dashboard Template based on Bootstrap 5" />
     <meta name="author" content="AdminKit" />
     <meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web" />
-
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link rel="shortcut icon" href="img/icons/icon-48x48.png" />
-
     <link rel="canonical" href="https://demo-basic.adminkit.io/pages-blank.html" />
-
-    <title>Agenda de Dividendos</title>
-
+    <title>Edición genda de Dividendos</title>
     <link href="css/app.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
-
-    <!-- Include Babel -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
-    <!-- Include moment.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -210,6 +201,20 @@
             align-items: center;
             padding-top: 20px;
 
+        }
+
+        .add-event {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 100px;
+            font-size: 16px;
+            background-color: #41e2ba;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     </style>
 </head>
@@ -415,6 +420,7 @@
                     </ul>
                 </div>
             </nav>
+
             <main class="content">
                 <div class="container-fluid p-0">
                     <h1 class="h3 mb-3">Agenda de Dividendos</h1>
@@ -423,6 +429,7 @@
                             <button onclick="prevMonth()">Anterior</button>
                             <h2 id="calendar-title"></h2>
                             <button onclick="nextMonth()">Siguiente</button>
+                            <div class="add-event" onclick="showModal(null)">+</div>
                         </div>
                         <div class="calendar-grid" id="calendar-grid"></div>
                     </div>
@@ -435,18 +442,30 @@
                             </div>
                             <div class="content-modal">
                                 <form id="event-form">
-                                    <label for="event-costo">Monto:</label>
-                                    <input id="event-costo" name="event-costo" type="text">
+                                    <label for="event-empresa">Empresa:</label>
+                                    <input id="event-empresa" name="event-empresa" type="text">
                                     <label for="event-ticker">Ticker:</label>
                                     <input id="event-ticker" name="event-ticker" type="text">
-                                    <label for="event-ex">Fecha ex-derecho:</label>
-                                    <input id="event-ex" name="event-ex" type="text">
-                                    <label for="event-date">Fecha pago:</label>
-                                    <input id="event-date" name="event-date" type="text">
-                                    <label for="event-aviso">Link aviso:</label>
+                                    <label for="event-costo">Monto:</label>
+                                    <input id="event-costo" name="event-costo" type="text">
+                                    <label for="event-comentario">Comentario:</label>
+                                    <input id="event-comentario" name="event-comentario" type="text">
+                                    <label for="event-exento">Exento Impuesto:</label>
+                                    <input id="event-exento" name="event-exento" type="text">
+                                    <label for="event-date">Fecha Pago:</label>
+                                    <input id="event-date" name="event-date" type="date">
+                                    <label for="event-ex-derecho">Fecha Ex-Derecho:</label>
+                                    <input id="event-ex-derecho" name="event-ex-derecho" type="date">
+                                    <label for="event-limite">Fecha Límite:</label>
+                                    <input id="event-limite" name="event-limite" type="date">
+                                    <label for="event-precio">Precio Título:</label>
+                                    <input id="event-precio" name="event-precio" type="text">
+                                    <label for="event-rendimiento">Rendimiento:</label>
+                                    <input id="event-rendimiento" name="event-rendimiento" type="text">
+                                    <label for="event-aviso">Link Aviso:</label>
                                     <input id="event-aviso" name="event-aviso" type="text">
                                     <div class="button-content">
-                                        <button type="button" class="act-event" onclick="updateEvent()">Actualizar</button>
+                                        <button type="button" class="act-event" onclick="saveEvent()">Guardar</button>
                                         <button type="button" class="del-event" onclick="deleteEvent()">Eliminar</button>
                                     </div>
                                 </form>
@@ -459,14 +478,19 @@
                         const calendarTitle = document.getElementById("calendar-title");
                         const eventModal = document.getElementById("event-modal");
                         const eventTitle = document.getElementById("event-title");
-                        const eventCosto = document.getElementById("event-costo");
+                        const eventEmpresa = document.getElementById("event-empresa");
                         const eventTicker = document.getElementById("event-ticker");
-                        const eventExDerecho = document.getElementById("event-ex");
+                        const eventCosto = document.getElementById("event-costo");
+                        const eventComentario = document.getElementById("event-comentario");
+                        const eventExento = document.getElementById("event-exento");
                         const eventDate = document.getElementById("event-date");
+                        const eventExDerecho = document.getElementById("event-ex-derecho");
+                        const eventLimite = document.getElementById("event-limite");
+                        const eventPrecio = document.getElementById("event-precio");
+                        const eventRendimiento = document.getElementById("event-rendimiento");
                         const eventAviso = document.getElementById("event-aviso");
-                        const daysOfWeek = [
-                            "Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"
-                        ];
+
+                        const daysOfWeek = ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"];
                         let currentDate = new Date();
                         let currentEvent = null;
 
@@ -474,107 +498,7 @@
                             return `${date.getDate()}/${String(date.getMonth() + 1).padStart(2, "0")}/${date.getFullYear()}`;
                         }
 
-                        const events = [{
-                                title: "Dividendo: FCFE - CFECapital, S. de R.L. de C.V",
-                                ticker: "123456",
-                                monto: "$0.6502",
-                                ex_derecho: new Date("2024-06-27"),
-                                date: new Date("2024-06-28"),
-                                description: "GMXT*",
-                                aviso: "Aviso Prueba",
-                                comentario: "",
-                            },
-                            {
-                                title: "ASURB",
-                                ticker: "123456",
-                                monto: "$0.6502",
-                                ex_derecho: new Date("2024-06-27"),
-                                date: new Date("2024-06-28"),
-                                description: "GMXT*",
-                                aviso: "Aviso Prueba",
-                                comentario: "",
-                            },
-                            {
-                                title: "FRES*",
-                                date: new Date("2024-06-29"),
-                                description: "FRES*",
-                            },
-                            {
-                                title: "SITES1 A-1",
-                                date: new Date("2024-06-30"),
-                                description: "SITES1 A-1",
-                            },
-                            {
-                                title: "TLEVISACPO",
-                                date: new Date("2024-06-31"),
-                                description: "TLEVISACPO",
-                            },
-                            {
-                                title: "URBI*",
-                                date: new Date("2024-06-31"),
-                                description: "URBI*",
-                            },
-                            {
-                                title: "GISSAA",
-                                date: new Date("2024-06-03"),
-                                description: "GISSAA",
-                            },
-                            {
-                                title: "CIEB",
-                                date: new Date("2024-06-05"),
-                                description: "CIEB",
-                            },
-                            {
-                                title: "FIBRAMQ12",
-                                date: new Date("2024-06-17"),
-                                description: "FIBRAMQ12",
-                            },
-                            {
-                                title: "CEMEXCPO",
-                                date: new Date("2024-06-18"),
-                                description: "CEMEXCPO",
-                            },
-                            {
-                                title: "FVIA16",
-                                date: new Date("2024-06-20"),
-                                description: "FVIA16",
-                            },
-                            {
-                                title: "LABB",
-                                date: new Date("2024-06-21"),
-                                description: "LABB",
-                            },
-                            {
-                                title: "ASURB",
-                                date: new Date("2024-06-26"),
-                                description: "ASURB",
-                            },
-                            {
-                                title: "FIDEAL20",
-                                date: new Date("2024-06-26"),
-                                description: "FIDEAL20",
-                            },
-                            {
-                                title: "FCFE18",
-                                date: new Date("2024-06-28"),
-                                description: "FCFE18",
-                            },
-                            {
-                                title: "FMTY14",
-                                date: new Date("2024-06-28"),
-                                description: "FMTY14",
-                            },
-                            {
-                                title: "GCARSOA-1",
-                                date: new Date("2024-06-28"),
-                                description: "GCARSOA-1",
-                            },
-                            {
-                                title: "GFNORTEO",
-                                date: new Date("2024-06-28"),
-                                description: "GFNORTEO",
-                            },
-                        ];
+                        const events = [];
 
                         function prevMonth() {
                             currentDate.setMonth(currentDate.getMonth() - 1);
@@ -584,19 +508,6 @@
                         function nextMonth() {
                             currentDate.setMonth(currentDate.getMonth() + 1);
                             renderCalendar();
-                        }
-
-                        eventModal.style.display = "none";
-
-                        function showModal(event) {
-                            currentEvent = event;
-                            eventTitle.textContent = event.title;
-                            eventCosto.value = event.monto;
-                            eventTicker.value = event.ticker || "";
-                            eventExDerecho.value = formatDate(event.ex_derecho);
-                            eventDate.value = formatDate(event.date);
-                            eventAviso.value = event.aviso || "";
-                            eventModal.style.display = "block";
                         }
 
                         function closeModal() {
@@ -609,16 +520,67 @@
                             }
                         };
 
+                        function showModal(event) {
+                            currentEvent = event;
+                            if (event) {
+                                eventTitle.textContent = event.empresa;
+                                eventEmpresa.value = event.empresa;
+                                eventTicker.value = event.ticker || "";
+                                eventCosto.value = event.monto;
+                                eventComentario.value = event.comentario || "";
+                                eventExento.value = event.exento_impuesto || "";
+                                eventDate.value = event.fecha_pago ? formatDate(event.fecha_pago) : "";
+                                eventExDerecho.value = event.fecha_ex_derecho ? formatDate(event.fecha_ex_derecho) : "";
+                                eventLimite.value = event.fecha_limite ? formatDate(event.fecha_limite) : "";
+                                eventPrecio.value = event.precio_titulo || "";
+                                eventRendimiento.value = event.rendimiento || "";
+                                eventAviso.value = event.link_aviso || "";
+                            } else {
+                                eventTitle.textContent = "Nuevo Evento";
+                                eventEmpresa.value = "";
+                                eventTicker.value = "";
+                                eventCosto.value = "";
+                                eventComentario.value = "";
+                                eventExento.value = "";
+                                eventDate.value = "";
+                                eventExDerecho.value = "";
+                                eventLimite.value = "";
+                                eventPrecio.value = "";
+                                eventRendimiento.value = "";
+                                eventAviso.value = "";
+                            }
+                            eventModal.style.display = "block";
+                        }
+
                         function updateEvent() {
-                            if (!currentEvent) return;
-
-                            // Actualizar los campos del evento actual
-                            currentEvent.monto = eventCosto.value;
-                            currentEvent.ticker = eventTicker.value;
-                            currentEvent.ex_derecho = new Date(eventExDerecho.value);
-                            currentEvent.date = new Date(eventDate.value);
-                            currentEvent.aviso = eventAviso.value;
-
+                            if (currentEvent) {
+                                currentEvent.empresa = eventEmpresa.value;
+                                currentEvent.monto = eventCosto.value;
+                                currentEvent.ticker = eventTicker.value;
+                                currentEvent.comentario = eventComentario.value;
+                                currentEvent.exento_impuesto = eventExento.value;
+                                currentEvent.fecha_pago = new Date(eventDate.value);
+                                currentEvent.fecha_ex_derecho = new Date(eventExDerecho.value);
+                                currentEvent.fecha_limite = new Date(eventLimite.value);
+                                currentEvent.precio_titulo = eventPrecio.value;
+                                currentEvent.rendimiento = eventRendimiento.value;
+                                currentEvent.link_aviso = eventAviso.value;
+                            } else {
+                                const newEvent = {
+                                    empresa: eventEmpresa.value,
+                                    monto: eventCosto.value,
+                                    ticker: eventTicker.value,
+                                    comentario: eventComentario.value,
+                                    exento_impuesto: eventExento.value,
+                                    fecha_pago: new Date(eventDate.value),
+                                    fecha_ex_derecho: new Date(eventExDerecho.value),
+                                    fecha_limite: new Date(eventLimite.value),
+                                    precio_titulo: eventPrecio.value,
+                                    rendimiento: eventRendimiento.value,
+                                    link_aviso: eventAviso.value,
+                                };
+                                events.push(newEvent);
+                            }
                             closeModal();
                             renderCalendar();
                         }
@@ -633,21 +595,48 @@
                             }
                         }
 
+                        function saveEvent() {
+                            const formData = new FormData(document.getElementById("event-form"));
+                            if (currentEvent) {
+                                formData.append("event-id", currentEvent.id);
+                            }
+                            fetch('php/save_event.php', {
+                                    method: 'POST',
+                                    body: formData
+                                })
+                                .then(response => {
+                                    if (!response.ok) {
+                                        throw new Error('Network response was not ok ' + response.statusText);
+                                    }
+                                    return response.json();
+                                })
+                                .then(data => {
+                                    if (data.success) {
+                                        alert('Evento guardado correctamente');
+                                        closeModal();
+                                        renderCalendar();
+                                    } else {
+                                        alert('Error al guardar el evento: ' + data.message);
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error('Error:', error);
+                                    alert('Error al guardar el evento: ' + error.message);
+                                });
+                        }
+
                         function renderCalendar() {
                             calendarGrid.innerHTML = "";
                             calendarTitle.textContent = currentDate.toLocaleDateString("es-ES", {
                                 month: "long",
                                 year: "numeric",
                             });
-
-                            // Encabezados de los días de la semana
                             daysOfWeek.forEach((day) => {
                                 const cell = document.createElement("div");
                                 cell.classList.add("calendar-cell", "calendar-cell-header");
                                 cell.textContent = day;
                                 calendarGrid.appendChild(cell);
                             });
-
                             const firstDayOfMonth = new Date(
                                 currentDate.getFullYear(),
                                 currentDate.getMonth(),
@@ -659,26 +648,20 @@
                                 0
                             );
                             const startDay = firstDayOfMonth.getDay();
-
-                            // Rellenar días en blanco antes del primer día del mes
                             for (let i = 0; i < startDay; i++) {
                                 const cell = document.createElement("div");
                                 cell.classList.add("calendar-cell");
                                 calendarGrid.appendChild(cell);
                             }
-
-                            // Días del mes
                             for (let i = 1; i <= lastDayOfMonth.getDate(); i++) {
                                 const cell = document.createElement("div");
                                 cell.classList.add("calendar-cell");
                                 cell.textContent = i;
-
-                                // Agregar eventos
                                 const eventsOfDay = events.filter(
                                     (e) =>
-                                    e.date.getDate() === i &&
-                                    e.date.getMonth() === currentDate.getMonth() &&
-                                    e.date.getFullYear() === currentDate.getFullYear()
+                                    e.fecha_pago.getDate() === i &&
+                                    e.fecha_pago.getMonth() === currentDate.getMonth() &&
+                                    e.fecha_pago.getFullYear() === currentDate.getFullYear()
                                 );
                                 if (eventsOfDay.length > 0) {
                                     cell.classList.add("calendar-cell-event");
@@ -687,7 +670,7 @@
                                     eventsOfDay.forEach((event) => {
                                         const eventItem = document.createElement("div");
                                         eventItem.classList.add("event-item");
-                                        eventItem.textContent = event.title;
+                                        eventItem.textContent = event.empresa;
                                         eventItem.addEventListener("click", () => {
                                             showModal(event);
                                         });
@@ -695,17 +678,40 @@
                                     });
                                     cell.appendChild(eventList);
                                 }
-
                                 calendarGrid.appendChild(cell);
                             }
                         }
 
+                        function loadEventsFromDatabase() {
+                            fetch("php/database.php")
+                                .then((response) => response.json())
+                                .then((data) => {
+                                    data.forEach((event) => {
+                                        const formattedEvent = {
+                                            empresa: event.empresa,
+                                            monto: event.monto,
+                                            ticker: event.ticker,
+                                            comentario: event.comentario,
+                                            exento_impuesto: event.exento_impuesto,
+                                            fecha_pago: new Date(event.fecha_pago),
+                                            fecha_ex_derecho: new Date(event.fecha_ex_derecho),
+                                            fecha_limite: new Date(event.fecha_limite),
+                                            precio_titulo: event.precio_titulo,
+                                            rendimiento: event.rendimiento,
+                                            link_aviso: event.link_aviso,
+                                        };
+                                        events.push(formattedEvent);
+                                    });
+                                    renderCalendar();
+                                })
+                                .catch((error) => console.error("Error cargando eventos:", error));
+                        }
+
+                        loadEventsFromDatabase();
                         renderCalendar();
                     </script>
                 </div>
             </main>
-
-
 
             <footer class="footer">
                 <div class="container-fluid">
@@ -736,8 +742,6 @@
             </footer>
         </div>
     </div>
-
-    <script src="js/app.js"></script>
 </body>
 
 </html>

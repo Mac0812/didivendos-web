@@ -1,5 +1,3 @@
-
-
 ### Build tools
 
 The theme includes a custom Webpack file, which can be used to quickly recompile and minify theme assets while developing or for deployment. You'll need to install Node.js before using Webpack.
@@ -22,86 +20,7 @@ Compile, optimize, minify and uglify all source files to dist/ folder:
 npm run build
 ```
 
-## CDN support
 
-All files included in the `@adminkit/core` npm package are available over a CDN.
 
-**CSS:**
 
-```html
-<link rel="stylesheet" href="https://unpkg.com/@adminkit/core@latest/dist/css/app.css">
-```
 
-**Javascript:**
-
-```html
-<script src="https://unpkg.com/@adminkit/core@latest/dist/js/app.js"></script>
-```
-
-## File structure
-The package contains the following directories and files:
-
-```
-adminkit/
-├── .babelrc
-├── .eslintrc
-├── .nvmrc
-├── README.md
-├── package.json
-├── postcss.config.js
-├── webpack.config.js
-├── src/
-│   ├── fonts/
-│   ├── img/
-│   ├── js/
-│   │   ├── modules/
-│   │   └── app.js
-│   └── scss/
-│       ├── 1-variables/
-│       ├── 2-mixins/
-│       ├── 3-components/
-│       ├── 4-utilities/
-│       ├── 5-vendor/
-│       └── app.scss
-└── dist/
-    ├── css/
-    │   └── app.css
-    └── js/
-        └── app.js
-```
-
-## Browser Support
-
-| <img src="https://assets.adminkit.io/browsers/edge.png" alt="Edge" width="24px" height="24px" /><br/>Edge | <img src="https://assets.adminkit.io/browsers/firefox.png" alt="Firefox" width="24px" height="24px" /><br/>Firefox | <img src="https://assets.adminkit.io/browsers/chrome.png" alt="Chrome" width="24px" height="24px" /><br/>Chrome | <img src="https://assets.adminkit.io/browsers/safari.png" alt="Safari" width="24px" height="24px" /><br/>Safari | <img src="https://assets.adminkit.io/browsers/safari-ios.png" alt="iOS Safari" width="24px" height="24px" /><br/>iOS Safari |
-| --------- | --------- | --------- | --------- | --------- |
-| last version| last 2 versions| last 2 versions| last 2 versions| last 2 versions
-
-## Resources
-
-* [Demo](https://demo.adminkit.io/)
-* [Website](https://adminkit.io/)
-* [Documentation](https://adminkit.io/docs)
-* [Support](https://adminkit.io/support/)
-* [Affiliate Program](https://adminkit.io/affiliate-program)
-
-## Bugs and feature requests
-
-Found a bug or have a feature request? [Please open a new issue](https://github.com/adminkit/adminkit/issues/new).
-
-## Upgrade to PRO
-Get more power with AdminKit PRO, a premium variant of AdminKit, featuring hundreds of UI components, forms, tables, charts, pages, and icons.
-
-| Free Version        | [AdminKit PRO](https://adminkit.io/pricing/) |
-|---------------------|----------------------------------------------|
-| 15 Demo Pages       | ✔ 45+ Demo Pages                             |
-| 1 Plugin            | ✔ 10+ Plugins                                |
-| 1 Color Scheme      | ✔ 3 Color Schemes                            |
-|                     | ✔ All Bootstrap 5 Components                 |
-|                     | ✔ Dark Mode 🌙                               |
-|                     | ✔ Compact Sidebar                            |
-|                     | ✔ Calendar                                   |
-|                     | ✔ Advanced Forms                             |
-|                     | ✔ Drag and Drop                              |
-|                     | ✔ Toast Notifications                        |
-|                     | ✔ WYSIWYG Editors                            |
-|                     | ✔ Premium Support                            |
