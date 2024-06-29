@@ -9,7 +9,7 @@
     />
     <meta
       name="description"
-      content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5"
+      content="Responsive Admin & Dashboard Template based on Bootstrap 5"
     />
     <meta name="author" content="AdminKit" />
     <meta
@@ -20,15 +20,162 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
-    <link rel="canonical" href="https://demo-basic.adminkit.io/" />
+    <link
+      rel="canonical"
+      href="https://demo-basic.adminkit.io/pages-blank.html"
+    />
 
-    <title>Dividendos MX</title>
+    <title>Agenda de Dividendos</title>
 
     <link href="css/app.css" rel="stylesheet" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Include Babel -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- Include moment.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      .calendar {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 70%;
+      }
+      .calendar-header {
+        display: flex;
+        justify-content: space-between;
+        width: 600px;
+        margin-bottom: 10px;
+      }
+      .calendar-header button {
+        background-color: #41e2ba;
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+      }
+      .calendar-grid {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 5px;
+        max-width: 600px;
+      }
+      .calendar-cell {
+        padding: 20px;
+        border: 1px solid #ddd;
+        text-align: center;
+      }
+      .calendar-cell-header {
+        background-color: #f0f0f0;
+      }
+      .calendar-cell-today {
+        background-color: #41e2ba;
+      }
+      .modal {
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        position: fixed;
+        height: 100%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        align-items: center;
+      }
+      .calendar-cell-event {
+        position: relative;
+      }
+
+      .calendar-cell-event::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: rgb(111, 200, 186);
+      }
+
+      .modal-content {
+        background-color: rgb(225, 251, 240);
+        border-radius: 8px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        width: 30%;
+        height: 100%;
+        margin-left: auto;
+      }
+      .event-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 5px;
+      }
+
+      .event-item {
+        background-color: #41e2ba;
+        padding: 5px 10px;
+        border-radius: 5px;
+        margin-bottom: 5px;
+        cursor: pointer;
+      }
+
+      .event-item:hover {
+        background-color: #0ad8a1;
+      }
+
+      .event-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      .content-title {
+        background-color: #41e2ba;
+        height: 100px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        padding: 20px;
+        border-radius: 8px 8px 0 0;
+      }
+      .content-modal {
+        background-color: rgb(225, 251, 240);
+        padding: 20px;
+        border-radius: 8px;
+      }
+      #event-title {
+        width: 75%;
+        font-size: 22px;
+        margin-top: 20px;
+      }
+    </style>
   </head>
 
   <body>
@@ -38,12 +185,17 @@
           <a class="sidebar-brand" href="index.html">
             <span class="align-middle">+Dividendos</span>
           </a>
-
           <ul class="sidebar-nav">
             <li class="sidebar-item">
               <a class="sidebar-link" href="pages-blank.html">
                 <i class="align-middle" data-feather="book"></i>
                 <span class="align-middle">Agenda Dividendos</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="pages-admin.php">
+                <i class="align-middle" data-feather="book"></i>
+                <span class="align-middle">Edición</span>
               </a>
             </li>
           </ul>
@@ -285,285 +437,196 @@
             </ul>
           </div>
         </nav>
-
         <main class="content">
           <div class="container-fluid p-0">
-            <h1 class="h3 mb-3"><strong>Analytics</strong> Dashboard</h1>
-
-            <div class="row">
-              <div class="col-xl-6 col-xxl-5 d-flex">
-                <div class="w-100">
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <div class="card">
-                        <div class="card-body">
-                          <div class="row">
-                            <div class="col mt-0">
-                              <h5 class="card-title">Sales</h5>
-                            </div>
-
-                            <div class="col-auto">
-                              <div class="stat text-primary">
-                                <i
-                                  class="align-middle"
-                                  data-feather="truck"
-                                ></i>
-                              </div>
-                            </div>
-                          </div>
-                          <h1 class="mt-1 mb-3">2.382</h1>
-                          <div class="mb-0">
-                            <span class="text-danger">-3.65%</span>
-                            <span class="text-muted">Since last week</span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <div class="card-body">
-                          <div class="row">
-                            <div class="col mt-0">
-                              <h5 class="card-title">Visitors</h5>
-                            </div>
-
-                            <div class="col-auto">
-                              <div class="stat text-primary">
-                                <i
-                                  class="align-middle"
-                                  data-feather="users"
-                                ></i>
-                              </div>
-                            </div>
-                          </div>
-                          <h1 class="mt-1 mb-3">14.212</h1>
-                          <div class="mb-0">
-                            <span class="text-success">5.25%</span>
-                            <span class="text-muted">Since last week</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="card">
-                        <div class="card-body">
-                          <div class="row">
-                            <div class="col mt-0">
-                              <h5 class="card-title">Earnings</h5>
-                            </div>
-
-                            <div class="col-auto">
-                              <div class="stat text-primary">
-                                <i
-                                  class="align-middle"
-                                  data-feather="dollar-sign"
-                                ></i>
-                              </div>
-                            </div>
-                          </div>
-                          <h1 class="mt-1 mb-3">$21.300</h1>
-                          <div class="mb-0">
-                            <span class="text-success">6.65%</span>
-                            <span class="text-muted">Since last week</span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <div class="card-body">
-                          <div class="row">
-                            <div class="col mt-0">
-                              <h5 class="card-title">Orders</h5>
-                            </div>
-
-                            <div class="col-auto">
-                              <div class="stat text-primary">
-                                <i
-                                  class="align-middle"
-                                  data-feather="shopping-cart"
-                                ></i>
-                              </div>
-                            </div>
-                          </div>
-                          <h1 class="mt-1 mb-3">64</h1>
-                          <div class="mb-0">
-                            <span class="text-danger">-2.25%</span>
-                            <span class="text-muted">Since last week</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+            <h1 class="h3 mb-3">Agenda de Dividendos</h1>
+            <div class="calendar">
+              <div class="calendar-header">
+                <button onclick="prevMonth()">Anterior</button>
+                <h2 id="calendar-title"></h2>
+                <button onclick="nextMonth()">Siguiente</button>
               </div>
+              <div class="calendar-grid" id="calendar-grid"></div>
+            </div>
 
-              <div class="col-xl-6 col-xxl-7">
-                <div class="card flex-fill w-100">
-                  <div class="card-header">
-                    <h5 class="card-title mb-0">Recent Movement</h5>
-                  </div>
-                  <div class="card-body py-3">
-                    <div class="chart chart-sm">
-                      <canvas id="chartjs-dashboard-line"></canvas>
-                    </div>
-                  </div>
+            <div id="event-modal" class="modal">
+              <div class="modal-content">
+                <div class="content-title">
+                  <h2 id="event-title"></h2>
+                  <span class="close" onclick="closeModal()">&times;</span>
+                </div>
+                <div class="content-modal">
+                  <p id="event-description"></p>
+                  <label>Monto: </label>
+                  <p id="event-costo"></p>
+                  <label>Ticker: </label>
+                  <p id="event-ticker"></p>
+                  <label>Fecha ex-derecho: </label>
+                  <p id="event-ex"></p>
+                  <label>Fecha pago: </label>
+                  <p id="event-date"></p>
+                  <label>Link aviso: </label>
+                  <p id="event-aviso"></p>
                 </div>
               </div>
             </div>
 
-            <div class="row">
-              <div class="col-12 col-md-6 col-xxl-3 d-flex order-2 order-xxl-3">
-                <div class="card flex-fill w-100">
-                  <div class="card-header">
-                    <h5 class="card-title mb-0">Browser Usage</h5>
-                  </div>
-                  <div class="card-body d-flex">
-                    <div class="align-self-center w-100">
-                      <div class="py-3">
-                        <div class="chart chart-xs">
-                          <canvas id="chartjs-dashboard-pie"></canvas>
-                        </div>
-                      </div>
+            <script>
+              const calendarGrid = document.getElementById("calendar-grid");
+              const calendarTitle = document.getElementById("calendar-title");
+              const eventModal = document.getElementById("event-modal");
+              const eventTitle = document.getElementById("event-title");
+              const eventCosto = document.getElementById("event-costo");
+              const eventTicker = document.getElementById("event-ticker");
+              const eventExDerecho = document.getElementById("event-ex");
+              const eventDate = document.getElementById("event-date");
+              const eventAviso = document.getElementById("event-aviso");
+              const eventDescription =
+                document.getElementById("event-description");
+              const daysOfWeek = [
+                "Dom",
+                "Lun",
+                "Mar",
+                "Mié",
+                "Jue",
+                "Vie",
+                "Sáb",
+              ];
+              const date = new Date();
+              const events = [];
 
-                      <table class="table mb-0">
-                        <tbody>
-                          <tr>
-                            <td>Chrome</td>
-                            <td class="text-end">4306</td>
-                          </tr>
-                          <tr>
-                            <td>Firefox</td>
-                            <td class="text-end">3801</td>
-                          </tr>
-                          <tr>
-                            <td>IE</td>
-                            <td class="text-end">1689</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="col-12 col-md-12 col-xxl-6 d-flex order-3 order-xxl-2"
-              >
-                <div class="card flex-fill w-100">
-                  <div class="card-header">
-                    <h5 class="card-title mb-0">Real-Time</h5>
-                  </div>
-                  <div class="card-body px-4">
-                    <div id="world_map" style="height: 350px"></div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-md-6 col-xxl-3 d-flex order-1 order-xxl-1">
-                <div class="card flex-fill">
-                  <div class="card-header">
-                    <h5 class="card-title mb-0">Calendar</h5>
-                  </div>
-                  <div class="card-body d-flex">
-                    <div class="align-self-center w-100">
-                      <div class="chart">
-                        <div id="datetimepicker-dashboard"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+              function formatDate(date) {
+                return `${date.getDate()}/${String(
+                  date.getMonth() + 1
+                ).padStart(2, "0")}/${date.getFullYear()}`;
+              }
 
-            <div class="row">
-              <div class="col-12 col-lg-8 col-xxl-9 d-flex">
-                <div class="card flex-fill">
-                  <div class="card-header">
-                    <h5 class="card-title mb-0">Latest Projects</h5>
-                  </div>
-                  <table class="table table-hover my-0">
-                    <thead>
-                      <tr>
-                        <th>Name</th>
-                        <th class="d-none d-xl-table-cell">Start Date</th>
-                        <th class="d-none d-xl-table-cell">End Date</th>
-                        <th>Status</th>
-                        <th class="d-none d-md-table-cell">Assignee</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Project Apollo</td>
-                        <td class="d-none d-xl-table-cell">01/01/2023</td>
-                        <td class="d-none d-xl-table-cell">31/06/2023</td>
-                        <td><span class="badge bg-success">Done</span></td>
-                        <td class="d-none d-md-table-cell">Vanessa Tucker</td>
-                      </tr>
-                      <tr>
-                        <td>Project Fireball</td>
-                        <td class="d-none d-xl-table-cell">01/01/2023</td>
-                        <td class="d-none d-xl-table-cell">31/06/2023</td>
-                        <td><span class="badge bg-danger">Cancelled</span></td>
-                        <td class="d-none d-md-table-cell">William Harris</td>
-                      </tr>
-                      <tr>
-                        <td>Project Hades</td>
-                        <td class="d-none d-xl-table-cell">01/01/2023</td>
-                        <td class="d-none d-xl-table-cell">31/06/2023</td>
-                        <td><span class="badge bg-success">Done</span></td>
-                        <td class="d-none d-md-table-cell">Sharon Lessman</td>
-                      </tr>
-                      <tr>
-                        <td>Project Nitro</td>
-                        <td class="d-none d-xl-table-cell">01/01/2023</td>
-                        <td class="d-none d-xl-table-cell">31/06/2023</td>
-                        <td>
-                          <span class="badge bg-warning">In progress</span>
-                        </td>
-                        <td class="d-none d-md-table-cell">Vanessa Tucker</td>
-                      </tr>
-                      <tr>
-                        <td>Project Phoenix</td>
-                        <td class="d-none d-xl-table-cell">01/01/2023</td>
-                        <td class="d-none d-xl-table-cell">31/06/2023</td>
-                        <td><span class="badge bg-success">Done</span></td>
-                        <td class="d-none d-md-table-cell">William Harris</td>
-                      </tr>
-                      <tr>
-                        <td>Project X</td>
-                        <td class="d-none d-xl-table-cell">01/01/2023</td>
-                        <td class="d-none d-xl-table-cell">31/06/2023</td>
-                        <td><span class="badge bg-success">Done</span></td>
-                        <td class="d-none d-md-table-cell">Sharon Lessman</td>
-                      </tr>
-                      <tr>
-                        <td>Project Romeo</td>
-                        <td class="d-none d-xl-table-cell">01/01/2023</td>
-                        <td class="d-none d-xl-table-cell">31/06/2023</td>
-                        <td><span class="badge bg-success">Done</span></td>
-                        <td class="d-none d-md-table-cell">Christina Mason</td>
-                      </tr>
-                      <tr>
-                        <td>Project Wombat</td>
-                        <td class="d-none d-xl-table-cell">01/01/2023</td>
-                        <td class="d-none d-xl-table-cell">31/06/2023</td>
-                        <td>
-                          <span class="badge bg-warning">In progress</span>
-                        </td>
-                        <td class="d-none d-md-table-cell">William Harris</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <div class="col-12 col-lg-4 col-xxl-3 d-flex">
-                <div class="card flex-fill w-100">
-                  <div class="card-header">
-                    <h5 class="card-title mb-0">Monthly Sales</h5>
-                  </div>
-                  <div class="card-body d-flex w-100">
-                    <div class="align-self-center chart chart-lg">
-                      <canvas id="chartjs-dashboard-bar"></canvas>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+              function prevMonth() {
+                date.setMonth(date.getMonth() - 1);
+                renderCalendar();
+              }
+
+              function nextMonth() {
+                date.setMonth(date.getMonth() + 1);
+                renderCalendar();
+              }
+
+              eventModal.style.display = "none";
+
+              function showModal(event) {
+                eventTitle.textContent = event.title || "";
+                eventCosto.textContent = event.monto || "";
+                eventTicker.textContent = event.ticker || "";
+                eventExDerecho.textContent = event.ex_derecho
+                  ? formatDate(event.ex_derecho)
+                  : "";
+                eventDate.textContent = event.date
+                  ? formatDate(event.date)
+                  : "";
+                eventAviso.textContent = event.aviso || "";
+                eventModal.style.display = "block";
+              }
+
+              function closeModal() {
+                eventModal.style.display = "none";
+              }
+
+              window.onclick = function (event) {
+                if (event.target == eventModal) {
+                  closeModal();
+                }
+              };
+
+              function renderCalendar() {
+                calendarGrid.innerHTML = "";
+                calendarTitle.textContent = date.toLocaleDateString("es-ES", {
+                  month: "long",
+                  year: "numeric",
+                });
+
+                daysOfWeek.forEach((day) => {
+                  const cell = document.createElement("div");
+                  cell.classList.add("calendar-cell", "calendar-cell-header");
+                  cell.textContent = day;
+                  calendarGrid.appendChild(cell);
+                });
+
+                const firstDayOfMonth = new Date(
+                  date.getFullYear(),
+                  date.getMonth(),
+                  1
+                );
+                const lastDayOfMonth = new Date(
+                  date.getFullYear(),
+                  date.getMonth() + 1,
+                  0
+                );
+                const startDay = firstDayOfMonth.getDay();
+
+                for (let i = 0; i < startDay; i++) {
+                  const cell = document.createElement("div");
+                  cell.classList.add("calendar-cell");
+                  calendarGrid.appendChild(cell);
+                }
+
+                for (let i = 1; i <= lastDayOfMonth.getDate(); i++) {
+                  const cell = document.createElement("div");
+                  cell.classList.add("calendar-cell");
+                  cell.textContent = i;
+
+                  const eventsOfDay = events.filter(
+                    (e) =>
+                      e.date.getDate() === i &&
+                      e.date.getMonth() === date.getMonth() &&
+                      e.date.getFullYear() === date.getFullYear()
+                  );
+
+                  if (eventsOfDay.length > 0) {
+                    cell.classList.add("calendar-cell-event");
+                    const eventList = document.createElement("div");
+                    eventList.classList.add("event-list");
+                    eventsOfDay.forEach((event) => {
+                      const eventItem = document.createElement("div");
+                      eventItem.classList.add("event-item");
+                      eventItem.textContent = event.title;
+                      eventItem.addEventListener("click", () => {
+                        showModal(event);
+                      });
+                      eventList.appendChild(eventItem);
+                    });
+                    cell.appendChild(eventList);
+                  }
+
+                  calendarGrid.appendChild(cell);
+                }
+              }
+
+              function loadEventsFromDatabase() {
+                fetch("php/database.php")
+                  .then((response) => response.json())
+                  .then((data) => {
+                    data.forEach((event) => {
+                      const formattedEvent = {
+                        title: event.empresa,
+                        ticker: event.ticker,
+                        monto: `$${event.monto}`,
+                        ex_derecho: new Date(event.fecha_ex_derecho),
+                        date: new Date(event.fecha_pago),
+                        description: event.comentario,
+                        aviso: event.link_aviso,
+                      };
+                      events.push(formattedEvent);
+                    });
+                    renderCalendar();
+                  })
+                  .catch((error) =>
+                    console.error("Error cargando eventos:", error)
+                  );
+              }
+
+              loadEventsFromDatabase();
+              renderCalendar();
+            </script>
           </div>
         </main>
 
@@ -576,16 +639,8 @@
                     class="text-muted"
                     href="https://adminkit.io/"
                     target="_blank"
-                    ><strong>AdminKit</strong></a
+                    ><strong>DIVIDENDOS</strong></a
                   >
-                  -
-                  <a
-                    class="text-muted"
-                    href="https://adminkit.io/"
-                    target="_blank"
-                    ><strong>Bootstrap Admin Template</strong></a
-                  >
-                  &copy;
                 </p>
               </div>
               <div class="col-6 text-end">
@@ -631,265 +686,5 @@
     </div>
 
     <script src="js/app.js"></script>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var ctx = document
-          .getElementById("chartjs-dashboard-line")
-          .getContext("2d");
-        var gradient = ctx.createLinearGradient(0, 0, 0, 225);
-        gradient.addColorStop(0, "rgba(215, 227, 244, 1)");
-        gradient.addColorStop(1, "rgba(215, 227, 244, 0)");
-        // Line chart
-        new Chart(document.getElementById("chartjs-dashboard-line"), {
-          type: "line",
-          data: {
-            labels: [
-              "Jan",
-              "Feb",
-              "Mar",
-              "Apr",
-              "May",
-              "Jun",
-              "Jul",
-              "Aug",
-              "Sep",
-              "Oct",
-              "Nov",
-              "Dec",
-            ],
-            datasets: [
-              {
-                label: "Sales ($)",
-                fill: true,
-                backgroundColor: gradient,
-                borderColor: window.theme.primary,
-                data: [
-                  2115, 1562, 1584, 1892, 1587, 1923, 2566, 2448, 2805, 3438,
-                  2917, 3327,
-                ],
-              },
-            ],
-          },
-          options: {
-            maintainAspectRatio: false,
-            legend: {
-              display: false,
-            },
-            tooltips: {
-              intersect: false,
-            },
-            hover: {
-              intersect: true,
-            },
-            plugins: {
-              filler: {
-                propagate: false,
-              },
-            },
-            scales: {
-              xAxes: [
-                {
-                  reverse: true,
-                  gridLines: {
-                    color: "rgba(0,0,0,0.0)",
-                  },
-                },
-              ],
-              yAxes: [
-                {
-                  ticks: {
-                    stepSize: 1000,
-                  },
-                  display: true,
-                  borderDash: [3, 3],
-                  gridLines: {
-                    color: "rgba(0,0,0,0.0)",
-                  },
-                },
-              ],
-            },
-          },
-        });
-      });
-    </script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // Pie chart
-        new Chart(document.getElementById("chartjs-dashboard-pie"), {
-          type: "pie",
-          data: {
-            labels: ["Chrome", "Firefox", "IE"],
-            datasets: [
-              {
-                data: [4306, 3801, 1689],
-                backgroundColor: [
-                  window.theme.primary,
-                  window.theme.warning,
-                  window.theme.danger,
-                ],
-                borderWidth: 5,
-              },
-            ],
-          },
-          options: {
-            responsive: !window.MSInputMethodContext,
-            maintainAspectRatio: false,
-            legend: {
-              display: false,
-            },
-            cutoutPercentage: 75,
-          },
-        });
-      });
-    </script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // Bar chart
-        new Chart(document.getElementById("chartjs-dashboard-bar"), {
-          type: "bar",
-          data: {
-            labels: [
-              "Jan",
-              "Feb",
-              "Mar",
-              "Apr",
-              "May",
-              "Jun",
-              "Jul",
-              "Aug",
-              "Sep",
-              "Oct",
-              "Nov",
-              "Dec",
-            ],
-            datasets: [
-              {
-                label: "This year",
-                backgroundColor: window.theme.primary,
-                borderColor: window.theme.primary,
-                hoverBackgroundColor: window.theme.primary,
-                hoverBorderColor: window.theme.primary,
-                data: [54, 67, 41, 55, 62, 45, 55, 73, 60, 76, 48, 79],
-                barPercentage: 0.75,
-                categoryPercentage: 0.5,
-              },
-            ],
-          },
-          options: {
-            maintainAspectRatio: false,
-            legend: {
-              display: false,
-            },
-            scales: {
-              yAxes: [
-                {
-                  gridLines: {
-                    display: false,
-                  },
-                  stacked: false,
-                  ticks: {
-                    stepSize: 20,
-                  },
-                },
-              ],
-              xAxes: [
-                {
-                  stacked: false,
-                  gridLines: {
-                    color: "transparent",
-                  },
-                },
-              ],
-            },
-          },
-        });
-      });
-    </script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var markers = [
-          {
-            coords: [31.230391, 121.473701],
-            name: "Shanghai",
-          },
-          {
-            coords: [28.70406, 77.102493],
-            name: "Delhi",
-          },
-          {
-            coords: [6.524379, 3.379206],
-            name: "Lagos",
-          },
-          {
-            coords: [35.689487, 139.691711],
-            name: "Tokyo",
-          },
-          {
-            coords: [23.12911, 113.264381],
-            name: "Guangzhou",
-          },
-          {
-            coords: [40.7127837, -74.0059413],
-            name: "New York",
-          },
-          {
-            coords: [34.052235, -118.243683],
-            name: "Los Angeles",
-          },
-          {
-            coords: [41.878113, -87.629799],
-            name: "Chicago",
-          },
-          {
-            coords: [51.507351, -0.127758],
-            name: "London",
-          },
-          {
-            coords: [40.416775, -3.70379],
-            name: "Madrid ",
-          },
-        ];
-        var map = new jsVectorMap({
-          map: "world",
-          selector: "#world_map",
-          zoomButtons: true,
-          markers: markers,
-          markerStyle: {
-            initial: {
-              r: 9,
-              strokeWidth: 7,
-              stokeOpacity: 0.4,
-              fill: window.theme.primary,
-            },
-            hover: {
-              fill: window.theme.primary,
-              stroke: window.theme.primary,
-            },
-          },
-          zoomOnScroll: false,
-        });
-        window.addEventListener("resize", () => {
-          map.updateSize();
-        });
-      });
-    </script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var date = new Date(Date.now() - 5 * 24 * 60 * 60 * 1000);
-        var defaultDate =
-          date.getUTCFullYear() +
-          "-" +
-          (date.getUTCMonth() + 1) +
-          "-" +
-          date.getUTCDate();
-        document.getElementById("datetimepicker-dashboard").flatpickr({
-          inline: true,
-          prevArrow: '<span title="Previous month">&laquo;</span>',
-          nextArrow: '<span title="Next month">&raquo;</span>',
-          defaultDate: defaultDate,
-        });
-      });
-    </script>
   </body>
 </html>

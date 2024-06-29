@@ -15,7 +15,7 @@ if (mysqli_num_rows($validar_login) > 0) {
   $_SESSION['usuario'] = $correo;
 
   if ($correo == "renanRibero2024@gmail.com") {
-    include 'pages-admin.php';
+    header("location:../pages-admin.php");
   } else {
     header("location:../index.php");
   }
@@ -29,5 +29,3 @@ if (mysqli_num_rows($validar_login) > 0) {
   ';
   exit;
 }
-
-?>

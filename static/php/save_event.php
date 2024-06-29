@@ -20,9 +20,9 @@ $rendimiento = mysqli_real_escape_string($conexion, $_POST['event-rendimiento'])
 $link_aviso = mysqli_real_escape_string($conexion, $_POST['event-aviso']);
 
 // Formatear las fechas para MySQL
-$fecha_pago = date("Y-m-d", strtotime($fecha_pago));
-$fecha_ex_derecho = date("Y-m-d", strtotime($fecha_ex_derecho));
-$fecha_limite = date("Y-m-d", strtotime($fecha_limite));
+$fecha_pago = $fecha_pago ? date("Y-m-d", strtotime($fecha_pago)) : null;
+$fecha_ex_derecho = $fecha_ex_derecho ? date("Y-m-d", strtotime($fecha_ex_derecho)) : null;
+$fecha_limite = $fecha_limite ? date("Y-m-d", strtotime($fecha_limite)) : null;
 
 if ($event_id) {
     // Actualizar evento existente
@@ -34,11 +34,16 @@ if ($event_id) {
     $stmt->bind_param("sssssssssss", $empresa, $ticker, $monto, $comentario, $exento_impuesto, $fecha_pago, $fecha_ex_derecho, $fecha_limite, $precio_titulo, $rendimiento, $link_aviso);
 }
 
+$response = array();
 if ($stmt->execute()) {
-    echo json_encode(['success' => true]);
+    $response['success'] = true;
 } else {
-    echo json_encode(['success' => false, 'error' => $stmt->error]);
+    $response['success'] = false;
+    $response['message'] = $stmt->error;
 }
 
 $stmt->close();
 $conexion->close();
+
+header('Content-Type: application/json');
+echo json_encode($response);
