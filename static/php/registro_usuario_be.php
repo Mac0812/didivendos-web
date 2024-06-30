@@ -4,7 +4,7 @@ include 'conexion_be.php';
 $correo = $_POST['correo'];
 $usuario = $_POST['usuario'];
 $contrasena = $_POST['contrasena'];
-
+$nombre_completo = $_POST ['nombre_completo'];
 
 //se va a encriptar la contraseña
 $contrasena = hash('sha512',$contrasena);
