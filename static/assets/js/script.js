@@ -62,3 +62,13 @@ anchoPage();
             caja_trasera_login.style.opacity = "1";
         }
 }
+
+   // Función para mostrar/ocultar la contraseña
+function togglePassword(inputId) {
+    const passwordInput = document.getElementById(inputId);
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+    } else {
+        passwordInput.type = "password";
+    }
+}
