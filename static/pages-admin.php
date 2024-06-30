@@ -259,7 +259,7 @@ if (!isset($_SESSION['nombre_completo'])) {
 
         <div class="navbar-collapse collapse">
           <ul class="navbar-nav navbar-align">
-           
+
             <li class="nav-item dropdown">
               <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
                 <i class="align-middle" data-feather="settings"></i>
@@ -287,289 +287,290 @@ if (!isset($_SESSION['nombre_completo'])) {
         </div>
       </nav>
       <main class="content">
-                <div class="container-fluid p-0">
-                    <h1 class="h3 mb-3">Agenda de Dividendos</h1>
-                    <div class="calendar">
-                        <div class="calendar-header">
-                            <button onclick="prevMonth()">Anterior</button>
-                            <h2 id="calendar-title"></h2>
-                            <button onclick="nextMonth()">Siguiente</button>
-                        </div>
-                        <div class="calendar-grid" id="calendar-grid"></div>
-                    </div>
+        <div class="container-fluid p-0">
+          <h1 class="h3 mb-3">Agenda de Dividendos</h1>
+          <div class="calendar">
+            <div class="calendar-header">
+              <button onclick="prevMonth()">Anterior</button>
+              <h2 id="calendar-title"></h2>
+              <button onclick="nextMonth()">Siguiente</button>
+              <div class="add-event" onclick="showModal(null)">+</div>
+            </div>
+            <div class="calendar-grid" id="calendar-grid"></div>
+          </div>
 
-                    <div id="event-modal" class="modal">
-                        <div class="modal-content">
-                            <div class="content-title">
-                                <h2 id="event-title"></h2>
-                                <span class="close" onclick="closeModal()">&times;</span>
-                            </div>
-                            <div class="content-modal">
-                                <form id="event-form">
-                                    <label for="event-empresa">Empresa:</label>
-                                    <input id="event-empresa" name="event-empresa" type="text">
-                                    <label for="event-ticker">Ticker:</label>
-                                    <input id="event-ticker" name="event-ticker" type="text">
-                                    <label for="event-costo">Monto:</label>
-                                    <input id="event-costo" name="event-costo" type="text">
-                                    <label for="event-comentario">Comentario:</label>
-                                    <input id="event-comentario" name="event-comentario" type="text">
-                                    <label for="event-exento">Exento Impuesto:</label>
-                                    <input id="event-exento" name="event-exento" type="text">
-                                    <label for="event-date">Fecha Pago:</label>
-                                    <input id="event-date" name="event-date" type="date">
-                                    <label for="event-ex-derecho">Fecha Ex-Derecho:</label>
-                                    <input id="event-ex-derecho" name="event-ex-derecho" type="date">
-                                    <label for="event-limite">Fecha Límite:</label>
-                                    <input id="event-limite" name="event-limite" type="date">
-                                    <label for="event-precio">Precio Título:</label>
-                                    <input id="event-precio" name="event-precio" type="text">
-                                    <label for="event-rendimiento">Rendimiento:</label>
-                                    <input id="event-rendimiento" name="event-rendimiento" type="text">
-                                    <label for="event-aviso">Link Aviso:</label>
-                                    <input id="event-aviso" name="event-aviso" type="text">
-                                    <div class="button-content">
-                                        <button type="button" class="act-event" onclick="saveEvent()">Guardar</button>
-                                        <button type="button" class="del-event" onclick="deleteEvent()">Eliminar</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+          <div id="event-modal" class="modal">
+            <div class="modal-content">
+              <div class="content-title">
+                <h2 id="event-title"></h2>
+                <span class="close" onclick="closeModal()">&times;</span>
+              </div>
+              <div class="content-modal">
+                <form id="event-form">
+                  <label for="event-empresa">Empresa:</label>
+                  <input id="event-empresa" name="event-empresa" type="text">
+                  <label for="event-ticker">Ticker:</label>
+                  <input id="event-ticker" name="event-ticker" type="text">
+                  <label for="event-costo">Monto:</label>
+                  <input id="event-costo" name="event-costo" type="text">
+                  <label for="event-comentario">Comentario:</label>
+                  <input id="event-comentario" name="event-comentario" type="text">
+                  <label for="event-exento">Exento Impuesto:</label>
+                  <input id="event-exento" name="event-exento" type="text">
+                  <label for="event-date">Fecha Pago:</label>
+                  <input id="event-date" name="event-date" type="date">
+                  <label for="event-ex-derecho">Fecha Ex-Derecho:</label>
+                  <input id="event-ex-derecho" name="event-ex-derecho" type="date">
+                  <label for="event-limite">Fecha Límite:</label>
+                  <input id="event-limite" name="event-limite" type="date">
+                  <label for="event-precio">Precio Título:</label>
+                  <input id="event-precio" name="event-precio" type="text">
+                  <label for="event-rendimiento">Rendimiento:</label>
+                  <input id="event-rendimiento" name="event-rendimiento" type="text">
+                  <label for="event-aviso">Link Aviso:</label>
+                  <input id="event-aviso" name="event-aviso" type="text">
+                  <div class="button-content">
+                    <button type="button" class="act-event" onclick="saveEvent()">Guardar</button>
+                    <button type="button" class="del-event" onclick="deleteEvent()">Eliminar</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
 
-                    <script>
-                        const calendarGrid = document.getElementById("calendar-grid");
-                        const calendarTitle = document.getElementById("calendar-title");
-                        const eventModal = document.getElementById("event-modal");
-                        const eventTitle = document.getElementById("event-title");
-                        const eventEmpresa = document.getElementById("event-empresa");
-                        const eventTicker = document.getElementById("event-ticker");
-                        const eventCosto = document.getElementById("event-costo");
-                        const eventComentario = document.getElementById("event-comentario");
-                        const eventExento = document.getElementById("event-exento");
-                        const eventDate = document.getElementById("event-date");
-                        const eventExDerecho = document.getElementById("event-ex-derecho");
-                        const eventLimite = document.getElementById("event-limite");
-                        const eventPrecio = document.getElementById("event-precio");
-                        const eventRendimiento = document.getElementById("event-rendimiento");
-                        const eventAviso = document.getElementById("event-aviso");
+          <script>
+            const calendarGrid = document.getElementById("calendar-grid");
+            const calendarTitle = document.getElementById("calendar-title");
+            const eventModal = document.getElementById("event-modal");
+            const eventTitle = document.getElementById("event-title");
+            const eventEmpresa = document.getElementById("event-empresa");
+            const eventTicker = document.getElementById("event-ticker");
+            const eventCosto = document.getElementById("event-costo");
+            const eventComentario = document.getElementById("event-comentario");
+            const eventExento = document.getElementById("event-exento");
+            const eventDate = document.getElementById("event-date");
+            const eventExDerecho = document.getElementById("event-ex-derecho");
+            const eventLimite = document.getElementById("event-limite");
+            const eventPrecio = document.getElementById("event-precio");
+            const eventRendimiento = document.getElementById("event-rendimiento");
+            const eventAviso = document.getElementById("event-aviso");
 
-                        const daysOfWeek = ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"];
-                        let currentDate = new Date();
-                        let currentEvent = null;
+            const daysOfWeek = ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"];
+            let currentDate = new Date();
+            let currentEvent = null;
 
-                        function formatDate(date) {
-                            return `${date.getDate()}/${String(date.getMonth() + 1).padStart(2, "0")}/${date.getFullYear()}`;
-                        }
+            function formatDate(date) {
+              return `${date.getDate()}/${String(date.getMonth() + 1).padStart(2, "0")}/${date.getFullYear()}`;
+            }
 
-                        const events = [];
+            const events = [];
 
-                        function prevMonth() {
-                            currentDate.setMonth(currentDate.getMonth() - 1);
-                            renderCalendar();
-                        }
+            function prevMonth() {
+              currentDate.setMonth(currentDate.getMonth() - 1);
+              renderCalendar();
+            }
 
-                        function nextMonth() {
-                            currentDate.setMonth(currentDate.getMonth() + 1);
-                            renderCalendar();
-                        }
+            function nextMonth() {
+              currentDate.setMonth(currentDate.getMonth() + 1);
+              renderCalendar();
+            }
 
-                        function closeModal() {
-                            eventModal.style.display = "none";
-                        }
+            function closeModal() {
+              eventModal.style.display = "none";
+            }
 
-                        window.onclick = function(event) {
-                            if (event.target == eventModal) {
-                                closeModal();
-                            }
-                        };
-                        eventModal.style.display = "none";
+            window.onclick = function(event) {
+              if (event.target == eventModal) {
+                closeModal();
+              }
+            };
+            eventModal.style.display = "none";
 
-                        function showModal(event) {
-                            currentEvent = event;
-                            if (event) {
-                                eventTitle.textContent = event.empresa;
-                                eventEmpresa.value = event.empresa;
-                                eventTicker.value = event.ticker || "";
-                                eventCosto.value = event.monto;
-                                eventComentario.value = event.comentario || "";
-                                eventExento.value = event.exento_impuesto || "";
-                                eventDate.value = event.fecha_pago ? formatDate(event.fecha_pago) : "";
-                                eventExDerecho.value = event.fecha_ex_derecho ? formatDate(event.fecha_ex_derecho) : "";
-                                eventLimite.value = event.fecha_limite ? formatDate(event.fecha_limite) : "";
-                                eventPrecio.value = event.precio_titulo || "";
-                                eventRendimiento.value = event.rendimiento || "";
-                                eventAviso.value = event.link_aviso || "";
-                            } else {
-                                eventTitle.textContent = "Nuevo Evento";
-                                eventEmpresa.value = "";
-                                eventTicker.value = "";
-                                eventCosto.value = "";
-                                eventComentario.value = "";
-                                eventExento.value = "";
-                                eventDate.value = "";
-                                eventExDerecho.value = "";
-                                eventLimite.value = "";
-                                eventPrecio.value = "";
-                                eventRendimiento.value = "";
-                                eventAviso.value = "";
-                            }
-                            eventModal.style.display = "block";
-                        }
+            function showModal(event) {
+              currentEvent = event;
+              if (event) {
+                eventTitle.textContent = event.empresa;
+                eventEmpresa.value = event.empresa;
+                eventTicker.value = event.ticker || "";
+                eventCosto.value = event.monto;
+                eventComentario.value = event.comentario || "";
+                eventExento.value = event.exento_impuesto || "";
+                eventDate.value = event.fecha_pago ? formatDate(event.fecha_pago) : "";
+                eventExDerecho.value = event.fecha_ex_derecho ? formatDate(event.fecha_ex_derecho) : "";
+                eventLimite.value = event.fecha_limite ? formatDate(event.fecha_limite) : "";
+                eventPrecio.value = event.precio_titulo || "";
+                eventRendimiento.value = event.rendimiento || "";
+                eventAviso.value = event.link_aviso || "";
+              } else {
+                eventTitle.textContent = "Nuevo Evento";
+                eventEmpresa.value = "";
+                eventTicker.value = "";
+                eventCosto.value = "";
+                eventComentario.value = "";
+                eventExento.value = "";
+                eventDate.value = "";
+                eventExDerecho.value = "";
+                eventLimite.value = "";
+                eventPrecio.value = "";
+                eventRendimiento.value = "";
+                eventAviso.value = "";
+              }
+              eventModal.style.display = "block";
+            }
 
-                        function deleteEvent() {
-                            if (!currentEvent) return;
-                            const formData = new FormData();
-                            formData.append('event-id', currentEvent.id);
-                            fetch('php/delete_event.php', {
-                                    method: 'POST',
-                                    body: formData
-                                })
-                                .then(response => {
-                                    if (!response.ok) {
-                                        throw new Error('Network response was not ok ' + response.statusText);
-                                    }
-                                    return response.json();
-                                })
-                                .then(data => {
-                                    if (data.success) {
-                                        alert('Evento eliminado correctamente');
-                                        const index = events.indexOf(currentEvent);
-                                        if (index > -1) {
-                                            events.splice(index, 1);
-                                            renderCalendar();
-                                        }
-                                    } else {
-                                        alert('Error al eliminar el evento: ' + data.message);
-                                    }
-                                })
-                                .catch(error => {
-                                    console.error('Error:', error);
-                                    alert('Error al eliminar el evento: ' + error.message);
-                                });
-                            closeModal();
-                        }
+            function deleteEvent() {
+              if (!currentEvent) return;
+              const formData = new FormData();
+              formData.append('event-id', currentEvent.id);
+              fetch('php/delete_event.php', {
+                  method: 'POST',
+                  body: formData
+                })
+                .then(response => {
+                  if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                  }
+                  return response.json();
+                })
+                .then(data => {
+                  if (data.success) {
+                    alert('Evento eliminado correctamente');
+                    const index = events.indexOf(currentEvent);
+                    if (index > -1) {
+                      events.splice(index, 1);
+                      renderCalendar();
+                    }
+                  } else {
+                    alert('Error al eliminar el evento: ' + data.message);
+                  }
+                })
+                .catch(error => {
+                  console.error('Error:', error);
+                  alert('Error al eliminar el evento: ' + error.message);
+                });
+              closeModal();
+            }
 
-                        function saveEvent() {
-                            const formData = new FormData(document.getElementById("event-form"));
-                            if (currentEvent) {
-                                formData.append("event-id", currentEvent.id);
-                            }
-                            fetch('php/save_event.php', {
-                                    method: 'POST',
-                                    body: formData
-                                })
-                                .then(response => {
-                                    if (!response.ok) {
-                                        throw new Error('Network response was not ok ' + response.statusText);
-                                    }
-                                    return response.json();
-                                })
-                                .then(data => {
-                                    if (data.success) {
-                                        alert('Evento guardado correctamente');
-                                        loadEventsFromDatabase();
-                                        closeModal();
-                                        renderCalendar();
-                                    } else {
-                                        alert('Error al guardar el evento: ' + data.message);
-                                    }
-                                })
-                                .catch(error => {
-                                    console.error('Error:', error);
-                                    alert('Error al guardar el evento: ' + error.message);
-                                });
-                        }
+            function saveEvent() {
+              const formData = new FormData(document.getElementById("event-form"));
+              if (currentEvent) {
+                formData.append("event-id", currentEvent.id);
+              }
+              fetch('php/save_event.php', {
+                  method: 'POST',
+                  body: formData
+                })
+                .then(response => {
+                  if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                  }
+                  return response.json();
+                })
+                .then(data => {
+                  if (data.success) {
+                    alert('Evento guardado correctamente');
+                    loadEventsFromDatabase();
+                    closeModal();
+                    renderCalendar();
+                  } else {
+                    alert('Error al guardar el evento: ' + data.message);
+                  }
+                })
+                .catch(error => {
+                  console.error('Error:', error);
+                  alert('Error al guardar el evento: ' + error.message);
+                });
+            }
 
-                        function renderCalendar() {
-                            calendarGrid.innerHTML = "";
-                            calendarTitle.textContent = currentDate.toLocaleDateString("es-ES", {
-                                month: "long",
-                                year: "numeric",
-                            });
-                            daysOfWeek.forEach((day) => {
-                                const cell = document.createElement("div");
-                                cell.classList.add("calendar-cell", "calendar-cell-header");
-                                cell.textContent = day;
-                                calendarGrid.appendChild(cell);
-                            });
-                            const firstDayOfMonth = new Date(
-                                currentDate.getFullYear(),
-                                currentDate.getMonth(),
-                                1
-                            );
-                            const lastDayOfMonth = new Date(
-                                currentDate.getFullYear(),
-                                currentDate.getMonth() + 1,
-                                0
-                            );
-                            const startDay = firstDayOfMonth.getDay();
-                            for (let i = 0; i < startDay; i++) {
-                                const cell = document.createElement("div");
-                                cell.classList.add("calendar-cell");
-                                calendarGrid.appendChild(cell);
-                            }
-                            for (let i = 1; i <= lastDayOfMonth.getDate(); i++) {
-                                const cell = document.createElement("div");
-                                cell.classList.add("calendar-cell");
-                                cell.textContent = i;
-                                const eventsOfDay = events.filter(
-                                    (e) =>
-                                    e.fecha_pago.getDate() === i &&
-                                    e.fecha_pago.getMonth() === currentDate.getMonth() &&
-                                    e.fecha_pago.getFullYear() === currentDate.getFullYear()
-                                );
-                                if (eventsOfDay.length > 0) {
-                                    cell.classList.add("calendar-cell-event");
-                                    const eventList = document.createElement("div");
-                                    eventList.classList.add("event-list");
-                                    eventsOfDay.forEach((event) => {
-                                        const eventItem = document.createElement("div");
-                                        eventItem.classList.add("event-item");
-                                        eventItem.textContent = event.empresa;
-                                        eventItem.addEventListener("click", () => {
-                                            showModal(event);
-                                        });
-                                        eventList.appendChild(eventItem);
-                                    });
-                                    cell.appendChild(eventList);
-                                }
-                                calendarGrid.appendChild(cell);
-                            }
-                        }
+            function renderCalendar() {
+              calendarGrid.innerHTML = "";
+              calendarTitle.textContent = currentDate.toLocaleDateString("es-ES", {
+                month: "long",
+                year: "numeric",
+              });
+              daysOfWeek.forEach((day) => {
+                const cell = document.createElement("div");
+                cell.classList.add("calendar-cell", "calendar-cell-header");
+                cell.textContent = day;
+                calendarGrid.appendChild(cell);
+              });
+              const firstDayOfMonth = new Date(
+                currentDate.getFullYear(),
+                currentDate.getMonth(),
+                1
+              );
+              const lastDayOfMonth = new Date(
+                currentDate.getFullYear(),
+                currentDate.getMonth() + 1,
+                0
+              );
+              const startDay = firstDayOfMonth.getDay();
+              for (let i = 0; i < startDay; i++) {
+                const cell = document.createElement("div");
+                cell.classList.add("calendar-cell");
+                calendarGrid.appendChild(cell);
+              }
+              for (let i = 1; i <= lastDayOfMonth.getDate(); i++) {
+                const cell = document.createElement("div");
+                cell.classList.add("calendar-cell");
+                cell.textContent = i;
+                const eventsOfDay = events.filter(
+                  (e) =>
+                  e.fecha_pago.getDate() === i &&
+                  e.fecha_pago.getMonth() === currentDate.getMonth() &&
+                  e.fecha_pago.getFullYear() === currentDate.getFullYear()
+                );
+                if (eventsOfDay.length > 0) {
+                  cell.classList.add("calendar-cell-event");
+                  const eventList = document.createElement("div");
+                  eventList.classList.add("event-list");
+                  eventsOfDay.forEach((event) => {
+                    const eventItem = document.createElement("div");
+                    eventItem.classList.add("event-item");
+                    eventItem.textContent = event.empresa;
+                    eventItem.addEventListener("click", () => {
+                      showModal(event);
+                    });
+                    eventList.appendChild(eventItem);
+                  });
+                  cell.appendChild(eventList);
+                }
+                calendarGrid.appendChild(cell);
+              }
+            }
 
-                        function loadEventsFromDatabase() {
-                            fetch("php/database.php")
-                                .then((response) => response.json())
-                                .then((data) => {
-                                    data.forEach((event) => {
-                                        const formattedEvent = {
-                                            id: event.id,
-                                            empresa: event.empresa,
-                                            monto: event.monto,
-                                            ticker: event.ticker,
-                                            comentario: event.comentario,
-                                            exento_impuesto: event.exento_impuesto,
-                                            fecha_pago: new Date(event.fecha_pago),
-                                            fecha_ex_derecho: new Date(event.fecha_ex_derecho),
-                                            fecha_limite: new Date(event.fecha_limite),
-                                            precio_titulo: event.precio_titulo,
-                                            rendimiento: event.rendimiento,
-                                            link_aviso: event.link_aviso,
-                                        };
-                                        events.push(formattedEvent);
-                                    });
-                                    renderCalendar();
+            function loadEventsFromDatabase() {
+              fetch("php/database.php")
+                .then((response) => response.json())
+                .then((data) => {
+                  data.forEach((event) => {
+                    const formattedEvent = {
+                      id: event.id,
+                      empresa: event.empresa,
+                      monto: event.monto,
+                      ticker: event.ticker,
+                      comentario: event.comentario,
+                      exento_impuesto: event.exento_impuesto,
+                      fecha_pago: new Date(event.fecha_pago),
+                      fecha_ex_derecho: new Date(event.fecha_ex_derecho),
+                      fecha_limite: new Date(event.fecha_limite),
+                      precio_titulo: event.precio_titulo,
+                      rendimiento: event.rendimiento,
+                      link_aviso: event.link_aviso,
+                    };
+                    events.push(formattedEvent);
+                  });
+                  renderCalendar();
 
-                                })
-                                .catch((error) => console.error("Error cargando eventos:", error));
-                        }
+                })
+                .catch((error) => console.error("Error cargando eventos:", error));
+            }
 
-                        loadEventsFromDatabase();
-                        renderCalendar();
-                    </script>
-                </div>
-            </main>
+            loadEventsFromDatabase();
+            renderCalendar();
+          </script>
+        </div>
+      </main>
 
       <footer class="footer">
         <div class="container-fluid">
