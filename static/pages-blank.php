@@ -258,7 +258,7 @@ if (!isset($_SESSION['nombre_completo'])) {
                     Help Center</a
                   >
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Log out</a>
+                  <a class="dropdown-item" href="/static/php/cerrar_sesion.php">Cerrar sesión</a>
                 </div>
               </li>
             </ul>
