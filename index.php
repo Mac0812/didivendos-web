@@ -26,7 +26,7 @@ if (!isset($_SESSION['nombre_completo'])) {
   <link rel="shortcut icon" href="/static/assets/Iconos/logo png-08.png" />
   <link rel="canonical" href="https://demo-basic.adminkit.io/pages-blank.html" />
   <title>Edición Agenda de Dividendos</title>
-  <link href="css/app.css" rel="stylesheet" />
+  <link href="static/css/app.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
@@ -40,7 +40,7 @@ if (!isset($_SESSION['nombre_completo'])) {
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      width: 70%;
+      width: 58%;
     }
 
     .calendar-header {
@@ -230,6 +230,43 @@ if (!isset($_SESSION['nombre_completo'])) {
       align-items: center;
       justify-content: center;
     }
+
+    .event-list-ex {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 5px;
+    }
+
+    .event-item-ex {
+      background-color: rgb(166, 228, 246);
+      padding: 5px 10px;
+      border-radius: 5px;
+      margin-bottom: 5px;
+      cursor: pointer;
+    }
+
+    .event-item-ex:hover {
+      background-color: #0ad8a1;
+    }
+
+    .event-item-ex:last-child {
+      margin-bottom: 0;
+    }
+
+    .calendar-cell-event-ex {
+      position: relative;
+    }
+
+    .calendar-cell-event-ex::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: rgb(166, 228, 246);
+    }
   </style>
 </head>
 
@@ -242,7 +279,7 @@ if (!isset($_SESSION['nombre_completo'])) {
         </a>
         <ul class="sidebar-nav">
           <li class="sidebar-item">
-            <a class="sidebar-link" href="pages-blank.php">
+            <a class="sidebar-link" href="static/pages-blank.php">
               <i class="align-middle" data-feather="book"></i>
               <span class="align-middle">Agenda Dividendos</span>
             </a>
@@ -259,15 +296,15 @@ if (!isset($_SESSION['nombre_completo'])) {
 
         <div class="navbar-collapse collapse">
           <ul class="navbar-nav navbar-align">
-           
-           
+
+
             <li class="nav-item dropdown">
               <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
                 <i class="align-middle" data-feather="settings"></i>
               </a>
 
               <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-        
+
                 <span class="text-dark">Bienvenido, <?php echo $_SESSION['nombre_completo']; ?></span>
               </a>
               <div class="dropdown-menu dropdown-menu-end">
@@ -307,7 +344,7 @@ if (!isset($_SESSION['nombre_completo'])) {
                 <label>Fecha pago: </label>
                 <p id="event-date"></p>
                 <label>Link aviso: </label>
-                <p id="event-aviso"></p>
+                <a id="event-aviso" href="" target="_blank"></a>
               </div>
             </div>
           </div>
@@ -322,6 +359,8 @@ if (!isset($_SESSION['nombre_completo'])) {
             const eventExDerecho = document.getElementById("event-ex");
             const eventDate = document.getElementById("event-date");
             const eventAviso = document.getElementById("event-aviso");
+
+
             const eventDescription =
               document.getElementById("event-description");
             const daysOfWeek = [
@@ -365,6 +404,7 @@ if (!isset($_SESSION['nombre_completo'])) {
                 formatDate(event.date) :
                 "";
               eventAviso.textContent = event.aviso || "";
+              eventAviso.href = event.link_aviso;
               eventModal.style.display = "block";
             }
 
@@ -392,16 +432,8 @@ if (!isset($_SESSION['nombre_completo'])) {
                 calendarGrid.appendChild(cell);
               });
 
-              const firstDayOfMonth = new Date(
-                date.getFullYear(),
-                date.getMonth(),
-                1
-              );
-              const lastDayOfMonth = new Date(
-                date.getFullYear(),
-                date.getMonth() + 1,
-                0
-              );
+              const firstDayOfMonth = new Date(date.getFullYear(), date.getMonth(), 1);
+              const lastDayOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0);
               const startDay = firstDayOfMonth.getDay();
 
               for (let i = 0; i < startDay; i++) {
@@ -417,6 +449,7 @@ if (!isset($_SESSION['nombre_completo'])) {
 
                 const eventsOfDay = events.filter(
                   (e) =>
+                  e.date instanceof Date &&
                   e.date.getDate() === i &&
                   e.date.getMonth() === date.getMonth() &&
                   e.date.getFullYear() === date.getFullYear()
@@ -429,7 +462,7 @@ if (!isset($_SESSION['nombre_completo'])) {
                   eventsOfDay.forEach((event) => {
                     const eventItem = document.createElement("div");
                     eventItem.classList.add("event-item");
-                    eventItem.textContent = event.title;
+                    eventItem.textContent = `${event.ticker} (Pago)`;
                     eventItem.addEventListener("click", () => {
                       showModal(event);
                     });
@@ -438,21 +471,59 @@ if (!isset($_SESSION['nombre_completo'])) {
                   cell.appendChild(eventList);
                 }
 
+                const eventsOfDayEx = events.filter(
+                  (e) =>
+                  e.ex_derecho instanceof Date &&
+                  e.ex_derecho.getDate() === i &&
+                  e.ex_derecho.getMonth() === date.getMonth() &&
+                  e.ex_derecho.getFullYear() === date.getFullYear()
+                );
+
+                if (eventsOfDayEx.length > 0) {
+                  cell.classList.add("calendar-cell-event-ex");
+                  const eventListEx = document.createElement("div");
+                  eventListEx.classList.add("event-list-ex");
+                  eventsOfDayEx.forEach((event) => {
+                    const eventItemEx = document.createElement("div");
+                    eventItemEx.classList.add("event-item-ex");
+                    eventItemEx.textContent = `${event.ticker} (ex-derecho)`;
+                    eventItemEx.addEventListener("click", () => {
+                      showModal(event);
+                    });
+                    eventListEx.appendChild(eventItemEx);
+                  });
+                  cell.appendChild(eventListEx);
+                }
+
                 calendarGrid.appendChild(cell);
               }
             }
 
+            function parseDate(dateStr) {
+              // Formato esperado: "YYYY-MM-DD"
+              const parts = dateStr.split('-');
+              return new Date(parts[0], parts[1] - 1, parts[2]);
+            }
+
+
+
             function loadEventsFromDatabase() {
-              fetch("php/database.php")
-                .then((response) => response.json())
+              fetch("static/php/database.php")
+                .then((response) => {
+                  console.log(response)
+                  if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                  }
+                  return response.json();
+                })
                 .then((data) => {
                   data.forEach((event) => {
                     const formattedEvent = {
                       title: event.empresa,
                       ticker: event.ticker,
                       monto: `$${event.monto}`,
-                      ex_derecho: new Date(event.fecha_ex_derecho),
-                      date: new Date(event.fecha_pago),
+                      ex_derecho: parseDate(event.fecha_ex_derecho),
+                      date: parseDate(event.fecha_pago),
                       description: event.comentario,
                       aviso: event.link_aviso,
                     };
@@ -501,7 +572,7 @@ if (!isset($_SESSION['nombre_completo'])) {
     </div>
   </div>
 
-  <script src="js/app.js"></script>
+  <script src="static/js/app.js"></script>
 </body>
 
 </html>
