@@ -300,6 +300,8 @@ if (!isset($_SESSION['nombre_completo'])) {
                 <p id="event-description"></p>
                 <label>Monto: </label>
                 <p id="event-costo"></p>
+                <label>Moneda: </label>
+                <p id="event-moneda"></p>
                 <label>Ticker: </label>
                 <p id="event-ticker"></p>
                 <label>Fecha ex-derecho: </label>
@@ -307,7 +309,7 @@ if (!isset($_SESSION['nombre_completo'])) {
                 <label>Fecha pago: </label>
                 <p id="event-date"></p>
                 <label>Link aviso: </label>
-                <p id="event-aviso"></p>
+                <a id="event-aviso-link" href="#" target="_blank">Ver aviso</a>
               </div>
             </div>
           </div>
@@ -318,6 +320,7 @@ if (!isset($_SESSION['nombre_completo'])) {
             const eventModal = document.getElementById("event-modal");
             const eventTitle = document.getElementById("event-title");
             const eventCosto = document.getElementById("event-costo");
+            const eventMoneda = document.getElementById("event-moneda");
             const eventTicker = document.getElementById("event-ticker");
             const eventExDerecho = document.getElementById("event-ex");
             const eventDate = document.getElementById("event-date");
@@ -357,6 +360,7 @@ if (!isset($_SESSION['nombre_completo'])) {
             function showModal(event) {
               eventTitle.textContent = event.title || "";
               eventCosto.textContent = event.monto || "";
+              eventMoneda.textContent = event.moneda || "";
               eventTicker.textContent = event.ticker || "";
               eventExDerecho.textContent = event.ex_derecho ?
                 formatDate(event.ex_derecho) :
@@ -364,7 +368,7 @@ if (!isset($_SESSION['nombre_completo'])) {
               eventDate.textContent = event.date ?
                 formatDate(event.date) :
                 "";
-              eventAviso.textContent = event.aviso || "";
+                eventAvisoLink.href = event.aviso || "#";
               eventModal.style.display = "block";
             }
 
@@ -451,6 +455,7 @@ if (!isset($_SESSION['nombre_completo'])) {
                       title: event.empresa,
                       ticker: event.ticker,
                       monto: `$${event.monto}`,
+                      moneda: event.moneda,
                       ex_derecho: new Date(event.fecha_ex_derecho),
                       date: new Date(event.fecha_pago),
                       description: event.comentario,

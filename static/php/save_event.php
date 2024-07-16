@@ -10,6 +10,7 @@ $event_id = isset($_POST['event-id']) ? $_POST['event-id'] : null;
 $empresa = mysqli_real_escape_string($conexion, $_POST['event-empresa']);
 $ticker = mysqli_real_escape_string($conexion, $_POST['event-ticker']);
 $monto = mysqli_real_escape_string($conexion, $_POST['event-costo']);
+$moneda =mysqli_real_escape_string($conexion, $_POST['event-moneda']);
 $comentario = mysqli_real_escape_string($conexion, $_POST['event-comentario']);
 $exento_impuesto = mysqli_real_escape_string($conexion, $_POST['event-exento']);
 $fecha_pago = mysqli_real_escape_string($conexion, $_POST['event-date']);
@@ -26,12 +27,12 @@ $fecha_limite = $fecha_limite ? date("Y-m-d", strtotime($fecha_limite)) : null;
 
 if ($event_id) {
     // Actualizar evento existente
-    $stmt = $conexion->prepare("UPDATE dividendos SET empresa=?, ticker=?, monto=?, comentario=?, exento_impuesto=?, fecha_pago=?, fecha_ex_derecho=?, fecha_limite=?, precio_titulo=?, rendimiento=?, link_aviso=? WHERE id=?");
-    $stmt->bind_param("sssssssssssi", $empresa, $ticker, $monto, $comentario, $exento_impuesto, $fecha_pago, $fecha_ex_derecho, $fecha_limite, $precio_titulo, $rendimiento, $link_aviso, $event_id);
+    $stmt = $conexion->prepare("UPDATE dividendos SET empresa=?, ticker=?, monto=?,moneda=?, comentario=?, exento_impuesto=?, fecha_pago=?, fecha_ex_derecho=?, fecha_limite=?, precio_titulo=?, rendimiento=?, link_aviso=? WHERE id=?");
+    $stmt->bind_param("sssssssssssi", $empresa, $ticker, $monto,$moneda, $comentario, $exento_impuesto, $fecha_pago, $fecha_ex_derecho, $fecha_limite, $precio_titulo, $rendimiento, $link_aviso, $event_id);
 } else {
     // Insertar nuevo evento
-    $stmt = $conexion->prepare("INSERT INTO dividendos (empresa, ticker, monto, comentario, exento_impuesto, fecha_pago, fecha_ex_derecho, fecha_limite, precio_titulo, rendimiento, link_aviso) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssssssssss", $empresa, $ticker, $monto, $comentario, $exento_impuesto, $fecha_pago, $fecha_ex_derecho, $fecha_limite, $precio_titulo, $rendimiento, $link_aviso);
+    $stmt = $conexion->prepare("INSERT INTO dividendos (empresa, ticker, monto, moneda, comentario, exento_impuesto, fecha_pago, fecha_ex_derecho, fecha_limite, precio_titulo, rendimiento, link_aviso) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("sssssssssss", $empresa, $ticker, $monto,$moneda, $comentario, $exento_impuesto, $fecha_pago, $fecha_ex_derecho, $fecha_limite, $precio_titulo, $rendimiento, $link_aviso);
 }
 
 $response = array();

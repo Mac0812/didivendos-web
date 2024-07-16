@@ -230,6 +230,8 @@ if (!isset($_SESSION['nombre_completo'])) {
       align-items: center;
       justify-content: center;
     }
+
+    
   </style>
 </head>
 
@@ -305,6 +307,14 @@ if (!isset($_SESSION['nombre_completo'])) {
                   <input id="event-ticker" name="event-ticker" type="text">
                   <label for="event-costo">Monto:</label>
                   <input id="event-costo" name="event-costo" type="text">
+                  <div>
+                  <label for="event-moneda">Moneda:</label>
+              <select id="event-moneda" name="event-moneda">
+                          <option value="MXN">MXN</option>
+                          <option value="USD">USD</option>
+                          <option value="EUR">EUR</option>
+                      </select>
+                  </div>
                   <label for="event-comentario">Comentario:</label>
                   <input id="event-comentario" name="event-comentario" type="text">
                   <label for="event-exento">Exento Impuesto:</label>
@@ -338,6 +348,7 @@ if (!isset($_SESSION['nombre_completo'])) {
             const eventEmpresa = document.getElementById("event-empresa");
             const eventTicker = document.getElementById("event-ticker");
             const eventCosto = document.getElementById("event-costo");
+            const eventMoneda= document.getElementById("event-moneda");
             const eventComentario = document.getElementById("event-comentario");
             const eventExento = document.getElementById("event-exento");
             const eventDate = document.getElementById("event-date");
@@ -385,6 +396,7 @@ if (!isset($_SESSION['nombre_completo'])) {
                 eventEmpresa.value = event.empresa;
                 eventTicker.value = event.ticker || "";
                 eventCosto.value = event.monto;
+                eventMoneda.value = event.moneda;
                 eventComentario.value = event.comentario || "";
                 eventExento.value = event.exento_impuesto || "";
                 eventDate.value = event.fecha_pago ? formatDate(event.fecha_pago) : "";
@@ -398,6 +410,7 @@ if (!isset($_SESSION['nombre_completo'])) {
                 eventEmpresa.value = "";
                 eventTicker.value = "";
                 eventCosto.value = "";
+                eventMoneda.value ="";
                 eventComentario.value = "";
                 eventExento.value = "";
                 eventDate.value = "";
@@ -540,6 +553,7 @@ if (!isset($_SESSION['nombre_completo'])) {
                       id: event.id,
                       empresa: event.empresa,
                       monto: event.monto,
+                      moneda: event.moneda,
                       ticker: event.ticker,
                       comentario: event.comentario,
                       exento_impuesto: event.exento_impuesto,
