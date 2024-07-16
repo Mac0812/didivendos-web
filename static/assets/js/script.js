@@ -64,11 +64,18 @@ anchoPage();
 }
 
    // Función para mostrar/ocultar la contraseña
-function togglePassword(inputId) {
-    const passwordInput = document.getElementById(inputId);
-    if (passwordInput.type === "password") {
-        passwordInput.type = "text";
-    } else {
-        passwordInput.type = "password";
-    }
-}
+const pass = document.getElementById("pass"),
+        icon = document.querySelector(".bx");
+
+icon.addEventListener("click", e=>{
+    if(pass.type =="password"){
+        pass.type ="text";
+        icon.classList.remove('bx-show-alt')
+        icon.classList.add('bx-hide')
+    }else{
+        pass.type ="password";
+        icon.classList.add('bx-show-alt')
+        icon.classList.remove('bx-hide')
+    } 
+})
+

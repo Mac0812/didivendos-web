@@ -298,8 +298,15 @@ if (!isset($_SESSION['nombre_completo'])) {
               </div>
               <div class="content-modal">
                 <p id="event-description"></p>
-                <label>Monto: </label>
-                <p id="event-costo"></p>
+
+                <div class="moneda">
+                  <label>Monto: </label>
+                  <p id="event-costo-moneda"></p>
+                </div>
+
+
+
+               
                 <label>Ticker: </label>
                 <p id="event-ticker"></p>
                 <label>Fecha ex-derecho: </label>
@@ -318,6 +325,7 @@ if (!isset($_SESSION['nombre_completo'])) {
             const eventModal = document.getElementById("event-modal");
             const eventTitle = document.getElementById("event-title");
             const eventCosto = document.getElementById("event-costo");
+            const eventMoneda = document.getElementById("event-moneda");
             const eventTicker = document.getElementById("event-ticker");
             const eventExDerecho = document.getElementById("event-ex");
             const eventDate = document.getElementById("event-date");
@@ -356,7 +364,9 @@ if (!isset($_SESSION['nombre_completo'])) {
 
             function showModal(event) {
               eventTitle.textContent = event.title || "";
-              eventCosto.textContent = event.monto || "";
+              var montoMoneda =event.moneda  + ' ' + event.monto ;
+              document.getElementById('event-costo-moneda').textContent = montoMoneda || "";
+
               eventTicker.textContent = event.ticker || "";
               eventExDerecho.textContent = event.ex_derecho ?
                 formatDate(event.ex_derecho) :
@@ -451,6 +461,7 @@ if (!isset($_SESSION['nombre_completo'])) {
                       title: event.empresa,
                       ticker: event.ticker,
                       monto: `$${event.monto}`,
+                      moneda:event.moneda,
                       ex_derecho: new Date(event.fecha_ex_derecho),
                       date: new Date(event.fecha_pago),
                       description: event.comentario,

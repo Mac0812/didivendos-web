@@ -17,7 +17,7 @@
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet"
     />
-
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="assets/css/estilos.css" />
 </head>
 <body>
@@ -43,14 +43,10 @@
                     <h2>Iniciar Sesión</h2>
                     <input type="text" placeholder="Correo Electronico" name="correo" />
                     <!-- Se agrega un id al campo de contraseña -->
-                    <input type="password" placeholder="Contraseña" name="contrasena" id="contrasena_login" />
-                    <!-- Se agrega la casilla de verificación para mostrar/ocultar la contraseña -->
-                    <!-- INICIO DEL CÓDIGO AGREGADO -->
-                    <div>
-                        <input type="checkbox" id="mostrar_contrasena_login" onclick="togglePassword('contrasena_login')">
-                        <label for="mostrar_contrasena_login">Mostrar Contraseña</label>
+                    <div class="conter">
+                        <input type="password" placeholder="Contraseña" name="contrasena" id="pass" />
+                     <i class='bx bx-show-alt'></i>
                     </div>
-                    <!-- FIN DEL CÓDIGO AGREGADO -->
                     <button>Entrar</button>
                 </form>
 
@@ -61,14 +57,11 @@
                     <input type="text" placeholder="Correo Electronico" name="correo" />
                     <input type="text" placeholder="Usuario" name="usuario" />
                     <!-- Se agrega un id al campo de contraseña -->
-                    <input type="password" placeholder="Contraseña" name="contrasena" id="contrasena_register" />
-                    <!-- Se agrega la casilla de verificación para mostrar/ocultar la contraseña -->
-                    <!-- INICIO DEL CÓDIGO AGREGADO -->
-                    <div>
-                        <input type="checkbox" id="mostrar_contrasena_register" onclick="togglePassword('contrasena_register')">
-                        <label for="mostrar_contrasena_register">Mostrar Contraseña</label>
+                     <div class="conter">
+                        <input type="password" placeholder="Contraseña" name="contrasena" id="pass" />
+                     <i class='bx bx-show-alt'></i>
                     </div>
-                    <!-- FIN DEL CÓDIGO AGREGADO -->
+                    
                     <button>Regístrarse</button>
                 </form>
             </div>

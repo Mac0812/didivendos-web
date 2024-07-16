@@ -7,11 +7,13 @@
 }
 
 body{
+
     background-image: url(../images/divendo_fondo\ \(1\).png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
+   
 }
 
 main{
@@ -176,30 +178,23 @@ main{
     .contenedor__login-register form{
         position: relative;
     }
-    
-    /* Estilos para el contenedor del checkbox */
-.checkbox-container {
+   
+
+}
+
+.conter{
     display: flex;
     align-items: center;
-    margin-top: 20px;
+} 
+
+.pass{
+    display: none; /* Para ocultar la contraseña */
+    width: 100%; /* O ajusta según necesites */
+    padding: 10px 5px;
 }
 
-/* Estilos para el checkbox */
-.checkbox-container input[type="checkbox"] {
-    margin-right: 5px;
-}
-
-/* Estilos para la etiqueta "Mostrar Contraseña" */
-.checkbox-container label {
-    font-size: 14px;
-    color: #3bd9f5;
-}
-
-/* Opcional: ajustar el estilo del contenedor del formulario */
-.formulario__login, .formulario__register {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
+.bx{
+    font-size: 25px;
+    transform: translateX(-2px);
+    cursor: pointer;
 }

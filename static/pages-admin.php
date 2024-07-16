@@ -229,8 +229,28 @@ if (!isset($_SESSION['nombre_completo'])) {
       display: flex;
       align-items: center;
       justify-content: center;
+      
     }
 
+     /* Nuevos estilos para el tipo de moneda al lado del monto */
+  .moneda {
+    display: flex;
+    align-items: center;
+    margin-top: 10px; /* Ajusta el margen superior según sea necesario */
+  }
+
+  .moneda label {
+    margin-right: 10px; /* Espacio a la derecha de la etiqueta "Monto:" */
+  }
+
+  .moneda input {
+    width: 100px; /* Ancho del campo de entrada */
+    padding: 5px; /* Espaciado interno */
+  }
+
+  .moneda select {
+    margin-left: 10px; /* Espacio a la izquierda del selector de moneda */
+  }
     
   </style>
 </head>
@@ -305,16 +325,17 @@ if (!isset($_SESSION['nombre_completo'])) {
                   <input id="event-empresa" name="event-empresa" type="text">
                   <label for="event-ticker">Ticker:</label>
                   <input id="event-ticker" name="event-ticker" type="text">
-                  <label for="event-costo">Monto:</label>
-                  <input id="event-costo" name="event-costo" type="text">
-                  <div>
-                  <label for="event-moneda">Moneda:</label>
-              <select id="event-moneda" name="event-moneda">
-                          <option value="MXN">MXN</option>
-                          <option value="USD">USD</option>
-                          <option value="EUR">EUR</option>
-                      </select>
-                  </div>
+                  <div class="moneda">
+                  <select id="event-moneda" name="event-moneda">
+                            <option value="MXN">MXN</option>
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>
+                        </select>
+                        <label for="event-costo">Monto:</label>
+                        <input id="event-costo" name="event-costo" type="text">
+                    </div>
+
+                 
                   <label for="event-comentario">Comentario:</label>
                   <input id="event-comentario" name="event-comentario" type="text">
                   <label for="event-exento">Exento Impuesto:</label>
