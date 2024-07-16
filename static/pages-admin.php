@@ -239,7 +239,7 @@ if (!isset($_SESSION['nombre_completo'])) {
   <div class="wrapper">
     <nav id="sidebar" class="sidebar js-sidebar">
       <div class="sidebar-content js-simplebar">
-        <a class="sidebar-brand" href="index.php">
+        <a class="sidebar-brand" href="pages-admin.php">
           <span class="align-middle">+Dividendos</span>
         </a>
         <ul class="sidebar-nav">
@@ -268,11 +268,11 @@ if (!isset($_SESSION['nombre_completo'])) {
               </a>
 
               <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-               
+
                 <span class="text-dark">Bienvenido, <?php echo $_SESSION['nombre_completo']; ?></span>
               </a>
               <div class="dropdown-menu dropdown-menu-end">
-                
+
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="/static/php/cerrar_sesion.php">Cerrar sesión</a>
               </div>
@@ -323,12 +323,6 @@ if (!isset($_SESSION['nombre_completo'])) {
                   <input id="event-date" name="event-date" type="date">
                   <label for="event-ex-derecho">Fecha Ex-Derecho:</label>
                   <input id="event-ex-derecho" name="event-ex-derecho" type="date">
-                  <label for="event-limite">Fecha Límite:</label>
-                  <input id="event-limite" name="event-limite" type="date">
-                  <label for="event-precio">Precio Título:</label>
-                  <input id="event-precio" name="event-precio" type="text">
-                  <label for="event-rendimiento">Rendimiento:</label>
-                  <input id="event-rendimiento" name="event-rendimiento" type="text">
                   <label for="event-aviso">Link Aviso:</label>
                   <input id="event-aviso" name="event-aviso" type="text">
                   <div class="button-content">
@@ -353,9 +347,6 @@ if (!isset($_SESSION['nombre_completo'])) {
             const eventExento = document.getElementById("event-exento");
             const eventDate = document.getElementById("event-date");
             const eventExDerecho = document.getElementById("event-ex-derecho");
-            const eventLimite = document.getElementById("event-limite");
-            const eventPrecio = document.getElementById("event-precio");
-            const eventRendimiento = document.getElementById("event-rendimiento");
             const eventAviso = document.getElementById("event-aviso");
 
             const daysOfWeek = ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"];
@@ -363,7 +354,10 @@ if (!isset($_SESSION['nombre_completo'])) {
             let currentEvent = null;
 
             function formatDate(date) {
-              return `${date.getDate()}/${String(date.getMonth() + 1).padStart(2, "0")}/${date.getFullYear()}`;
+              const year = date.getFullYear();
+              const month = String(date.getMonth() + 1).padStart(2, '0');
+              const day = String(date.getDate()).padStart(2, '0');
+              return `${year}-${month}-${day}`;
             }
 
             const events = [];
@@ -401,9 +395,6 @@ if (!isset($_SESSION['nombre_completo'])) {
                 eventExento.value = event.exento_impuesto || "";
                 eventDate.value = event.fecha_pago ? formatDate(event.fecha_pago) : "";
                 eventExDerecho.value = event.fecha_ex_derecho ? formatDate(event.fecha_ex_derecho) : "";
-                eventLimite.value = event.fecha_limite ? formatDate(event.fecha_limite) : "";
-                eventPrecio.value = event.precio_titulo || "";
-                eventRendimiento.value = event.rendimiento || "";
                 eventAviso.value = event.link_aviso || "";
               } else {
                 eventTitle.textContent = "Nuevo Evento";
@@ -415,9 +406,6 @@ if (!isset($_SESSION['nombre_completo'])) {
                 eventExento.value = "";
                 eventDate.value = "";
                 eventExDerecho.value = "";
-                eventLimite.value = "";
-                eventPrecio.value = "";
-                eventRendimiento.value = "";
                 eventAviso.value = "";
               }
               eventModal.style.display = "block";
@@ -519,11 +507,12 @@ if (!isset($_SESSION['nombre_completo'])) {
                 const cell = document.createElement("div");
                 cell.classList.add("calendar-cell");
                 cell.textContent = i;
+                const dateToCheck = new Date(currentDate.getFullYear(), currentDate.getMonth(), i);
                 const eventsOfDay = events.filter(
                   (e) =>
-                  e.fecha_pago.getDate() === i &&
-                  e.fecha_pago.getMonth() === currentDate.getMonth() &&
-                  e.fecha_pago.getFullYear() === currentDate.getFullYear()
+                  e.fecha_pago.getDate() === dateToCheck.getDate() &&
+                  e.fecha_pago.getMonth() === dateToCheck.getMonth() &&
+                  e.fecha_pago.getFullYear() === dateToCheck.getFullYear()
                 );
                 if (eventsOfDay.length > 0) {
                   cell.classList.add("calendar-cell-event");
@@ -532,7 +521,7 @@ if (!isset($_SESSION['nombre_completo'])) {
                   eventsOfDay.forEach((event) => {
                     const eventItem = document.createElement("div");
                     eventItem.classList.add("event-item");
-                    eventItem.textContent = event.empresa;
+                    eventItem.textContent = event.ticker;
                     eventItem.addEventListener("click", () => {
                       showModal(event);
                     });
@@ -540,14 +529,22 @@ if (!isset($_SESSION['nombre_completo'])) {
                   });
                   cell.appendChild(eventList);
                 }
+
                 calendarGrid.appendChild(cell);
               }
+            }
+
+            function parseDate(dateStr) {
+              // Formato esperado: "YYYY-MM-DD"
+              const parts = dateStr.split('-');
+              return new Date(parts[0], parts[1] - 1, parts[2]);
             }
 
             function loadEventsFromDatabase() {
               fetch("php/database.php")
                 .then((response) => response.json())
                 .then((data) => {
+                  events.length = 0;
                   data.forEach((event) => {
                     const formattedEvent = {
                       id: event.id,
@@ -557,17 +554,14 @@ if (!isset($_SESSION['nombre_completo'])) {
                       ticker: event.ticker,
                       comentario: event.comentario,
                       exento_impuesto: event.exento_impuesto,
-                      fecha_pago: new Date(event.fecha_pago),
-                      fecha_ex_derecho: new Date(event.fecha_ex_derecho),
-                      fecha_limite: new Date(event.fecha_limite),
-                      precio_titulo: event.precio_titulo,
-                      rendimiento: event.rendimiento,
+                      fecha_pago: parseDate(event.fecha_pago),
+                      fecha_ex_derecho: parseDate(event.fecha_ex_derecho),
                       link_aviso: event.link_aviso,
                     };
                     events.push(formattedEvent);
+                    console.log(formattedEvent);
                   });
                   renderCalendar();
-
                 })
                 .catch((error) => console.error("Error cargando eventos:", error));
             }
@@ -577,6 +571,7 @@ if (!isset($_SESSION['nombre_completo'])) {
           </script>
         </div>
       </main>
+
 
       <footer class="footer">
         <div class="container-fluid">
