@@ -3,7 +3,6 @@ session_start();
 if (!isset($_SESSION['nombre_completo'])) {
   echo '
 		<script> 
-		alert("Por favor, debes iniciar sesión para acceder a esta página");
 		 window.location = "../static/pages-sign-in.php";
 		</script>
 		';
@@ -25,8 +24,8 @@ if (!isset($_SESSION['nombre_completo'])) {
   <link rel="preconnect" href="https://fonts.gstatic.com" />
   <link rel="shortcut icon" href="/static/assets/Iconos/logo png-08.png" />
   <link rel="canonical" href="https://demo-basic.adminkit.io/pages-blank.html" />
-  <title>Edición Agenda de Dividendos</title>
-  <link href="css/app.css" rel="stylesheet" />
+  <title>Agenda de Dividendos</title>
+  <link href="static/css/app.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
@@ -40,7 +39,7 @@ if (!isset($_SESSION['nombre_completo'])) {
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      width: 70%;
+      width: 58%;
     }
 
     .calendar-header {
@@ -230,6 +229,141 @@ if (!isset($_SESSION['nombre_completo'])) {
       align-items: center;
       justify-content: center;
     }
+
+    .event-list-ex {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 5px;
+    }
+
+    .event-item-ex {
+      background-color: rgb(166, 228, 246);
+      padding: 5px 10px;
+      border-radius: 5px;
+      margin-bottom: 5px;
+      cursor: pointer;
+    }
+
+    .event-item-ex:hover {
+      background-color: #0ad8a1;
+    }
+
+    .event-item-ex:last-child {
+      margin-bottom: 0;
+    }
+
+    .calendar-cell-event-ex {
+      position: relative;
+    }
+
+    .calendar-cell-event-ex::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: rgb(166, 228, 246);
+    }
+    
+    @media (max-width: 600px) {
+      .calendar {
+        width: 100%;
+      }
+
+      .calendar-grid {
+        grid-template-columns: repeat(7, 1fr);
+        justify-content: center;
+      }
+
+      .calendar-cell {
+        padding: 3px;
+        width: 50px;
+      }
+
+      .event-item {
+        font-size: 7px;
+        padding: 3px;
+      }
+      .event-item-ex {
+        font-size: 7px;
+        padding: 3px;
+      }
+
+      .calendar-header {
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+      }
+
+      .calendar-header button {
+        margin: 2px 0;
+      }
+
+      .calendar-grid {
+        grid-template-columns: repeat(7, 1fr);
+      }
+
+      .modal-content {
+        width: 100%;
+        max-width: none;
+      }
+
+
+      #event-title {
+        font-size: 18px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .calendar {
+        width: 100%;
+      }
+
+      .calendar-header {
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+      }
+
+      .calendar-header button {
+        margin: 2px 0;
+      }
+
+      .calendar-grid {
+        grid-template-columns: repeat(7, 1fr);
+        justify-content: center;
+      }
+
+      .calendar-cell {
+        padding: 3px;
+        width: 40px;
+      }
+
+      .event-item {
+        font-size: 6px;
+        padding: 2px;
+      }
+      .event-item-ex {
+        font-size: 6px;
+        padding: 2px;
+      }
+
+      .modal-content {
+        width: 100%;
+        max-width: none;
+      }
+
+      #event-title {
+        font-size: 16px;
+      }
+    }
+    
+    #event-ticker{
+        font-weight:bold;
+    }
+    
   </style>
 </head>
 
@@ -237,12 +371,13 @@ if (!isset($_SESSION['nombre_completo'])) {
   <div class="wrapper">
     <nav id="sidebar" class="sidebar js-sidebar">
       <div class="sidebar-content js-simplebar">
-        <a class="sidebar-brand" href="index.php">
-          <span class="align-middle">+Dividendos</span>
+         <a class="sidebar-brand" href="index.php">
+            <img src="/static/img/icons logo png-02.png" alt="+Dividendos" class="align-middle">
         </a>
+
         <ul class="sidebar-nav">
           <li class="sidebar-item">
-            <a class="sidebar-link" href="pages-blank.php">
+            <a class="sidebar-link" href="static/pages-blank.php">
               <i class="align-middle" data-feather="book"></i>
               <span class="align-middle">Agenda Dividendos</span>
             </a>
@@ -259,15 +394,13 @@ if (!isset($_SESSION['nombre_completo'])) {
 
         <div class="navbar-collapse collapse">
           <ul class="navbar-nav navbar-align">
-           
-           
             <li class="nav-item dropdown">
               <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
                 <i class="align-middle" data-feather="settings"></i>
               </a>
 
               <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-        
+
                 <span class="text-dark">Bienvenido, <?php echo $_SESSION['nombre_completo']; ?></span>
               </a>
               <div class="dropdown-menu dropdown-menu-end">
@@ -293,191 +426,223 @@ if (!isset($_SESSION['nombre_completo'])) {
           <div id="event-modal" class="modal">
             <div class="modal-content">
               <div class="content-title">
+                <img id="dividendo-img" src="" alt="Dividendo Imagen">
                 <h2 id="event-title"></h2>
                 <span class="close" onclick="closeModal()">&times;</span>
               </div>
               <div class="content-modal">
                 <p id="event-description"></p>
-
-                <div class="moneda">
-                  <label>Monto: </label>
-                  <p id="event-costo-moneda"></p>
-                </div>
-
-
-
-               
                 <label>Ticker: </label>
                 <p id="event-ticker"></p>
+                <label>Monto: </label>
+                <p id="event-costo"></p>
+                <label>Comentario:</label>
+                  <p id="event-comentario"></p>
                 <label>Fecha ex-derecho: </label>
                 <p id="event-ex"></p>
                 <label>Fecha pago: </label>
                 <p id="event-date"></p>
                 <label>Link aviso: </label>
-                <p id="event-aviso"></p>
+                <a id="event-aviso" href="" target="_blank"></a>
               </div>
             </div>
           </div>
-
           <script>
-            const calendarGrid = document.getElementById("calendar-grid");
-            const calendarTitle = document.getElementById("calendar-title");
-            const eventModal = document.getElementById("event-modal");
-            const eventTitle = document.getElementById("event-title");
-            const eventCosto = document.getElementById("event-costo");
-            const eventMoneda = document.getElementById("event-moneda");
-            const eventTicker = document.getElementById("event-ticker");
-            const eventExDerecho = document.getElementById("event-ex");
-            const eventDate = document.getElementById("event-date");
-            const eventAviso = document.getElementById("event-aviso");
-            const eventDescription =
-              document.getElementById("event-description");
-            const daysOfWeek = [
-              "Dom",
-              "Lun",
-              "Mar",
-              "Mié",
-              "Jue",
-              "Vie",
-              "Sáb",
-            ];
-            const date = new Date();
-            const events = [];
+          const calendarGrid = document.getElementById("calendar-grid");
+const calendarTitle = document.getElementById("calendar-title");
+const eventModal = document.getElementById("event-modal");
+const eventTitle = document.getElementById("event-title");
+ const eventCosto = document.getElementById("event-costo");
+const eventTicker = document.getElementById("event-ticker");
+const eventExDerecho = document.getElementById("event-ex");
+const eventDate = document.getElementById("event-date");
+const eventAviso = document.getElementById("event-aviso");
+const eventComentario = document.getElementById("event-comentario");
+const eventDescription = document.getElementById("event-description");
+const daysOfWeek = ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"];
+const date = new Date();
+const events = [];
 
-            function formatDate(date) {
-              return `${date.getDate()}/${String(
-                  date.getMonth() + 1
-                ).padStart(2, "0")}/${date.getFullYear()}`;
+function formatDate(date) {
+    return `${date.getDate()}/${String(date.getMonth() + 1).padStart(2, "0")}/${date.getFullYear()}`;
+}
+
+function prevMonth() {
+    date.setMonth(date.getMonth() - 1);
+    renderCalendar();
+}
+
+function nextMonth() {
+    date.setMonth(date.getMonth() + 1);
+    renderCalendar();
+}
+
+eventModal.style.display = "none";
+
+function setDividendoImage(event) {
+    const imagen = imagenes.find(img => img.titulo === event.title);
+    if (imagen) {
+        document.getElementById('dividendo-img').src = imagen.ruta;
+    } else {
+        document.getElementById('dividendo-img').src = '';
+    }
+}
+
+function showModal(event) {
+    eventTitle.textContent = event.title || "";
+     eventCosto.textContent = event.monto || "";
+    eventTicker.textContent = event.ticker || "";
+    eventComentario.textContent = event.comentario || "";
+    eventExDerecho.textContent = event.ex_derecho ? formatDate(event.ex_derecho) : "";
+    eventDate.textContent = event.date ? formatDate(event.date) : "";
+    eventAviso.textContent = event.aviso || "";
+    eventAviso.href = event.aviso;
+    eventModal.style.display = "block";
+}
+
+function closeModal() {
+    eventModal.style.display = "none";
+}
+
+window.onclick = function(event) {
+    if (event.target == eventModal) {
+        closeModal();
+    }
+};
+
+function renderCalendar() {
+    calendarGrid.innerHTML = "";
+    calendarTitle.textContent = date.toLocaleDateString("es-ES", {
+        month: "long",
+        year: "numeric",
+    });
+
+    daysOfWeek.forEach((day) => {
+        const cell = document.createElement("div");
+        cell.classList.add("calendar-cell", "calendar-cell-header");
+        cell.textContent = day;
+        calendarGrid.appendChild(cell);
+    });
+
+    const firstDayOfMonth = new Date(date.getFullYear(), date.getMonth(), 1);
+    const lastDayOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+    const startDay = firstDayOfMonth.getDay();
+
+    for (let i = 0; i < startDay; i++) {
+        const cell = document.createElement("div");
+        cell.classList.add("calendar-cell");
+        calendarGrid.appendChild(cell);
+    }
+
+    for (let i = 1; i <= lastDayOfMonth.getDate(); i++) {
+        const cell = document.createElement("div");
+        cell.classList.add("calendar-cell");
+        cell.textContent = i;
+
+        const eventsOfDay = events.filter(
+            (e) =>
+            e.date instanceof Date &&
+            e.date.getDate() === i &&
+            e.date.getMonth() === date.getMonth() &&
+            e.date.getFullYear() === date.getFullYear()
+        );
+
+        if (eventsOfDay.length > 0) {
+            cell.classList.add("calendar-cell-event");
+            const eventList = document.createElement("div");
+            eventList.classList.add("event-list");
+            eventsOfDay.forEach((event) => {
+                const eventItem = document.createElement("div");
+                eventItem.classList.add("event-item");
+                eventItem.textContent = `${event.ticker} Pago`;
+                eventItem.addEventListener("click", () => {
+                    showModal(event);
+                });
+                eventList.appendChild(eventItem);
+            });
+            cell.appendChild(eventList);
+        }
+
+        const eventsOfDayEx = events.filter(
+            (e) =>
+            e.ex_derecho instanceof Date &&
+            e.ex_derecho.getDate() === i &&
+            e.ex_derecho.getMonth() === date.getMonth() &&
+            e.ex_derecho.getFullYear() === date.getFullYear()
+        );
+
+        if (eventsOfDayEx.length > 0) {
+            cell.classList.add("calendar-cell-event-ex");
+            const eventListEx = document.createElement("div");
+            eventListEx.classList.add("event-list-ex");
+            eventsOfDayEx.forEach((event) => {
+                const eventItemEx = document.createElement("div");
+                eventItemEx.classList.add("event-item-ex");
+                eventItemEx.textContent = `${event.ticker} ex-derecho`;
+                eventItemEx.addEventListener("click", () => {
+                    showModal(event);
+                });
+                eventListEx.appendChild(eventItemEx);
+            });
+            cell.appendChild(eventListEx);
+        }
+
+        calendarGrid.appendChild(cell);
+    }
+}
+
+function parseDate(dateStr) {
+    // Formato esperado: "YYYY-MM-DD"
+    const parts = dateStr.split('-');
+    return new Date(parts[0], parts[1] - 1, parts[2]);
+}
+
+function loadEventsFromDatabase() {
+    fetch("static/php/database.php")
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
             }
-
-            function prevMonth() {
-              date.setMonth(date.getMonth() - 1);
-              renderCalendar();
-            }
-
-            function nextMonth() {
-              date.setMonth(date.getMonth() + 1);
-              renderCalendar();
-            }
-
-            eventModal.style.display = "none";
-
-            function showModal(event) {
-              eventTitle.textContent = event.title || "";
-              var montoMoneda =event.moneda  + ' ' + event.monto ;
-              document.getElementById('event-costo-moneda').textContent = montoMoneda || "";
-
-              eventTicker.textContent = event.ticker || "";
-              eventExDerecho.textContent = event.ex_derecho ?
-                formatDate(event.ex_derecho) :
-                "";
-              eventDate.textContent = event.date ?
-                formatDate(event.date) :
-                "";
-              eventAviso.textContent = event.aviso || "";
-              eventModal.style.display = "block";
-            }
-
-            function closeModal() {
-              eventModal.style.display = "none";
-            }
-
-            window.onclick = function(event) {
-              if (event.target == eventModal) {
-                closeModal();
-              }
-            };
-
-            function renderCalendar() {
-              calendarGrid.innerHTML = "";
-              calendarTitle.textContent = date.toLocaleDateString("es-ES", {
-                month: "long",
-                year: "numeric",
-              });
-
-              daysOfWeek.forEach((day) => {
-                const cell = document.createElement("div");
-                cell.classList.add("calendar-cell", "calendar-cell-header");
-                cell.textContent = day;
-                calendarGrid.appendChild(cell);
-              });
-
-              const firstDayOfMonth = new Date(
-                date.getFullYear(),
-                date.getMonth(),
-                1
-              );
-              const lastDayOfMonth = new Date(
-                date.getFullYear(),
-                date.getMonth() + 1,
-                0
-              );
-              const startDay = firstDayOfMonth.getDay();
-
-              for (let i = 0; i < startDay; i++) {
-                const cell = document.createElement("div");
-                cell.classList.add("calendar-cell");
-                calendarGrid.appendChild(cell);
-              }
-
-              for (let i = 1; i <= lastDayOfMonth.getDate(); i++) {
-                const cell = document.createElement("div");
-                cell.classList.add("calendar-cell");
-                cell.textContent = i;
-
-                const eventsOfDay = events.filter(
-                  (e) =>
-                  e.date.getDate() === i &&
-                  e.date.getMonth() === date.getMonth() &&
-                  e.date.getFullYear() === date.getFullYear()
-                );
-
-                if (eventsOfDay.length > 0) {
-                  cell.classList.add("calendar-cell-event");
-                  const eventList = document.createElement("div");
-                  eventList.classList.add("event-list");
-                  eventsOfDay.forEach((event) => {
-                    const eventItem = document.createElement("div");
-                    eventItem.classList.add("event-item");
-                    eventItem.textContent = event.title;
-                    eventItem.addEventListener("click", () => {
-                      showModal(event);
-                    });
-                    eventList.appendChild(eventItem);
-                  });
-                  cell.appendChild(eventList);
-                }
-
-                calendarGrid.appendChild(cell);
-              }
-            }
-
-            function loadEventsFromDatabase() {
-              fetch("php/database.php")
-                .then((response) => response.json())
-                .then((data) => {
-                  data.forEach((event) => {
-                    const formattedEvent = {
-                      title: event.empresa,
-                      ticker: event.ticker,
-                      monto: `$${event.monto}`,
-                      moneda:event.moneda,
-                      ex_derecho: new Date(event.fecha_ex_derecho),
-                      date: new Date(event.fecha_pago),
-                      description: event.comentario,
-                      aviso: event.link_aviso,
-                    };
-                    events.push(formattedEvent);
-                  });
-                  renderCalendar();
-                })
-                .catch((error) =>
-                  console.error("Error cargando eventos:", error)
-                );
-            }
-
-            loadEventsFromDatabase();
+            return response.json();
+        })
+        .then((data) => {
+            data.forEach((event) => {
+                const formattedEvent = {
+                    title: event.empresa,
+                    ticker: event.ticker,
+                    monto: `${event.monto}`,
+                    ex_derecho: parseDate(event.fecha_ex_derecho),
+                    date: parseDate(event.fecha_pago),
+                    comentario: event.comentario,
+                    aviso: event.link_aviso,
+                };
+                events.push(formattedEvent);
+            });
             renderCalendar();
+        })
+        .catch((error) =>
+            console.error("Error cargando eventos:", error)
+        );
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    loadEventsFromDatabase();
+});
+
+
+            function aceptarNotificaciones() {
+              if (confirm('¿Está seguro de que desea recibir notificaciones?')) {
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'static/php/acceptar_notificaciones.php', true);
+                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                xhr.onreadystatechange = function() {
+                  if (xhr.readyState == 4 && xhr.status == 200) {
+                    alert(xhr.responseText); 
+                  }
+                };
+                xhr.send('aceptar_notificaciones=1&id_usuario=id_usuario'); // Enviar los datos necesarios
+              }
+            }
           </script>
         </div>
       </main>
@@ -486,24 +651,7 @@ if (!isset($_SESSION['nombre_completo'])) {
         <div class="container-fluid">
           <div class="row text-muted">
             <div class="col-6 text-start">
-              <p class="mb-0">
-                <a class="text-muted" href="https://adminkit.io/" target="_blank"><strong>DIVIDENDOS</strong></a>
-              </p>
-            </div>
-            <div class="col-6 text-end">
-              <ul class="list-inline">
-                <li class="list-inline-item">
-                  <a class="text-muted" href="https://adminkit.io/" target="_blank">Support</a>
-                </li>
-                <li class="list-inline-item">
-                  <a class="text-muted" href="https://adminkit.io/" target="_blank">Help Center</a>
-                </li>
-                <li class="list-inline-item">
-                  <a class="text-muted" href="https://adminkit.io/" target="_blank">Privacy</a>
-                </li>
-                <li class="list-inline-item">
-                  <a class="text-muted" href="https://adminkit.io/" target="_blank">Terms</a>
-                </li>
+             
               </ul>
             </div>
           </div>
@@ -512,7 +660,8 @@ if (!isset($_SESSION['nombre_completo'])) {
     </div>
   </div>
 
-  <script src="js/app.js"></script>
+  <script src="static/js/app.js"></script>
+  <script src="static/js/logos.js"></script>
 </body>
 
 </html>
