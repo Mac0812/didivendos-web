@@ -14,8 +14,8 @@ if (mysqli_num_rows($validar_login) > 0) {
   $_SESSION['usuario'] = $correo;
   $_SESSION['nombre_completo'] = $row['nombre_completo'];
 
-  if ($correo == "renanRibero2024@gmail.com") {
-    header("location:../pages-admin.php");
+  if ($correo == "masdividendosmx@gmail.com") {
+    header("location:/static/pages-admin.php");
   } else {
     header("location:../../index.php");
   }

@@ -1,0 +1,757 @@
+[04-Jul-2024 16:02:41 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'p4t5z8n7'@'premium30-1.web-hosting.com' (using password: NO) in /home/p4t5z8n7/app.masdividendos.mx/static/php/conexion_be.php on line 2
+[04-Jul-2024 16:02:41 UTC] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, bool given in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 16
+[04-Jul-2024 16:02:41 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 17
+[04-Jul-2024 16:02:41 UTC] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, bool given in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 28
+[04-Jul-2024 16:02:41 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 29
+[04-Jul-2024 16:02:41 UTC] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, bool given in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 40
+[04-Jul-2024 16:15:01 UTC] PHP Warning:  mysqli_connect(): (HY000/2002): Connection timed out in /home/p4t5z8n7/app.masdividendos.mx/static/php/conexion_be.php on line 2
+[04-Jul-2024 16:15:01 UTC] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, bool given in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 16
+[04-Jul-2024 16:15:01 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 17
+[04-Jul-2024 16:15:01 UTC] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, bool given in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 28
+[04-Jul-2024 16:15:01 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 29
+[04-Jul-2024 16:15:01 UTC] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, bool given in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 40
+[04-Jul-2024 16:23:35 UTC] PHP Warning:  mysqli_connect(): (HY000/2002): Connection timed out in /home/p4t5z8n7/app.masdividendos.mx/static/php/conexion_be.php on line 2
+[04-Jul-2024 16:23:35 UTC] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, bool given in /home/p4t5z8n7/app.masdividendos.mx/static/php/login_usuario_be.php on line 10
+[04-Jul-2024 16:23:35 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/p4t5z8n7/app.masdividendos.mx/static/php/login_usuario_be.php on line 12
+[04-Jul-2024 16:30:03 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'p4t5z8n7_divendosmx'@'premium30-1.web-hosting.com' (using password: NO) in /home/p4t5z8n7/app.masdividendos.mx/static/php/conexion_be.php on line 2
+[04-Jul-2024 16:30:03 UTC] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, bool given in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 16
+[04-Jul-2024 16:30:03 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 17
+[04-Jul-2024 16:30:03 UTC] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, bool given in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 28
+[04-Jul-2024 16:30:03 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 29
+[04-Jul-2024 16:30:03 UTC] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, bool given in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 40
+[04-Jul-2024 16:30:26 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'p4t5z8n7_divendosmx'@'premium30-1.web-hosting.com' (using password: NO) in /home/p4t5z8n7/app.masdividendos.mx/static/php/conexion_be.php on line 2
+[04-Jul-2024 16:30:26 UTC] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, bool given in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 16
+[04-Jul-2024 16:30:26 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 17
+[04-Jul-2024 16:30:26 UTC] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, bool given in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 28
+[04-Jul-2024 16:30:26 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 29
+[04-Jul-2024 16:30:26 UTC] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, bool given in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 40
+[04-Jul-2024 16:33:54 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'p4t5z8n7_divendosmx'@'premium30-1.web-hosting.com' (using password: NO) in /home/p4t5z8n7/app.masdividendos.mx/static/php/conexion_be.php on line 2
+[04-Jul-2024 16:33:54 UTC] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, bool given in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 16
+[04-Jul-2024 16:33:54 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 17
+[04-Jul-2024 16:33:54 UTC] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, bool given in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 28
+[04-Jul-2024 16:33:54 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 29
+[04-Jul-2024 16:33:54 UTC] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, bool given in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 40
+[04-Jul-2024 16:36:05 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'p4t5z8n7_divendosmx'@'premium30-1.web-hosting.com' (using password: NO) in /home/p4t5z8n7/app.masdividendos.mx/static/php/conexion_be.php on line 2
+[04-Jul-2024 16:36:05 UTC] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, bool given in /home/p4t5z8n7/app.masdividendos.mx/static/php/login_usuario_be.php on line 10
+[04-Jul-2024 16:36:05 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/p4t5z8n7/app.masdividendos.mx/static/php/login_usuario_be.php on line 12
+[04-Jul-2024 16:40:08 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'p4t5z8n7_divendosmx'@'premium30-1.web-hosting.com' (using password: NO) in /home/p4t5z8n7/app.masdividendos.mx/static/php/conexion_be.php on line 2
+[04-Jul-2024 16:40:08 UTC] PHP Notice:  Undefined variable: conn in /home/p4t5z8n7/app.masdividendos.mx/static/php/conexion_be.php on line 3
+[04-Jul-2024 16:40:08 UTC] PHP Notice:  Trying to get property 'connect_error' of non-object in /home/p4t5z8n7/app.masdividendos.mx/static/php/conexion_be.php on line 3
+[04-Jul-2024 16:40:08 UTC] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, bool given in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 16
+[04-Jul-2024 16:40:08 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 17
+[04-Jul-2024 16:40:08 UTC] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, bool given in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 28
+[04-Jul-2024 16:40:08 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 29
+[04-Jul-2024 16:40:08 UTC] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, bool given in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 40
+[04-Jul-2024 17:03:40 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'p4t5z8n7_divendosmx'@'premium30-1.web-hosting.com' (using password: NO) in /home/p4t5z8n7/app.masdividendos.mx/static/php/conexion_be.php on line 7
+[04-Jul-2024 17:03:40 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'p4t5z8n7_divendosmx'@'premium30-1.web-hosting.com' (using password: NO) in /home/p4t5z8n7/app.masdividendos.mx/static/php/conexion_be.php on line 7
+[04-Jul-2024 17:10:04 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'p4t5z8n7@localhost'@'localhost' (using password: NO) in /home/p4t5z8n7/app.masdividendos.mx/static/php/conexion_be.php on line 7
+[04-Jul-2024 17:10:44 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'p4t5z8n7@localhost'@'localhost' (using password: NO) in /home/p4t5z8n7/app.masdividendos.mx/static/php/conexion_be.php on line 7
+[04-Jul-2024 17:10:45 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'p4t5z8n7@localhost'@'localhost' (using password: NO) in /home/p4t5z8n7/app.masdividendos.mx/static/php/conexion_be.php on line 7
+[04-Jul-2024 18:40:36 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'p4t5z8n7@localhost'@'localhost' (using password: NO) in /home/p4t5z8n7/app.masdividendos.mx/static/php/conexion_be.php on line 7
+[05-Jul-2024 03:37:14 UTC] PHP Notice:  Undefined index: correo in /home/p4t5z8n7/app.masdividendos.mx/static/php/login_usuario_be.php on line 5
+[05-Jul-2024 03:37:14 UTC] PHP Notice:  Undefined index: contrasena in /home/p4t5z8n7/app.masdividendos.mx/static/php/login_usuario_be.php on line 6
+[05-Jul-2024 03:37:30 UTC] PHP Notice:  Undefined index: correo in /home/p4t5z8n7/app.masdividendos.mx/static/php/login_usuario_be.php on line 5
+[05-Jul-2024 03:37:30 UTC] PHP Notice:  Undefined index: contrasena in /home/p4t5z8n7/app.masdividendos.mx/static/php/login_usuario_be.php on line 6
+[05-Jul-2024 06:31:15 UTC] PHP Notice:  Undefined index: event-empresa in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 15
+[05-Jul-2024 06:31:15 UTC] PHP Notice:  Undefined index: event-ticker in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 16
+[05-Jul-2024 06:31:15 UTC] PHP Notice:  Undefined index: event-costo in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 17
+[05-Jul-2024 06:31:15 UTC] PHP Notice:  Undefined index: event-comentario in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 18
+[05-Jul-2024 06:31:15 UTC] PHP Notice:  Undefined index: event-exento in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 19
+[05-Jul-2024 06:31:15 UTC] PHP Notice:  Undefined index: event-date in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 20
+[05-Jul-2024 06:31:15 UTC] PHP Notice:  Undefined index: event-ex-derecho in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 21
+[05-Jul-2024 06:31:15 UTC] PHP Notice:  Undefined index: event-limite in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 22
+[05-Jul-2024 06:31:15 UTC] PHP Notice:  Undefined index: event-precio in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 23
+[05-Jul-2024 06:31:15 UTC] PHP Notice:  Undefined index: event-rendimiento in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 24
+[05-Jul-2024 06:31:15 UTC] PHP Notice:  Undefined index: event-aviso in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 25
+[06-Jul-2024 16:19:34 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'p4t5z8n7'@'premium30-1.web-hosting.com' (using password: YES) in /home/p4t5z8n7/app.masdividendos.mx/static/php/database.php on line 5
+[06-Jul-2024 16:19:38 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'p4t5z8n7'@'premium30-1.web-hosting.com' (using password: YES) in /home/p4t5z8n7/app.masdividendos.mx/static/php/database.php on line 5
+[06-Jul-2024 16:52:06 UTC] PHP Warning:  mysqli::query() expects parameter 1 to be string, object given in /home/p4t5z8n7/app.masdividendos.mx/static/php/database.php on line 7
+[06-Jul-2024 16:52:32 UTC] PHP Warning:  mysqli::query() expects parameter 1 to be string, object given in /home/p4t5z8n7/app.masdividendos.mx/static/php/database.php on line 7
+[06-Jul-2024 16:53:50 UTC] PHP Warning:  mysqli::query() expects parameter 1 to be string, object given in /home/p4t5z8n7/app.masdividendos.mx/static/php/database.php on line 7
+[06-Jul-2024 16:55:02 UTC] PHP Warning:  mysqli::query() expects parameter 1 to be string, object given in /home/p4t5z8n7/app.masdividendos.mx/static/php/database.php on line 7
+[06-Jul-2024 17:19:20 UTC] PHP Notice:  Undefined index: event-empresa in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 15
+[06-Jul-2024 17:19:20 UTC] PHP Notice:  Undefined index: event-ticker in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 16
+[06-Jul-2024 17:19:20 UTC] PHP Notice:  Undefined index: event-costo in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 17
+[06-Jul-2024 17:19:20 UTC] PHP Notice:  Undefined index: event-comentario in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 18
+[06-Jul-2024 17:19:20 UTC] PHP Notice:  Undefined index: event-exento in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 19
+[06-Jul-2024 17:19:20 UTC] PHP Notice:  Undefined index: event-date in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 20
+[06-Jul-2024 17:19:20 UTC] PHP Notice:  Undefined index: event-ex-derecho in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 21
+[06-Jul-2024 17:19:20 UTC] PHP Notice:  Undefined index: event-limite in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 22
+[06-Jul-2024 17:19:20 UTC] PHP Notice:  Undefined index: event-precio in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 23
+[06-Jul-2024 17:19:20 UTC] PHP Notice:  Undefined index: event-rendimiento in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 24
+[06-Jul-2024 17:19:20 UTC] PHP Notice:  Undefined index: event-aviso in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 25
+[06-Jul-2024 17:53:43 UTC] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on bool in /home/p4t5z8n7/app.masdividendos.mx/static/php/delete_event.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/p4t5z8n7/app.masdividendos.mx/static/php/delete_event.php on line 18
+[06-Jul-2024 17:56:09 UTC] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on bool in /home/p4t5z8n7/app.masdividendos.mx/static/php/delete_event.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/p4t5z8n7/app.masdividendos.mx/static/php/delete_event.php on line 18
+[11-Jul-2024 02:34:29 UTC] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on bool in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php:35
+Stack trace:
+#0 {main}
+  thrown in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 35
+[11-Jul-2024 02:43:00 UTC] PHP Warning:  mysqli_stmt::bind_param(): Number of elements in type definition string doesn't match number of bind variables in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 35
+[11-Jul-2024 04:23:56 UTC] PHP Notice:  Undefined index: usuario in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 5
+[11-Jul-2024 05:05:43 UTC] PHP Notice:  Undefined index: usuario in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 5
+[11-Jul-2024 05:06:49 UTC] PHP Notice:  Undefined index: usuario in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 5
+[11-Jul-2024 05:08:40 UTC] PHP Notice:  Undefined index: usuario in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 5
+[11-Jul-2024 05:09:27 UTC] PHP Notice:  Undefined index: usuario in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 5
+[11-Jul-2024 05:10:21 UTC] PHP Notice:  Undefined index: usuario in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 5
+[11-Jul-2024 22:52:17 UTC] PHP Notice:  Undefined index: usuario in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 5
+[11-Jul-2024 22:52:55 UTC] PHP Notice:  Undefined index: usuario in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 5
+[12-Jul-2024 17:18:33 UTC] PHP Notice:  Undefined index: usuario in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 5
+[12-Jul-2024 17:18:50 UTC] PHP Notice:  Undefined index: usuario in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 5
+[12-Jul-2024 17:19:09 UTC] PHP Notice:  Undefined index: usuario in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 5
+[12-Jul-2024 17:19:21 UTC] PHP Notice:  Undefined index: usuario in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 5
+[12-Jul-2024 17:22:27 UTC] PHP Notice:  Undefined index: usuario in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 5
+[13-Jul-2024 00:36:58 UTC] PHP Notice:  Undefined index: correo in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 4
+[13-Jul-2024 00:36:58 UTC] PHP Notice:  Undefined index: contrasena in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 6
+[13-Jul-2024 00:36:58 UTC] PHP Notice:  Undefined index: nombre_completo in /home/p4t5z8n7/app.masdividendos.mx/static/php/registro_usuario_be.php on line 7
+[17-Jul-2024 04:47:42 UTC] event_id: 63
+[17-Jul-2024 04:47:42 UTC] empresa: Gruma
+[17-Jul-2024 04:47:42 UTC] ticker: GRUMAB
+[17-Jul-2024 04:47:42 UTC] monto: 1.26
+[17-Jul-2024 04:47:42 UTC] moneda: MXN
+[17-Jul-2024 04:47:42 UTC] comentario: CUFIN 2014 y posteriores
+[17-Jul-2024 04:47:42 UTC] exento_impuesto: 
+[17-Jul-2024 04:47:42 UTC] fecha_pago: 2024-07-12
+[17-Jul-2024 04:47:42 UTC] fecha_ex_derecho: 2024-07-11
+[17-Jul-2024 04:47:42 UTC] link_aviso: https://www.bmv.com.mx/docs-pub/derechos/derechos_1386088_1.pdf
+[17-Jul-2024 04:47:42 UTC] Consulta preparada: true
+[17-Jul-2024 04:49:05 UTC] event_id: 63
+[17-Jul-2024 04:49:05 UTC] empresa: Gruma
+[17-Jul-2024 04:49:05 UTC] ticker: GRUMAB
+[17-Jul-2024 04:49:05 UTC] monto: 1.26
+[17-Jul-2024 04:49:05 UTC] moneda: MXN
+[17-Jul-2024 04:49:05 UTC] comentario: CUFIN 2014 y posteriores
+[17-Jul-2024 04:49:05 UTC] exento_impuesto: 
+[17-Jul-2024 04:49:05 UTC] fecha_pago: 2024-07-12
+[17-Jul-2024 04:49:05 UTC] fecha_ex_derecho: 2024-07-11
+[17-Jul-2024 04:49:05 UTC] link_aviso: https://www.bmv.com.mx/docs-pub/derechos/derechos_1386088_1.pdf
+[17-Jul-2024 04:49:05 UTC] Consulta preparada: true
+[17-Jul-2024 04:50:08 UTC] event_id: 21
+[17-Jul-2024 04:50:08 UTC] empresa: Am茅rica Movil
+[17-Jul-2024 04:50:08 UTC] ticker: AMXB
+[17-Jul-2024 04:50:08 UTC] monto: 0.24
+[17-Jul-2024 04:50:08 UTC] moneda: MXN
+[17-Jul-2024 04:50:08 UTC] comentario: CUFIN 2013 y anteriores
+[17-Jul-2024 04:50:08 UTC] exento_impuesto: 
+[17-Jul-2024 04:50:08 UTC] fecha_pago: 2024-07-15
+[17-Jul-2024 04:50:08 UTC] fecha_ex_derecho: 2024-07-12
+[17-Jul-2024 04:50:08 UTC] link_aviso: https://www.bmv.com.mx/docs-pub/derechos/derechos_1382999_1.pdf
+[17-Jul-2024 04:50:08 UTC] Consulta preparada: true
+[17-Jul-2024 20:48:09 UTC] event_id: 
+[17-Jul-2024 20:48:09 UTC] empresa: Grupo Aeroportuario del Pac铆fico
+[17-Jul-2024 20:48:09 UTC] ticker: GAPB
+[17-Jul-2024 20:48:09 UTC] monto: 
+[17-Jul-2024 20:48:09 UTC] moneda: MXN
+[17-Jul-2024 20:48:09 UTC] comentario: Retorno de Capital
+[17-Jul-2024 20:48:09 UTC] exento_impuesto: 
+[17-Jul-2024 20:48:09 UTC] fecha_pago: 2024-04-03
+[17-Jul-2024 20:48:09 UTC] fecha_ex_derecho: 2024-04-02
+[17-Jul-2024 20:48:09 UTC] link_aviso: 
+[17-Jul-2024 20:48:09 UTC] Consulta preparada: true
+[17-Jul-2024 20:49:18 UTC] event_id: 
+[17-Jul-2024 20:49:18 UTC] empresa: Fibra Social
+[17-Jul-2024 20:49:18 UTC] ticker: FOSICAL
+[17-Jul-2024 20:49:18 UTC] monto: 
+[17-Jul-2024 20:49:18 UTC] moneda: USD
+[17-Jul-2024 20:49:18 UTC] comentario: Retorno de Capital
+[17-Jul-2024 20:49:18 UTC] exento_impuesto: 
+[17-Jul-2024 20:49:18 UTC] fecha_pago: 2024-04-10
+[17-Jul-2024 20:49:18 UTC] fecha_ex_derecho: 2024-04-09
+[17-Jul-2024 20:49:18 UTC] link_aviso: 
+[17-Jul-2024 20:49:18 UTC] Consulta preparada: true
+[17-Jul-2024 20:49:33 UTC] event_id: 
+[17-Jul-2024 20:49:33 UTC] empresa: Grupo Aeroportuario del Pac铆fico
+[17-Jul-2024 20:49:33 UTC] ticker: GAPB
+[17-Jul-2024 20:49:33 UTC] monto: 
+[17-Jul-2024 20:49:33 UTC] moneda: EUR
+[17-Jul-2024 20:49:33 UTC] comentario: Retorno de Capital
+[17-Jul-2024 20:49:33 UTC] exento_impuesto: 
+[17-Jul-2024 20:49:33 UTC] fecha_pago: 2024-04-17
+[17-Jul-2024 20:49:33 UTC] fecha_ex_derecho: 2024-04-16
+[17-Jul-2024 20:49:33 UTC] link_aviso: 
+[17-Jul-2024 20:49:33 UTC] Consulta preparada: true
+[17-Jul-2024 20:57:50 UTC] event_id: 24
+[17-Jul-2024 20:57:50 UTC] empresa: Corporaci贸n Inmobiliaria Vesta
+[17-Jul-2024 20:57:50 UTC] ticker: VESTA*
+[17-Jul-2024 20:57:50 UTC] monto: 0.0183189452467
+[17-Jul-2024 20:57:50 UTC] moneda: USD
+[17-Jul-2024 20:57:50 UTC] comentario: Cuenta de Utilidad Fiscal Neta 2023
+[17-Jul-2024 20:57:50 UTC] exento_impuesto: 
+[17-Jul-2024 20:57:50 UTC] fecha_pago: 2024-07-16
+[17-Jul-2024 20:57:50 UTC] fecha_ex_derecho: 2024-07-15
+[17-Jul-2024 20:57:50 UTC] link_aviso: https://www.bmv.com.mx/docs-pub/derechos/derechos_1387658_1.pdf
+[17-Jul-2024 20:57:50 UTC] Consulta preparada: true
+[17-Jul-2024 20:58:12 UTC] event_id: 28
+[17-Jul-2024 20:58:12 UTC] empresa: Cemex
+[17-Jul-2024 20:58:12 UTC] ticker: CEMEXCPO
+[17-Jul-2024 20:58:12 UTC] monto: 0.002067
+[17-Jul-2024 20:58:12 UTC] moneda: USD
+[17-Jul-2024 20:58:12 UTC] comentario: CUFIN 2013 y anteriores (a confirmar)
+[17-Jul-2024 20:58:12 UTC] exento_impuesto: 
+[17-Jul-2024 20:58:12 UTC] fecha_pago: 2024-09-17
+[17-Jul-2024 20:58:12 UTC] fecha_ex_derecho: 2024-09-13
+[17-Jul-2024 20:58:12 UTC] link_aviso: https://www.bmv.com.mx/docs-pub/acueorda/acueorda_1358230_1.pdf
+[17-Jul-2024 20:58:12 UTC] Consulta preparada: true
+[17-Jul-2024 20:58:12 UTC] event_id: 28
+[17-Jul-2024 20:58:12 UTC] empresa: Cemex
+[17-Jul-2024 20:58:12 UTC] ticker: CEMEXCPO
+[17-Jul-2024 20:58:12 UTC] monto: 0.002067
+[17-Jul-2024 20:58:12 UTC] moneda: USD
+[17-Jul-2024 20:58:12 UTC] comentario: CUFIN 2013 y anteriores (a confirmar)
+[17-Jul-2024 20:58:12 UTC] exento_impuesto: 
+[17-Jul-2024 20:58:12 UTC] fecha_pago: 2024-09-17
+[17-Jul-2024 20:58:12 UTC] fecha_ex_derecho: 2024-09-13
+[17-Jul-2024 20:58:12 UTC] link_aviso: https://www.bmv.com.mx/docs-pub/acueorda/acueorda_1358230_1.pdf
+[17-Jul-2024 20:58:12 UTC] Consulta preparada: true
+[17-Jul-2024 20:58:34 UTC] event_id: 40
+[17-Jul-2024 20:58:34 UTC] empresa: Corporaci贸n Inmobiliaria Vesta
+[17-Jul-2024 20:58:34 UTC] ticker: VESTA*
+[17-Jul-2024 20:58:34 UTC] monto: 0.0183189452467
+[17-Jul-2024 20:58:34 UTC] moneda: USD
+[17-Jul-2024 20:58:34 UTC] comentario: Cuenta de Utilidad Fiscal Neta 2023
+[17-Jul-2024 20:58:34 UTC] exento_impuesto: 
+[17-Jul-2024 20:58:34 UTC] fecha_pago: 2024-10-15
+[17-Jul-2024 20:58:34 UTC] fecha_ex_derecho: 2024-10-14
+[17-Jul-2024 20:58:34 UTC] link_aviso: https://www.bmv.com.mx/docs-pub/acueorda/acueorda_1357370_1.pdf
+[17-Jul-2024 20:58:34 UTC] Consulta preparada: true
+[17-Jul-2024 21:00:47 UTC] event_id: 29
+[17-Jul-2024 21:00:47 UTC] empresa: Cemex
+[17-Jul-2024 21:00:47 UTC] ticker: CEMEXCPO
+[17-Jul-2024 21:00:47 UTC] monto: 0.002067
+[17-Jul-2024 21:00:47 UTC] moneda: USD
+[17-Jul-2024 21:00:47 UTC] comentario: CUFIN 2013 y anteriores (a confirmar)
+[17-Jul-2024 21:00:47 UTC] exento_impuesto: 
+[17-Jul-2024 21:00:47 UTC] fecha_pago: 2024-12-11
+[17-Jul-2024 21:00:47 UTC] fecha_ex_derecho: 2024-12-10
+[17-Jul-2024 21:00:47 UTC] link_aviso: https://www.bmv.com.mx/docs-pub/acueorda/acueorda_1358230_1.pdf
+[17-Jul-2024 21:00:47 UTC] Consulta preparada: true
+[17-Jul-2024 21:00:53 UTC] event_id: 41
+[17-Jul-2024 21:00:53 UTC] empresa: Corporaci贸n Inmobiliaria Vesta
+[17-Jul-2024 21:00:53 UTC] ticker: VESTA*
+[17-Jul-2024 21:00:53 UTC] monto: 0.0183189452467
+[17-Jul-2024 21:00:53 UTC] moneda: USD
+[17-Jul-2024 21:00:53 UTC] comentario: Cuenta de Utilidad Fiscal Neta 2023
+[17-Jul-2024 21:00:53 UTC] exento_impuesto: 
+[17-Jul-2024 21:00:53 UTC] fecha_pago: 2025-01-15
+[17-Jul-2024 21:00:53 UTC] fecha_ex_derecho: 2025-01-14
+[17-Jul-2024 21:00:53 UTC] link_aviso: https://www.bmv.com.mx/docs-pub/acueorda/acueorda_1357370_1.pdf
+[17-Jul-2024 21:00:53 UTC] Consulta preparada: true
+[18-Jul-2024 02:51:00 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/p4t5z8n7/app.masdividendos.mx/static/php/get_companies.php on line 2
+[18-Jul-2024 02:51:00 UTC] PHP Notice:  Trying to get property 'connect_error' of non-object in /home/p4t5z8n7/app.masdividendos.mx/static/php/get_companies.php on line 5
+[18-Jul-2024 02:51:00 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on bool in /home/p4t5z8n7/app.masdividendos.mx/static/php/get_companies.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/p4t5z8n7/app.masdividendos.mx/static/php/get_companies.php on line 10
+[18-Jul-2024 02:52:43 UTC] event_id: 63
+[18-Jul-2024 02:52:43 UTC] empresa: Alsea
+[18-Jul-2024 02:52:43 UTC] ticker: GRUMAB
+[18-Jul-2024 02:52:43 UTC] monto: 1.26
+[18-Jul-2024 02:52:43 UTC] moneda: MXN
+[18-Jul-2024 02:52:43 UTC] comentario: CUFIN 2014 y posteriores
+[18-Jul-2024 02:52:43 UTC] exento_impuesto: 
+[18-Jul-2024 02:52:43 UTC] fecha_pago: 2024-07-12
+[18-Jul-2024 02:52:43 UTC] fecha_ex_derecho: 2024-07-11
+[18-Jul-2024 02:52:43 UTC] link_aviso: https://www.bmv.com.mx/docs-pub/derechos/derechos_1386088_1.pdf
+[18-Jul-2024 02:52:43 UTC] Consulta preparada: true
+[18-Jul-2024 16:59:46 UTC] event_id: 
+[18-Jul-2024 16:59:46 UTC] empresa: Arca Continental
+[18-Jul-2024 16:59:46 UTC] ticker: GAPB
+[18-Jul-2024 16:59:46 UTC] monto: 
+[18-Jul-2024 16:59:46 UTC] moneda: EUR
+[18-Jul-2024 16:59:46 UTC] comentario: Retorno de Capital
+[18-Jul-2024 16:59:46 UTC] exento_impuesto: 
+[18-Jul-2024 16:59:46 UTC] fecha_pago: 2023-12-19
+[18-Jul-2024 16:59:46 UTC] fecha_ex_derecho: 2023-12-18
+[18-Jul-2024 16:59:46 UTC] link_aviso: 
+[18-Jul-2024 16:59:46 UTC] Consulta preparada: true
+[18-Jul-2024 17:01:26 UTC] event_id: 
+[18-Jul-2024 17:01:26 UTC] empresa: Coca-Cola Femsa
+[18-Jul-2024 17:01:26 UTC] ticker: VESTA*
+[18-Jul-2024 17:01:26 UTC] monto: 5.34
+[18-Jul-2024 17:01:26 UTC] moneda: USD
+[18-Jul-2024 17:01:26 UTC] comentario: Dividendo Extraordinario. Concepto a confirmar
+[18-Jul-2024 17:01:26 UTC] exento_impuesto: 
+[18-Jul-2024 17:01:26 UTC] fecha_pago: 2023-12-07
+[18-Jul-2024 17:01:26 UTC] fecha_ex_derecho: 2023-12-06
+[18-Jul-2024 17:01:26 UTC] link_aviso: 
+[18-Jul-2024 17:01:26 UTC] Consulta preparada: true
+[18-Jul-2024 17:11:21 UTC] event_id: 
+[18-Jul-2024 17:11:21 UTC] empresa: Banco de Baj?o
+[18-Jul-2024 17:11:21 UTC] ticker: FOSICAL
+[18-Jul-2024 17:11:21 UTC] monto: 
+[18-Jul-2024 17:11:21 UTC] moneda: MXN
+[18-Jul-2024 17:11:21 UTC] comentario: CUFIN 2014 y posteriores
+[18-Jul-2024 17:11:21 UTC] exento_impuesto: 
+[18-Jul-2024 17:11:21 UTC] fecha_pago: 2023-12-13
+[18-Jul-2024 17:11:21 UTC] fecha_ex_derecho: 2023-12-12
+[18-Jul-2024 17:11:21 UTC] link_aviso: 
+[18-Jul-2024 17:11:21 UTC] Consulta preparada: true
+[18-Jul-2024 17:13:45 UTC] event_id: 63
+[18-Jul-2024 17:13:45 UTC] empresa: Gruma
+[18-Jul-2024 17:13:45 UTC] ticker: GRUMAB
+[18-Jul-2024 17:13:45 UTC] monto: 1.26
+[18-Jul-2024 17:13:45 UTC] moneda: MXN
+[18-Jul-2024 17:13:45 UTC] comentario: CUFIN 2014 y posteriores
+[18-Jul-2024 17:13:45 UTC] exento_impuesto: 
+[18-Jul-2024 17:13:45 UTC] fecha_pago: 2024-07-12
+[18-Jul-2024 17:13:45 UTC] fecha_ex_derecho: 2024-07-11
+[18-Jul-2024 17:13:45 UTC] link_aviso: https://www.bmv.com.mx/docs-pub/derechos/derechos_1386088_1.pdf
+[18-Jul-2024 17:13:45 UTC] Consulta preparada: true
+[19-Jul-2024 01:36:09 UTC] event_id: 63
+[19-Jul-2024 01:36:09 UTC] empresa: Alfa
+[19-Jul-2024 01:36:09 UTC] ticker: GRUMAB
+[19-Jul-2024 01:36:09 UTC] monto: 1.26
+[19-Jul-2024 01:36:09 UTC] moneda: MXN
+[19-Jul-2024 01:36:09 UTC] comentario: CUFIN 2014 y posteriores
+[19-Jul-2024 01:36:09 UTC] exento_impuesto: 
+[19-Jul-2024 01:36:09 UTC] fecha_pago: 2024-07-12
+[19-Jul-2024 01:36:09 UTC] fecha_ex_derecho: 2024-07-11
+[19-Jul-2024 01:36:09 UTC] link_aviso: https://www.bmv.com.mx/docs-pub/derechos/derechos_1386088_1.pdf
+[19-Jul-2024 01:36:09 UTC] Consulta preparada: true
+[19-Jul-2024 01:57:48 UTC] event_id: 63
+[19-Jul-2024 01:57:48 UTC] empresa: Alfa
+[19-Jul-2024 01:57:48 UTC] ticker: GRUMAB
+[19-Jul-2024 01:57:48 UTC] monto: 1.26
+[19-Jul-2024 01:57:48 UTC] moneda: USD
+[19-Jul-2024 01:57:48 UTC] comentario: CUFIN 2014 y posteriores
+[19-Jul-2024 01:57:48 UTC] exento_impuesto: 
+[19-Jul-2024 01:57:48 UTC] fecha_pago: 2024-07-12
+[19-Jul-2024 01:57:48 UTC] fecha_ex_derecho: 2024-07-11
+[19-Jul-2024 01:57:48 UTC] link_aviso: https://www.bmv.com.mx/docs-pub/derechos/derechos_1386088_1.pdf
+[19-Jul-2024 01:57:48 UTC] Consulta preparada: true
+[19-Jul-2024 01:58:03 UTC] event_id: 63
+[19-Jul-2024 01:58:03 UTC] empresa: Alfa
+[19-Jul-2024 01:58:03 UTC] ticker: GRUMAB
+[19-Jul-2024 01:58:03 UTC] monto: 1.26
+[19-Jul-2024 01:58:03 UTC] moneda: EUR
+[19-Jul-2024 01:58:03 UTC] comentario: CUFIN 2014 y posteriores
+[19-Jul-2024 01:58:03 UTC] exento_impuesto: 
+[19-Jul-2024 01:58:03 UTC] fecha_pago: 2024-07-12
+[19-Jul-2024 01:58:03 UTC] fecha_ex_derecho: 2024-07-11
+[19-Jul-2024 01:58:03 UTC] link_aviso: https://www.bmv.com.mx/docs-pub/derechos/derechos_1386088_1.pdf
+[19-Jul-2024 01:58:03 UTC] Consulta preparada: true
+[19-Jul-2024 02:00:12 UTC] event_id: 63
+[19-Jul-2024 02:00:12 UTC] empresa: Alfa
+[19-Jul-2024 02:00:12 UTC] ticker: GRUMAB
+[19-Jul-2024 02:00:12 UTC] monto: 1.26
+[19-Jul-2024 02:00:12 UTC] moneda: EUR
+[19-Jul-2024 02:00:12 UTC] comentario: CUFIN 2014 y posteriores
+[19-Jul-2024 02:00:12 UTC] exento_impuesto: 
+[19-Jul-2024 02:00:12 UTC] fecha_pago: 2024-07-12
+[19-Jul-2024 02:00:12 UTC] fecha_ex_derecho: 2024-07-11
+[19-Jul-2024 02:00:12 UTC] link_aviso: https://www.bmv.com.mx/docs-pub/derechos/derechos_1386088_1.pdf
+[19-Jul-2024 02:00:12 UTC] Consulta preparada: true
+[19-Jul-2024 02:00:25 UTC] event_id: 63
+[19-Jul-2024 02:00:25 UTC] empresa: Alfa
+[19-Jul-2024 02:00:25 UTC] ticker: GRUMAB
+[19-Jul-2024 02:00:25 UTC] monto: 1.26
+[19-Jul-2024 02:00:25 UTC] moneda: MXN
+[19-Jul-2024 02:00:25 UTC] comentario: CUFIN 2014 y posteriores
+[19-Jul-2024 02:00:25 UTC] exento_impuesto: 
+[19-Jul-2024 02:00:25 UTC] fecha_pago: 2024-07-12
+[19-Jul-2024 02:00:25 UTC] fecha_ex_derecho: 2024-07-11
+[19-Jul-2024 02:00:25 UTC] link_aviso: https://www.bmv.com.mx/docs-pub/derechos/derechos_1386088_1.pdf
+[19-Jul-2024 02:00:25 UTC] Consulta preparada: true
+[19-Jul-2024 02:19:45 UTC] event_id: 
+[19-Jul-2024 02:19:45 UTC] empresa: Alfa
+[19-Jul-2024 02:19:45 UTC] ticker: ALFA
+[19-Jul-2024 02:19:45 UTC] monto: 
+[19-Jul-2024 02:19:45 UTC] moneda: EUR
+[19-Jul-2024 02:19:45 UTC] comentario: Retorno de Capital
+[19-Jul-2024 02:19:45 UTC] exento_impuesto: 
+[19-Jul-2024 02:19:45 UTC] fecha_pago: 2023-12-12
+[19-Jul-2024 02:19:45 UTC] fecha_ex_derecho: 2023-12-11
+[19-Jul-2024 02:19:45 UTC] link_aviso: 
+[19-Jul-2024 02:19:45 UTC] Consulta preparada: true
+[19-Jul-2024 02:38:52 UTC] event_id: 75
+[19-Jul-2024 02:38:52 UTC] empresa: Alpek
+[19-Jul-2024 02:38:52 UTC] ticker: FOSICAL
+[19-Jul-2024 02:38:52 UTC] monto: 0
+[19-Jul-2024 02:38:52 UTC] moneda: MXN
+[19-Jul-2024 02:38:52 UTC] comentario: CUFIN 2014 y posteriores
+[19-Jul-2024 02:38:52 UTC] exento_impuesto: 
+[19-Jul-2024 02:38:52 UTC] fecha_pago: 2023-12-13
+[19-Jul-2024 02:38:52 UTC] fecha_ex_derecho: 2023-12-12
+[19-Jul-2024 02:38:52 UTC] link_aviso: 
+[19-Jul-2024 02:38:52 UTC] Consulta preparada: true
+[19-Jul-2024 03:07:10 UTC] event_id: 63
+[19-Jul-2024 03:07:10 UTC] empresa: Alfa
+[19-Jul-2024 03:07:10 UTC] ticker: GRUMAB
+[19-Jul-2024 03:07:10 UTC] monto: MXN $1.26
+[19-Jul-2024 03:07:10 UTC] comentario: CUFIN 2014 y posteriores
+[19-Jul-2024 03:07:10 UTC] exento_impuesto: 
+[19-Jul-2024 03:07:10 UTC] fecha_pago: 2024-07-12
+[19-Jul-2024 03:07:10 UTC] fecha_ex_derecho: 2024-07-11
+[19-Jul-2024 03:07:10 UTC] link_aviso: https://www.bmv.com.mx/docs-pub/derechos/derechos_1386088_1.pdf
+[19-Jul-2024 03:07:10 UTC] PHP Warning:  mysqli_stmt::bind_param(): Number of elements in type definition string doesn't match number of bind variables in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 44
+[19-Jul-2024 03:07:10 UTC] Consulta preparada: true
+[19-Jul-2024 03:07:10 UTC] Error en la ejecución de la consulta: No data supplied for parameters in prepared statement
+[19-Jul-2024 03:10:58 UTC] event_id: 63
+[19-Jul-2024 03:10:58 UTC] empresa: Alfa
+[19-Jul-2024 03:10:58 UTC] ticker: GRUMAB
+[19-Jul-2024 03:10:58 UTC] monto: MXN $1.26
+[19-Jul-2024 03:10:58 UTC] comentario: CUFIN 2014 y posteriores
+[19-Jul-2024 03:10:58 UTC] exento_impuesto: 
+[19-Jul-2024 03:10:58 UTC] fecha_pago: 2024-07-12
+[19-Jul-2024 03:10:58 UTC] fecha_ex_derecho: 2024-07-11
+[19-Jul-2024 03:10:58 UTC] link_aviso: https://www.bmv.com.mx/docs-pub/derechos/derechos_1386088_1.pdf
+[19-Jul-2024 03:10:58 UTC] PHP Warning:  mysqli_stmt::bind_param(): Number of elements in type definition string doesn't match number of bind variables in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 44
+[19-Jul-2024 03:10:58 UTC] Consulta preparada: true
+[19-Jul-2024 03:10:58 UTC] Error en la ejecución de la consulta: No data supplied for parameters in prepared statement
+[19-Jul-2024 03:13:48 UTC] event_id: 63
+[19-Jul-2024 03:13:48 UTC] empresa: Alfa
+[19-Jul-2024 03:13:48 UTC] ticker: GRUMAB
+[19-Jul-2024 03:13:48 UTC] monto: 1.26
+[19-Jul-2024 03:13:48 UTC] comentario: CUFIN 2014 y posteriores
+[19-Jul-2024 03:13:48 UTC] exento_impuesto: 
+[19-Jul-2024 03:13:48 UTC] fecha_pago: 2024-07-12
+[19-Jul-2024 03:13:48 UTC] fecha_ex_derecho: 2024-07-11
+[19-Jul-2024 03:13:48 UTC] link_aviso: https://www.bmv.com.mx/docs-pub/derechos/derechos_1386088_1.pdf
+[19-Jul-2024 03:13:48 UTC] PHP Warning:  mysqli_stmt::bind_param(): Number of elements in type definition string doesn't match number of bind variables in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 44
+[19-Jul-2024 03:13:48 UTC] Consulta preparada: true
+[19-Jul-2024 03:13:48 UTC] Error en la ejecución de la consulta: No data supplied for parameters in prepared statement
+[19-Jul-2024 03:14:50 UTC] event_id: 63
+[19-Jul-2024 03:14:50 UTC] empresa: Alfa
+[19-Jul-2024 03:14:50 UTC] ticker: GRUMAB
+[19-Jul-2024 03:14:50 UTC] monto: 1.26
+[19-Jul-2024 03:14:50 UTC] comentario: CUFIN 2014 y posteriores
+[19-Jul-2024 03:14:50 UTC] exento_impuesto: 
+[19-Jul-2024 03:14:50 UTC] fecha_pago: 2024-07-12
+[19-Jul-2024 03:14:50 UTC] fecha_ex_derecho: 2024-07-11
+[19-Jul-2024 03:14:50 UTC] link_aviso: https://www.bmv.com.mx/docs-pub/derechos/derechos_1386088_1.pdf
+[19-Jul-2024 03:14:50 UTC] PHP Warning:  mysqli_stmt::bind_param(): Number of elements in type definition string doesn't match number of bind variables in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 44
+[19-Jul-2024 03:14:50 UTC] Consulta preparada: true
+[19-Jul-2024 03:14:50 UTC] Error en la ejecución de la consulta: No data supplied for parameters in prepared statement
+[19-Jul-2024 03:15:22 UTC] event_id: 63
+[19-Jul-2024 03:15:22 UTC] empresa: Alfa
+[19-Jul-2024 03:15:22 UTC] ticker: GRUMAB
+[19-Jul-2024 03:15:22 UTC] monto: 1.26
+[19-Jul-2024 03:15:22 UTC] comentario: CUFIN 2014 y posteriores
+[19-Jul-2024 03:15:22 UTC] exento_impuesto: 
+[19-Jul-2024 03:15:22 UTC] fecha_pago: 2024-07-12
+[19-Jul-2024 03:15:22 UTC] fecha_ex_derecho: 2024-07-11
+[19-Jul-2024 03:15:22 UTC] link_aviso: https://www.bmv.com.mx/docs-pub/derechos/derechos_1386088_1.pdf
+[19-Jul-2024 03:15:22 UTC] PHP Warning:  mysqli_stmt::bind_param(): Number of elements in type definition string doesn't match number of bind variables in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 44
+[19-Jul-2024 03:15:22 UTC] Consulta preparada: true
+[19-Jul-2024 03:15:22 UTC] Error en la ejecución de la consulta: No data supplied for parameters in prepared statement
+[19-Jul-2024 03:19:10 UTC] event_id: 25
+[19-Jul-2024 03:19:10 UTC] empresa: Alfa
+[19-Jul-2024 03:19:10 UTC] ticker: FSOCIAL23
+[19-Jul-2024 03:19:10 UTC] monto: 0.6570134527118
+[19-Jul-2024 03:19:10 UTC] comentario: Reembolso de capital
+[19-Jul-2024 03:19:10 UTC] exento_impuesto: 
+[19-Jul-2024 03:19:10 UTC] fecha_pago: 2024-07-19
+[19-Jul-2024 03:19:10 UTC] fecha_ex_derecho: 2024-07-18
+[19-Jul-2024 03:19:10 UTC] link_aviso: https://www.bmv.com.mx/docs-pub/fibderec/fibderec_1391019_1.pdf
+[19-Jul-2024 03:19:10 UTC] PHP Warning:  mysqli_stmt::bind_param(): Number of elements in type definition string doesn't match number of bind variables in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 44
+[19-Jul-2024 03:19:10 UTC] Consulta preparada: true
+[19-Jul-2024 03:19:10 UTC] Error en la ejecución de la consulta: No data supplied for parameters in prepared statement
+[19-Jul-2024 03:19:45 UTC] event_id: 63
+[19-Jul-2024 03:19:45 UTC] empresa: Alfa
+[19-Jul-2024 03:19:45 UTC] ticker: GRUMAB
+[19-Jul-2024 03:19:45 UTC] monto: 1.26
+[19-Jul-2024 03:19:45 UTC] comentario: CUFIN 2014 y posteriores
+[19-Jul-2024 03:19:45 UTC] exento_impuesto: 
+[19-Jul-2024 03:19:45 UTC] fecha_pago: 2024-07-12
+[19-Jul-2024 03:19:45 UTC] fecha_ex_derecho: 2024-07-11
+[19-Jul-2024 03:19:45 UTC] link_aviso: https://www.bmv.com.mx/docs-pub/derechos/derechos_1386088_1.pdf
+[19-Jul-2024 03:19:45 UTC] PHP Warning:  mysqli_stmt::bind_param(): Number of elements in type definition string doesn't match number of bind variables in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 44
+[19-Jul-2024 03:19:45 UTC] Consulta preparada: true
+[19-Jul-2024 03:19:45 UTC] Error en la ejecución de la consulta: No data supplied for parameters in prepared statement
+[19-Jul-2024 03:22:38 UTC] event_id: 63
+[19-Jul-2024 03:22:38 UTC] empresa: Alfa
+[19-Jul-2024 03:22:38 UTC] ticker: GRUMAB
+[19-Jul-2024 03:22:38 UTC] monto: 1.26
+[19-Jul-2024 03:22:38 UTC] comentario: CUFIN 2014 y posteriores
+[19-Jul-2024 03:22:38 UTC] exento_impuesto: 
+[19-Jul-2024 03:22:38 UTC] fecha_pago: 2024-07-12
+[19-Jul-2024 03:22:38 UTC] fecha_ex_derecho: 2024-07-11
+[19-Jul-2024 03:22:38 UTC] link_aviso: https://www.bmv.com.mx/docs-pub/derechos/derechos_1386088_1.pdf
+[19-Jul-2024 03:22:38 UTC] PHP Warning:  mysqli_stmt::bind_param(): Number of elements in type definition string doesn't match number of bind variables in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 44
+[19-Jul-2024 03:22:38 UTC] Consulta preparada: true
+[19-Jul-2024 03:22:38 UTC] Error en la ejecución de la consulta: No data supplied for parameters in prepared statement
+[19-Jul-2024 14:16:07 UTC] event_id: 75
+[19-Jul-2024 14:16:07 UTC] empresa: Alfa
+[19-Jul-2024 14:16:07 UTC] ticker: FOSICAL
+[19-Jul-2024 14:16:07 UTC] monto: 0
+[19-Jul-2024 14:16:07 UTC] comentario: CUFIN 2014 y posteriores
+[19-Jul-2024 14:16:07 UTC] exento_impuesto: 
+[19-Jul-2024 14:16:07 UTC] fecha_pago: 2023-12-13
+[19-Jul-2024 14:16:07 UTC] fecha_ex_derecho: 2023-12-12
+[19-Jul-2024 14:16:07 UTC] link_aviso: 
+[19-Jul-2024 14:16:07 UTC] PHP Warning:  mysqli_stmt::bind_param(): Number of elements in type definition string doesn't match number of bind variables in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 44
+[19-Jul-2024 14:16:07 UTC] Consulta preparada: true
+[19-Jul-2024 14:16:07 UTC] Error en la ejecución de la consulta: No data supplied for parameters in prepared statement
+[19-Jul-2024 14:16:47 UTC] event_id: 
+[19-Jul-2024 14:16:47 UTC] empresa: Alpek
+[19-Jul-2024 14:16:47 UTC] ticker: ALFA
+[19-Jul-2024 14:16:47 UTC] monto: 1.26
+[19-Jul-2024 14:16:47 UTC] comentario: Retorno de Capital
+[19-Jul-2024 14:16:47 UTC] exento_impuesto: 
+[19-Jul-2024 14:16:47 UTC] fecha_pago: 2023-12-06
+[19-Jul-2024 14:16:47 UTC] fecha_ex_derecho: 2023-12-05
+[19-Jul-2024 14:16:47 UTC] link_aviso: 
+[19-Jul-2024 14:16:47 UTC] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on bool in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php:48
+Stack trace:
+#0 {main}
+  thrown in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 48
+[19-Jul-2024 14:16:57 UTC] event_id: 
+[19-Jul-2024 14:16:57 UTC] empresa: Alpek
+[19-Jul-2024 14:16:57 UTC] ticker: ALFA
+[19-Jul-2024 14:16:57 UTC] monto: 1.26
+[19-Jul-2024 14:16:57 UTC] comentario: Retorno de Capital
+[19-Jul-2024 14:16:57 UTC] exento_impuesto: 
+[19-Jul-2024 14:16:57 UTC] fecha_pago: 2023-12-06
+[19-Jul-2024 14:16:57 UTC] fecha_ex_derecho: 2023-12-05
+[19-Jul-2024 14:16:57 UTC] link_aviso: 
+[19-Jul-2024 14:16:57 UTC] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on bool in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php:48
+Stack trace:
+#0 {main}
+  thrown in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 48
+[19-Jul-2024 14:17:11 UTC] event_id: 76
+[19-Jul-2024 14:17:11 UTC] empresa: Alfa
+[19-Jul-2024 14:17:11 UTC] ticker: ALFA
+[19-Jul-2024 14:17:11 UTC] monto: 0
+[19-Jul-2024 14:17:11 UTC] comentario: Retorno de Capital
+[19-Jul-2024 14:17:11 UTC] exento_impuesto: 
+[19-Jul-2024 14:17:11 UTC] fecha_pago: 2023-12-12
+[19-Jul-2024 14:17:11 UTC] fecha_ex_derecho: 2023-12-11
+[19-Jul-2024 14:17:11 UTC] link_aviso: 
+[19-Jul-2024 14:17:11 UTC] PHP Warning:  mysqli_stmt::bind_param(): Number of elements in type definition string doesn't match number of bind variables in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 44
+[19-Jul-2024 14:17:11 UTC] Consulta preparada: true
+[19-Jul-2024 14:17:11 UTC] Error en la ejecución de la consulta: No data supplied for parameters in prepared statement
+[19-Jul-2024 14:17:20 UTC] event_id: 74
+[19-Jul-2024 14:17:20 UTC] empresa: Alterna Asesor?a Internacional
+[19-Jul-2024 14:17:20 UTC] ticker: VESTA*
+[19-Jul-2024 14:17:20 UTC] monto: 5.34
+[19-Jul-2024 14:17:20 UTC] comentario: Dividendo Extraordinario. Concepto a confirmar
+[19-Jul-2024 14:17:20 UTC] exento_impuesto: 
+[19-Jul-2024 14:17:20 UTC] fecha_pago: 2023-12-07
+[19-Jul-2024 14:17:20 UTC] fecha_ex_derecho: 2023-12-06
+[19-Jul-2024 14:17:20 UTC] link_aviso: 
+[19-Jul-2024 14:17:20 UTC] PHP Warning:  mysqli_stmt::bind_param(): Number of elements in type definition string doesn't match number of bind variables in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 44
+[19-Jul-2024 14:17:20 UTC] Consulta preparada: true
+[19-Jul-2024 14:17:20 UTC] Error en la ejecución de la consulta: No data supplied for parameters in prepared statement
+[19-Jul-2024 23:35:43 UTC] PHP Notice:  Undefined index: correo in /home/p4t5z8n7/app.masdividendos.mx/static/php/login_usuario_be.php on line 5
+[19-Jul-2024 23:35:43 UTC] PHP Notice:  Undefined index: contrasena in /home/p4t5z8n7/app.masdividendos.mx/static/php/login_usuario_be.php on line 6
+[20-Jul-2024 01:39:37 UTC] event_id: 63
+[20-Jul-2024 01:39:37 UTC] empresa: Alfa
+[20-Jul-2024 01:39:37 UTC] ticker: GRUMAB
+[20-Jul-2024 01:39:37 UTC] monto: $1.26
+[20-Jul-2024 01:39:37 UTC] comentario: CUFIN 2014 y posteriores
+[20-Jul-2024 01:39:37 UTC] exento_impuesto: 
+[20-Jul-2024 01:39:37 UTC] fecha_pago: 2024-07-12
+[20-Jul-2024 01:39:37 UTC] fecha_ex_derecho: 2024-07-11
+[20-Jul-2024 01:39:37 UTC] link_aviso: https://www.bmv.com.mx/docs-pub/derechos/derechos_1386088_1.pdf
+[20-Jul-2024 01:39:37 UTC] PHP Warning:  mysqli_stmt::bind_param(): Number of elements in type definition string doesn't match number of bind variables in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 44
+[20-Jul-2024 01:39:37 UTC] Consulta preparada: true
+[20-Jul-2024 01:39:37 UTC] Error en la ejecución de la consulta: No data supplied for parameters in prepared statement
+[20-Jul-2024 01:39:48 UTC] event_id: 63
+[20-Jul-2024 01:39:48 UTC] empresa: Alfa
+[20-Jul-2024 01:39:48 UTC] ticker: GRUMAB
+[20-Jul-2024 01:39:48 UTC] monto: 1.26
+[20-Jul-2024 01:39:48 UTC] comentario: CUFIN 2014 y posteriores
+[20-Jul-2024 01:39:48 UTC] exento_impuesto: 
+[20-Jul-2024 01:39:48 UTC] fecha_pago: 2024-07-12
+[20-Jul-2024 01:39:48 UTC] fecha_ex_derecho: 2024-07-11
+[20-Jul-2024 01:39:48 UTC] link_aviso: https://www.bmv.com.mx/docs-pub/derechos/derechos_1386088_1.pdf
+[20-Jul-2024 01:39:48 UTC] PHP Warning:  mysqli_stmt::bind_param(): Number of elements in type definition string doesn't match number of bind variables in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 44
+[20-Jul-2024 01:39:48 UTC] Consulta preparada: true
+[20-Jul-2024 01:39:48 UTC] Error en la ejecución de la consulta: No data supplied for parameters in prepared statement
+[20-Jul-2024 01:42:23 UTC] event_id: 63
+[20-Jul-2024 01:42:23 UTC] empresa: Alfa
+[20-Jul-2024 01:42:23 UTC] ticker: GRUMAB
+[20-Jul-2024 01:42:23 UTC] monto: 1.26
+[20-Jul-2024 01:42:23 UTC] comentario: CUFIN 2014 y posteriores
+[20-Jul-2024 01:42:23 UTC] exento_impuesto: 
+[20-Jul-2024 01:42:23 UTC] fecha_pago: 2024-07-12
+[20-Jul-2024 01:42:23 UTC] fecha_ex_derecho: 2024-07-11
+[20-Jul-2024 01:42:23 UTC] link_aviso: https://www.bmv.com.mx/docs-pub/derechos/derechos_1386088_1.pdf
+[20-Jul-2024 01:42:23 UTC] PHP Warning:  mysqli_stmt::bind_param(): Number of elements in type definition string doesn't match number of bind variables in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 44
+[20-Jul-2024 01:42:23 UTC] Consulta preparada: true
+[20-Jul-2024 01:42:23 UTC] Error en la ejecución de la consulta: No data supplied for parameters in prepared statement
+[20-Jul-2024 01:46:23 UTC] event_id: 63
+[20-Jul-2024 01:46:23 UTC] empresa: Alfa
+[20-Jul-2024 01:46:23 UTC] ticker: GRUMAB
+[20-Jul-2024 01:46:23 UTC] monto: 1.26
+[20-Jul-2024 01:46:23 UTC] comentario: CUFIN 2014 y posteriores
+[20-Jul-2024 01:46:23 UTC] exento_impuesto: 
+[20-Jul-2024 01:46:23 UTC] fecha_pago: 2024-07-12
+[20-Jul-2024 01:46:23 UTC] fecha_ex_derecho: 2024-07-11
+[20-Jul-2024 01:46:23 UTC] link_aviso: https://www.bmv.com.mx/docs-pub/derechos/derechos_1386088_1.pdf
+[20-Jul-2024 01:46:23 UTC] PHP Warning:  mysqli_stmt::bind_param(): Number of elements in type definition string doesn't match number of bind variables in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 44
+[20-Jul-2024 01:46:23 UTC] Consulta preparada: true
+[20-Jul-2024 01:46:23 UTC] Error en la ejecución de la consulta: No data supplied for parameters in prepared statement
+[20-Jul-2024 01:54:06 UTC] event_id: 63
+[20-Jul-2024 01:54:06 UTC] empresa: Alfa
+[20-Jul-2024 01:54:06 UTC] ticker: GRUMAB
+[20-Jul-2024 01:54:06 UTC] monto: 1.26
+[20-Jul-2024 01:54:06 UTC] comentario: CUFIN 2014 y posteriores
+[20-Jul-2024 01:54:06 UTC] exento_impuesto: 
+[20-Jul-2024 01:54:06 UTC] fecha_pago: 2024-07-12
+[20-Jul-2024 01:54:06 UTC] fecha_ex_derecho: 2024-07-11
+[20-Jul-2024 01:54:06 UTC] link_aviso: https://www.bmv.com.mx/docs-pub/derechos/derechos_1386088_1.pdf
+[20-Jul-2024 01:54:06 UTC] PHP Warning:  mysqli_stmt::bind_param(): Number of elements in type definition string doesn't match number of bind variables in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 44
+[20-Jul-2024 01:54:06 UTC] Consulta preparada: true
+[20-Jul-2024 01:54:06 UTC] Error en la ejecución de la consulta: No data supplied for parameters in prepared statement
+[20-Jul-2024 01:54:45 UTC] event_id: 63
+[20-Jul-2024 01:54:45 UTC] empresa: Alfa
+[20-Jul-2024 01:54:45 UTC] ticker: GRUMAB
+[20-Jul-2024 01:54:45 UTC] monto: 1.26
+[20-Jul-2024 01:54:45 UTC] comentario: CUFIN 2014 y posteriores
+[20-Jul-2024 01:54:45 UTC] exento_impuesto: 
+[20-Jul-2024 01:54:45 UTC] fecha_pago: 2024-07-12
+[20-Jul-2024 01:54:45 UTC] fecha_ex_derecho: 2024-07-11
+[20-Jul-2024 01:54:45 UTC] link_aviso: https://www.bmv.com.mx/docs-pub/derechos/derechos_1386088_1.pdf
+[20-Jul-2024 01:54:45 UTC] PHP Warning:  mysqli_stmt::bind_param(): Number of elements in type definition string doesn't match number of bind variables in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 44
+[20-Jul-2024 01:54:45 UTC] Consulta preparada: true
+[20-Jul-2024 01:54:45 UTC] Error en la ejecución de la consulta: No data supplied for parameters in prepared statement
+[20-Jul-2024 01:55:13 UTC] event_id: 63
+[20-Jul-2024 01:55:13 UTC] empresa: Alfa
+[20-Jul-2024 01:55:13 UTC] ticker: GRUMAB
+[20-Jul-2024 01:55:13 UTC] monto: 1.26
+[20-Jul-2024 01:55:13 UTC] comentario: CUFIN 2014 y posteriores
+[20-Jul-2024 01:55:13 UTC] exento_impuesto: no
+[20-Jul-2024 01:55:13 UTC] fecha_pago: 2024-07-12
+[20-Jul-2024 01:55:13 UTC] fecha_ex_derecho: 2024-07-11
+[20-Jul-2024 01:55:13 UTC] link_aviso: https://www.bmv.com.mx/docs-pub/derechos/derechos_1386088_1.pdf
+[20-Jul-2024 01:55:13 UTC] PHP Warning:  mysqli_stmt::bind_param(): Number of elements in type definition string doesn't match number of bind variables in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 44
+[20-Jul-2024 01:55:13 UTC] Consulta preparada: true
+[20-Jul-2024 01:55:13 UTC] Error en la ejecución de la consulta: No data supplied for parameters in prepared statement
+[20-Jul-2024 01:55:42 UTC] event_id: 63
+[20-Jul-2024 01:55:42 UTC] empresa: Alfa
+[20-Jul-2024 01:55:42 UTC] ticker: GRUMAB
+[20-Jul-2024 01:55:42 UTC] monto: 1.26
+[20-Jul-2024 01:55:42 UTC] comentario: CUFIN 2014 y posteriores
+[20-Jul-2024 01:55:42 UTC] exento_impuesto: 
+[20-Jul-2024 01:55:42 UTC] fecha_pago: 2024-07-12
+[20-Jul-2024 01:55:42 UTC] fecha_ex_derecho: 2024-07-11
+[20-Jul-2024 01:55:42 UTC] link_aviso: https://www.bmv.com.mx/docs-pub/derechos/derechos_1386088_1.pdf
+[20-Jul-2024 01:55:42 UTC] PHP Warning:  mysqli_stmt::bind_param(): Number of elements in type definition string doesn't match number of bind variables in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 44
+[20-Jul-2024 01:55:42 UTC] Consulta preparada: true
+[20-Jul-2024 01:55:42 UTC] Error en la ejecución de la consulta: No data supplied for parameters in prepared statement
+[20-Jul-2024 01:58:44 UTC] PHP Notice:  Undefined index: event-limite in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 21
+[20-Jul-2024 01:58:44 UTC] PHP Notice:  Undefined index: event-precio in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 22
+[20-Jul-2024 01:58:44 UTC] PHP Notice:  Undefined index: event-rendimiento in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 23
+[20-Jul-2024 01:58:44 UTC] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on bool in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 34
+[20-Jul-2024 01:58:58 UTC] PHP Notice:  Undefined index: event-limite in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 21
+[20-Jul-2024 01:58:58 UTC] PHP Notice:  Undefined index: event-precio in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 22
+[20-Jul-2024 01:58:58 UTC] PHP Notice:  Undefined index: event-rendimiento in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 23
+[20-Jul-2024 01:58:58 UTC] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on bool in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 34
+[20-Jul-2024 02:00:08 UTC] PHP Notice:  Undefined index: event-limite in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 21
+[20-Jul-2024 02:00:08 UTC] PHP Notice:  Undefined index: event-precio in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 22
+[20-Jul-2024 02:00:08 UTC] PHP Notice:  Undefined index: event-rendimiento in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 23
+[20-Jul-2024 02:00:08 UTC] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on bool in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 34
+[20-Jul-2024 02:02:47 UTC] PHP Notice:  Undefined index: event-limite in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 21
+[20-Jul-2024 02:02:47 UTC] PHP Notice:  Undefined index: event-precio in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 22
+[20-Jul-2024 02:02:47 UTC] PHP Notice:  Undefined index: event-rendimiento in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 23
+[20-Jul-2024 02:02:47 UTC] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on bool in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 34
+[20-Jul-2024 02:03:48 UTC] PHP Notice:  Undefined index: event-limite in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 21
+[20-Jul-2024 02:03:48 UTC] PHP Notice:  Undefined index: event-precio in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 22
+[20-Jul-2024 02:03:48 UTC] PHP Notice:  Undefined index: event-rendimiento in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 23
+[20-Jul-2024 02:03:48 UTC] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on bool in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 34
+[20-Jul-2024 02:06:14 UTC] event_id: 63
+[20-Jul-2024 02:06:14 UTC] empresa: Alfa
+[20-Jul-2024 02:06:14 UTC] ticker: GRUMAB
+[20-Jul-2024 02:06:14 UTC] monto: 1.26
+[20-Jul-2024 02:06:14 UTC] comentario: CUFIN 2014 y posteriores
+[20-Jul-2024 02:06:14 UTC] exento_impuesto: 
+[20-Jul-2024 02:06:14 UTC] fecha_pago: 2024-07-12
+[20-Jul-2024 02:06:14 UTC] fecha_ex_derecho: 2024-07-11
+[20-Jul-2024 02:06:14 UTC] link_aviso: https://www.bmv.com.mx/docs-pub/derechos/derechos_1386088_1.pdf
+[20-Jul-2024 02:06:14 UTC] PHP Warning:  mysqli_stmt::bind_param(): Number of elements in type definition string doesn't match number of bind variables in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 44
+[20-Jul-2024 02:06:14 UTC] Consulta preparada: true
+[20-Jul-2024 02:06:14 UTC] Error en la ejecuci��n de la consulta: No data supplied for parameters in prepared statement
+[20-Jul-2024 02:06:50 UTC] event_id: 
+[20-Jul-2024 02:06:50 UTC] empresa: Alfa
+[20-Jul-2024 02:06:50 UTC] ticker: 
+[20-Jul-2024 02:06:50 UTC] monto: 
+[20-Jul-2024 02:06:50 UTC] comentario: 
+[20-Jul-2024 02:06:50 UTC] exento_impuesto: 
+[20-Jul-2024 02:06:50 UTC] fecha_pago: 
+[20-Jul-2024 02:06:50 UTC] fecha_ex_derecho: 
+[20-Jul-2024 02:06:50 UTC] link_aviso: 
+[20-Jul-2024 02:06:50 UTC] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on bool in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php:48
+Stack trace:
+#0 {main}
+  thrown in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 48
+[20-Jul-2024 02:07:16 UTC] event_id: 63
+[20-Jul-2024 02:07:16 UTC] empresa: Alfa
+[20-Jul-2024 02:07:16 UTC] ticker: GRUMAB
+[20-Jul-2024 02:07:16 UTC] monto: 1.26
+[20-Jul-2024 02:07:16 UTC] comentario: CUFIN 2014 y posteriores
+[20-Jul-2024 02:07:16 UTC] exento_impuesto: 
+[20-Jul-2024 02:07:16 UTC] fecha_pago: 2024-07-12
+[20-Jul-2024 02:07:16 UTC] fecha_ex_derecho: 2024-07-11
+[20-Jul-2024 02:07:16 UTC] link_aviso: https://www.bmv.com.mx/docs-pub/derechos/derechos_1386088_1.pdf
+[20-Jul-2024 02:07:16 UTC] PHP Warning:  mysqli_stmt::bind_param(): Number of elements in type definition string doesn't match number of bind variables in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 44
+[20-Jul-2024 02:07:16 UTC] Consulta preparada: true
+[20-Jul-2024 02:07:16 UTC] Error en la ejecuci��n de la consulta: No data supplied for parameters in prepared statement
+[20-Jul-2024 03:35:08 UTC] event_id: 
+[20-Jul-2024 03:35:08 UTC] empresa: Agrofibra
+[20-Jul-2024 03:35:08 UTC] ticker: ASURB
+[20-Jul-2024 03:35:08 UTC] monto: 10.926
+[20-Jul-2024 03:35:08 UTC] comentario: CUFIN 2014
+[20-Jul-2024 03:35:08 UTC] fecha_pago: 2024-07-04
+[20-Jul-2024 03:35:08 UTC] fecha_ex_derecho: 2024-07-03
+[20-Jul-2024 03:35:08 UTC] link_aviso: https://www.bmv.com.mx/docs-pub/derechos/derechos_1388000_1.pdf
+[20-Jul-2024 03:35:08 UTC] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on bool in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php:46
+Stack trace:
+#0 {main}
+  thrown in /home/p4t5z8n7/app.masdividendos.mx/static/php/save_event.php on line 46
+[20-Jul-2024 03:38:54 UTC] event_id: 
+[20-Jul-2024 03:38:54 UTC] empresa: Agrofibra
+[20-Jul-2024 03:38:54 UTC] ticker: ASURB
+[20-Jul-2024 03:38:54 UTC] monto: 10.926
+[20-Jul-2024 03:38:54 UTC] comentario: CUFIN 2014
+[20-Jul-2024 03:38:54 UTC] fecha_pago: 2024-07-04
+[20-Jul-2024 03:38:54 UTC] fecha_ex_derecho: 2024-07-03
+[20-Jul-2024 03:38:54 UTC] link_aviso: https://www.bmv.com.mx/docs-pub/derechos/derechos_1388000_1.pdf
+[20-Jul-2024 03:38:54 UTC] Consulta preparada: true
+[20-Jul-2024 03:48:21 UTC] event_id: 77
+[20-Jul-2024 03:48:21 UTC] empresa: Agrofibra
+[20-Jul-2024 03:48:21 UTC] ticker: ASURB
+[20-Jul-2024 03:48:21 UTC] monto: $10.926
+[20-Jul-2024 03:48:21 UTC] comentario: CUFIN 2014
+[20-Jul-2024 03:48:21 UTC] fecha_pago: 2024-07-04
+[20-Jul-2024 03:48:21 UTC] fecha_ex_derecho: 2024-07-03
+[20-Jul-2024 03:48:21 UTC] link_aviso: https://www.bmv.com.mx/docs-pub/derechos/derechos_1388000_1.pdf
+[20-Jul-2024 03:48:21 UTC] Consulta preparada: true
+[20-Jul-2024 03:48:30 UTC] event_id: 77
+[20-Jul-2024 03:48:30 UTC] empresa: Agrofibra
+[20-Jul-2024 03:48:30 UTC] ticker: ASURB
+[20-Jul-2024 03:48:30 UTC] monto: MXN $10.926
+[20-Jul-2024 03:48:30 UTC] comentario: CUFIN 2014
+[20-Jul-2024 03:48:30 UTC] fecha_pago: 2024-07-04
+[20-Jul-2024 03:48:30 UTC] fecha_ex_derecho: 2024-07-03
+[20-Jul-2024 03:48:30 UTC] link_aviso: https://www.bmv.com.mx/docs-pub/derechos/derechos_1388000_1.pdf
+[20-Jul-2024 03:48:30 UTC] Consulta preparada: true
+[20-Jul-2024 04:03:19 UTC] event_id: 63
+[20-Jul-2024 04:03:19 UTC] empresa: Agrofibra
+[20-Jul-2024 04:03:19 UTC] ticker: GRUMAB
+[20-Jul-2024 04:03:19 UTC] monto: MXN $1.26
+[20-Jul-2024 04:03:19 UTC] comentario: CUFIN 2014 y posteriores
+[20-Jul-2024 04:03:19 UTC] fecha_pago: 2024-07-12
+[20-Jul-2024 04:03:19 UTC] fecha_ex_derecho: 2024-07-11
+[20-Jul-2024 04:03:19 UTC] link_aviso: https://www.bmv.com.mx/docs-pub/derechos/derechos_1386088_1.pdf
+[20-Jul-2024 04:03:19 UTC] Consulta preparada: true

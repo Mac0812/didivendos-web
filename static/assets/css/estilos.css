@@ -7,13 +7,11 @@
 }
 
 body{
-
     background-image: url(../images/divendo_fondo\ \(1\).png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
-   
 }
 
 main{
@@ -178,23 +176,48 @@ main{
     .contenedor__login-register form{
         position: relative;
     }
-   
-
-}
-
-.conter{
+    
+    /* Estilos para el contenedor del checkbox */
+.checkbox-container {
     display: flex;
     align-items: center;
-} 
-
-.pass{
-    display: none; /* Para ocultar la contrase√±a */
-    width: 100%; /* O ajusta seg√∫n necesites */
-    padding: 10px 5px;
+    margin-top: 20px;
 }
 
-.bx{
-    font-size: 25px;
-    transform: translateX(-2px);
+/* Estilos para el checkbox */
+.checkbox-container input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+/* Estilos para la etiqueta "Mostrar Contrase√±a" */
+.checkbox-container label {
+    font-size: 14px;
+    color: #3bd9f5;
+}
+
+/* Opcional: ajustar el estilo del contenedor del formulario */
+.formulario__login, .formulario__register {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+}
+
+.conter {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.conter input[type="password"] {
+    width: calc(100% - 30px); /* Ajusta segè´‚n el tamaè´–o del è´øcono */
+    padding-right: 30px; /* Espacio para el è´øcono */
+}
+
+.conter i.bx {
+    position: absolute;
+    right: 10px; /* Ajusta segè´‚n tu diseè´–o */
     cursor: pointer;
+    color: #000; /* Cambia el color segè´‚n tu diseè´–o */
 }
