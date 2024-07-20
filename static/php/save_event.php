@@ -1,14 +1,9 @@
 <?php
-// Conexi¨®n a la base de datos
-$host = "localhost";
-$user = "p4t5z8n7";
-$password = "C@sa-658!Ux4109@-1";  // Aseg„1¤7„1¤7rate de que la contrase„1¤70„1¤79a sea correcta
-$database = "p4t5z8n7_dividendoMX";
-
-$conexion = mysqli_connect($host, $user, $password, $database);
-if ($conexion->connect_error) {
-    die(json_encode(array("success" => false, "message" => "Conexion fallida: " . $conexion->connect_error)));
+$conexion = mysqli_connect("localhost", "root", "", "p4t5z8n7_dividendoMX");//ya se hizo la conexion
+if (mysqli_connect_errno()) {
+    die("Conexiï¿½ï¿½n fallida: " . mysqli_connect_error());
 }
+
 
 // Obtener y sanitizar los datos enviados por POST
 $event_id = isset($_POST['event-id']) ? $_POST['event-id'] : null;
@@ -26,7 +21,7 @@ $fecha_ex_derecho = $fecha_ex_derecho ? date("Y-m-d", strtotime($fecha_ex_derech
 
 $response = array();
 
-// Mensajes de depuraci„1¤7„1¤7n antes de preparar la consulta
+// Mensajes de depuraciï¿½1ï¿½7ï¿½1ï¿½7n antes de preparar la consulta
 error_log("event_id: " . $event_id);
 error_log("empresa: " . $empresa);
 error_log("ticker: " . $ticker);
@@ -46,7 +41,7 @@ if ($event_id) {
     $stmt->bind_param("sssssss", $empresa, $ticker, $monto, $comentario,  $fecha_pago, $fecha_ex_derecho, $link_aviso);
 }
 
-// Mensaje de depuraci„1¤7„1¤7n despu„1¤7„1¤7s de preparar la consulta
+// Mensaje de depuraciï¿½1ï¿½7ï¿½1ï¿½7n despuï¿½1ï¿½7ï¿½1ï¿½7s de preparar la consulta
 error_log("Consulta preparada: " . ($stmt ? "true" : "false"));
 
 if ($stmt->execute()) {
@@ -55,7 +50,7 @@ if ($stmt->execute()) {
     $response['success'] = false;
     $response['message'] = $stmt->error;
     
-    // Mensaje de depuraci„1¤7„1¤7n para errores en la ejecuci„1¤7„1¤7n de la consulta
+    // Mensaje de depuraciï¿½1ï¿½7ï¿½1ï¿½7n para errores en la ejecuciï¿½1ï¿½7ï¿½1ï¿½7n de la consulta
     error_log("Error en la ejecucion en la consulta: " . $stmt->error);
 }
 

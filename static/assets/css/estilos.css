@@ -211,13 +211,16 @@ main{
 }
 
 .conter input[type="password"] {
-    width: calc(100% - 30px); /* Ajusta seg«ân el tama«Ğo del «¿cono */
-    padding-right: 30px; /* Espacio para el «¿cono */
+    width: calc(100% - 30px); /* Ajusta segï¿½ï¿½ï¿½n el tamaï¿½ï¿½ï¿½o del ï¿½ï¿½ï¿½cono */
+    padding-right: 30px; /* Espacio para el ï¿½ï¿½ï¿½cono */
 }
 
 .conter i.bx {
     position: absolute;
-    right: 10px; /* Ajusta seg«ân tu dise«Ğo */
+    right: 10px; /* Ajusta segï¿½ï¿½ï¿½n tu diseï¿½ï¿½ï¿½o */
     cursor: pointer;
-    color: #000; /* Cambia el color seg«ân tu dise«Ğo */
+    color: #000; /* Cambia el color segï¿½ï¿½ï¿½n tu diseï¿½ï¿½ï¿½o */
+   
 }
+
+

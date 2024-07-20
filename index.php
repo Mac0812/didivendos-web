@@ -24,6 +24,7 @@ if (!isset($_SESSION['nombre_completo'])) {
   <link rel="preconnect" href="https://fonts.gstatic.com" />
   <link rel="shortcut icon" href="/static/assets/Iconos/logo png-08.png" />
   <link rel="canonical" href="https://demo-basic.adminkit.io/pages-blank.html" />
+  
   <title>Agenda de Dividendos</title>
   <link href="static/css/app.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
@@ -398,7 +399,10 @@ if (!isset($_SESSION['nombre_completo'])) {
               <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
                 <i class="align-middle" data-feather="settings"></i>
               </a>
-
+                <button class="switch" id="switch">
+                  <span><i class="fas fa-sun"></i></span>
+                  <span><i class="fas fa-moon"></i></span>
+                </button>
               <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
 
                 <span class="text-dark">Bienvenido, <?php echo $_SESSION['nombre_completo']; ?></span>

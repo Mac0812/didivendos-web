@@ -27,212 +27,263 @@ if (!isset($_SESSION['nombre_completo'])) {
   <link rel="canonical" href="https://demo-basic.adminkit.io/pages-blank.html" />
   <title>Edición Agenda de Dividendos</title>
   <link href="css/app.css" rel="stylesheet" />
+  <link href="css/estilos.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-    }
-
-    .calendar {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 70%;
-    }
-
-    .calendar-header {
-      display: flex;
-      justify-content: space-between;
-      width: 600px;
-      margin-bottom: 10px;
-    }
-
-    .calendar-header button {
-      background-color: #41e2ba;
-      color: white;
-      border: none;
-      padding: 10px;
-      cursor: pointer;
-    }
-
-    .calendar-grid {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 5px;
-      max-width: 600px;
-    }
-
-    .calendar-cell {
-      padding: 20px;
-      border: 1px solid #ddd;
-      text-align: center;
-    }
-
-    .calendar-cell-header {
-      background-color: #f0f0f0;
-    }
-
-    .calendar-cell-today {
-      background-color: #41e2ba;
-    }
-
-    .modal {
-      width: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      position: fixed;
-      height: 100%;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      display: flex;
-      justify-content: center;
-      padding: 20px;
-      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-      border-radius: 8px;
-      align-items: center;
-    }
-
-    .calendar-cell-event {
-      position: relative;
-    }
-
-    .calendar-cell-event::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background-color: rgb(111, 200, 186);
-    }
-
-    .modal-content {
-      background-color: rgb(225, 251, 240);
-      border-radius: 8px;
-      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-      width: 30%;
-      height: 100%;
-      margin-left: auto;
-    }
-
-    .event-list {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 5px;
-    }
-
-    .event-item {
-      background-color: #41e2ba;
-      padding: 5px 10px;
-      border-radius: 5px;
-      margin-bottom: 5px;
-      cursor: pointer;
-    }
-
-    .event-item:hover {
-      background-color: #0ad8a1;
-    }
-
-    .event-item:last-child {
-      margin-bottom: 0;
-    }
-
-    .close {
-      color: #aaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .close:hover,
-    .close:focus {
-      color: black;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    .content-title {
-      background-color: #41e2ba;
-      height: 100px;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-around;
-      align-items: center;
-      width: 100%;
-      padding: 20px;
-      border-radius: 8px 8px 0 0;
-    }
-
-    .content-modal {
-      background-color: rgb(225, 251, 240);
-      padding: 20px;
-      border-radius: 8px;
-    }
-
-    #event-title {
-      width: 75%;
-      font-size: 22px;
-      margin-top: 20px;
-    }
-
-    #event-form {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    input {
-      background-color: rgb(225, 251, 240);
-      border: 1px solid rgb(225, 251, 240);
-    }
-
-    .act-event {
-      background-color: #41e2ba;
-      color: white;
-      border: none;
-      padding: 10px;
-      cursor: pointer;
-    }
-
-    .del-event {
-      background-color: #41e2ba;
-      color: white;
-      border: none;
-      padding: 10px;
-      cursor: pointer;
-    }
-
-    .button-content {
-      display: flex;
-      justify-content: space-around;
-      flex-direction: row;
-      width: 100%;
-      align-items: center;
-      padding-top: 20px;
-
-    }
-
-    .add-event {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      text-align: center;
-      line-height: 100px;
-      font-size: 16px;
-      background-color: #41e2ba;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-  </style>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  
 </head>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #ece8e8;
+    transition: .3s ease all;
+    &.dark { 
+        background: #181717;
+  }
+ }
+  
 
+  .calendar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+  }
+
+  .calendar-header {
+    display: flex;
+    justify-content: space-between;
+    width: 600px;
+    margin-bottom: 10px;
+  }
+
+  .calendar-header button {
+    background-color: #41e2ba;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    max-width: 600px;
+  }
+
+  .calendar-cell {
+    padding: 20px;
+    border: 1px solid #ddd;
+    text-align: center;
+  }
+
+  .calendar-cell-header {
+    background-color: #f0f0f0;
+  }
+
+  .calendar-cell-today {
+    background-color: #41e2ba;
+  }
+
+  .modal {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    align-items: center;
+  }
+
+  .calendar-cell-event {
+    position: relative;
+  }
+
+  .calendar-cell-event::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: rgb(111, 200, 186);
+  }
+
+  .modal-content {
+    background-color: rgb(225, 251, 240);
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    height: 100%;
+    margin-left: auto;
+  }
+
+  .event-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+  }
+
+  .event-item {
+    background-color: #41e2ba;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+  }
+
+  .event-item:hover {
+    background-color: #0ad8a1;
+  }
+
+  .event-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .content-title {
+    background-color: #41e2ba;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    border-radius: 8px 8px 0 0;
+  }
+
+  .content-modal {
+    background-color: rgb(225, 251, 240);
+    padding: 20px;
+    border-radius: 8px;
+  }
+
+  #event-title {
+    width: 75%;
+    font-size: 22px;
+    margin-top: 20px;
+  }
+
+  #event-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  input {
+    background-color: rgb(225, 251, 240);
+    border: 1px solid rgb(225, 251, 240);
+  }
+
+  .act-event {
+    background-color: #41e2ba;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  .del-event {
+    background-color: #41e2ba;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  .button-content {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    padding-top: 20px;
+
+  }
+
+  .add-event {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 100px;
+    font-size: 16px;
+    background-color: #41e2ba;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .switch {
+    background: rgb(122, 214, 206);
+  border-radius: 1000px;
+  border: none;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  outline: none;
+margin: auto;
+
+&::after{
+  content: "";
+  display: block;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  background: #f1f1f1;
+  top: 0;
+  left: 0;
+  right: unset;
+  border-radius: 100px;
+  transition: .3s ease all;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, .2);
+}
+&.active{
+  background: #0ad8a1;
+  color: #000;
+  &::after{
+    right: 0;
+    left: unset;
+    }
+}
+  span {
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+      display: block;
+      background: none;
+      color: #fff;
+  }
+}
+
+ </style>
 <body>
   <div class="wrapper">
     <nav id="sidebar" class="sidebar js-sidebar">
@@ -256,26 +307,24 @@ if (!isset($_SESSION['nombre_completo'])) {
         <a class="sidebar-toggle js-sidebar-toggle">
           <i class="hamburger align-self-center"></i>
         </a>
-
         <div class="navbar-collapse collapse">
           <ul class="navbar-nav navbar-align">
-
             <li class="nav-item dropdown">
               <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
                 <i class="align-middle" data-feather="settings"></i>
               </a>
-
               <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-
                 <span class="text-dark">Bienvenido, <?php echo $_SESSION['nombre_completo']; ?></span>
               </a>
               <div class="dropdown-menu dropdown-menu-end">
-
-                <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="/static/php/cerrar_sesion.php">Cerrar sesión</a>
               </div>
             </li>
           </ul>
+          <button class="switch" id="switch">
+                  <span><i class='bx bxs-moon'></i></span>
+                  <span><i class='bx bx-moon' ></i></span>
+                </button>
         </div>
       </nav>
 
@@ -608,6 +657,7 @@ if (!isset($_SESSION['nombre_completo'])) {
   </div>
 
   <script src="js/app.js"></script>
+  <script src="js/main.js"></script>
 </body>
 
 </html>
