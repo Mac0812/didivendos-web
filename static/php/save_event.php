@@ -1,9 +1,5 @@
 <?php
-$conexion = mysqli_connect("localhost", "root", "", "p4t5z8n7_dividendoMX");//ya se hizo la conexion
-if (mysqli_connect_errno()) {
-    die("Conexi��n fallida: " . mysqli_connect_error());
-}
-
+include 'conexion_be.php';
 
 // Obtener y sanitizar los datos enviados por POST
 $event_id = isset($_POST['event-id']) ? $_POST['event-id'] : null;
