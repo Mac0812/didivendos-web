@@ -1,4 +1,6 @@
 <?php
-$conexion = mysqli_connect ("localhost","root","","login_register_bd");
-//ya se hizo la conexion
+$conexion = mysqli_connect("localhost", "root", "", "dividendoMX");
+if (mysqli_connect_errno()) {
+    die("Conexión fallida: " . mysqli_connect_error());
+}
 ?>

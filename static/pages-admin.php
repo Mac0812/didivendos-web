@@ -1,0 +1,633 @@
+<?php
+session_start();
+if (!isset($_SESSION['nombre_completo'])) {
+  echo '
+		<script> 
+		alert("Por favor, debes iniciar sesión para acceder a esta página");
+		 window.location = "../static/pages-sign-in.php";
+		</script>
+		';
+  session_destroy();
+  die();
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="Responsive Admin & Dashboard Template based on Bootstrap 5" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link rel="shortcut icon" href="assets/Iconos/logo.png" />
+  <title>Edición Agenda de Dividendos</title>
+  <link href="css/app.css" rel="stylesheet" />
+  <link href="css/estilos.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #ece8e8;
+    transition: .3s ease all;
+
+    &.dark {
+      background: #181717;
+    }
+  }
+
+
+  .calendar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+  }
+
+  .calendar-header {
+    display: flex;
+    justify-content: space-between;
+    width: 600px;
+    margin-bottom: 10px;
+  }
+
+  .calendar-header button {
+    background-color: #41e2ba;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    max-width: 600px;
+  }
+
+  .calendar-cell {
+    padding: 20px;
+    border: 1px solid #ddd;
+    text-align: center;
+  }
+
+  .calendar-cell-header {
+    background-color: #f0f0f0;
+  }
+
+  .calendar-cell-today {
+    background-color: #41e2ba;
+  }
+
+  .modal {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    align-items: center;
+  }
+
+  .calendar-cell-event {
+    position: relative;
+  }
+
+  .calendar-cell-event::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: rgb(111, 200, 186);
+  }
+
+  .modal-content {
+    background-color: rgb(225, 251, 240);
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    height: 100%;
+    margin-left: auto;
+  }
+
+  .event-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+  }
+
+  .event-item {
+    background-color: #41e2ba;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+  }
+
+  .event-item:hover {
+    background-color: #0ad8a1;
+  }
+
+  .event-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .content-title {
+    background-color: #41e2ba;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    border-radius: 8px 8px 0 0;
+  }
+
+  .content-modal {
+    background-color: rgb(225, 251, 240);
+    padding: 20px;
+    border-radius: 8px;
+  }
+
+  #event-title {
+    width: 75%;
+    font-size: 22px;
+    margin-top: 20px;
+  }
+
+  #event-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  input {
+    background-color: rgb(225, 251, 240);
+    border: 1px solid rgb(225, 251, 240);
+  }
+
+  .act-event {
+    background-color: #41e2ba;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  .del-event {
+    background-color: #41e2ba;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  .button-content {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    padding-top: 20px;
+
+  }
+
+  .add-event {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 100px;
+    font-size: 16px;
+    background-color: #41e2ba;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .switch {
+    background: rgb(122, 214, 206);
+    border-radius: 1000px;
+    border: none;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    outline: none;
+    margin: auto;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 30px;
+      height: 30px;
+      position: absolute;
+      background: #f1f1f1;
+      top: 0;
+      left: 0;
+      right: unset;
+      border-radius: 100px;
+      transition: .3s ease all;
+      box-shadow: 0px 0px 2px rgba(0, 0, 0, .2);
+    }
+
+    &.active {
+      background: #0ad8a1;
+      color: #000;
+
+      &::after {
+        right: 0;
+        left: unset;
+      }
+    }
+
+    span {
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+      display: block;
+      background: none;
+      color: #fff;
+    }
+  }
+</style>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar" class="sidebar js-sidebar">
+      <div class="sidebar-content js-simplebar">
+        <a class="sidebar-brand" href="pages-admin.php">
+          <img src="assets/Iconos/logoNav.png" alt="+Dividendos" class="align-middle" width="50" height="50">
+        </a>
+        <ul class="sidebar-nav">
+          <li class="sidebar-item">
+            <a class="sidebar-link" href="pages-admin.php">
+              <i class="align-middle" data-feather="book"></i>
+              <span class="align-middle">Edición Agenda Dividendos</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="main">
+      <nav class="navbar navbar-expand navbar-light navbar-bg">
+        <a class="sidebar-toggle js-sidebar-toggle">
+          <i class="hamburger align-self-center"></i>
+        </a>
+        <div class="navbar-collapse collapse">
+          <ul class="navbar-nav navbar-align">
+            <li class="nav-item dropdown">
+              <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
+                <i class="align-middle" data-feather="settings"></i>
+              </a>
+              <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
+                <span class="text-dark">Bienvenido, <?php echo $_SESSION['nombre_completo']; ?></span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-end">
+                <a class="dropdown-item" href="/static/php/cerrar_sesion.php">Cerrar sesión</a>
+              </div>
+            </li>
+          </ul>
+          <button class="switch" id="switch">
+            <span><i class='bx bxs-moon'></i></span>
+            <span><i class='bx bx-moon'></i></span>
+          </button>
+        </div>
+      </nav>
+
+      <main class="content">
+        <div class="container-fluid p-0">
+          <h1 class="h3 mb-3">Agenda de Dividendos</h1>
+          <div class="calendar">
+            <div class="calendar-header">
+              <button onclick="prevMonth()">Anterior</button>
+              <h2 id="calendar-title"></h2>
+              <button onclick="nextMonth()">Siguiente</button>
+              <div class="add-event" onclick="showModal(null)">+</div>
+            </div>
+            <div class="calendar-grid" id="calendar-grid"></div>
+          </div>
+
+          <div id="event-modal" class="modal">
+            <div class="modal-content">
+              <div class="content-title">
+                <h2 id="event-title"></h2>
+                <span class="close" onclick="closeModal()">&times;</span>
+              </div>
+              <div class="content-modal">
+                <form id="event-form">
+                  <label for="event-empresa">Empresa:</label>
+                  <select id="event-empresa" name="event-empresa"></select>
+                  <label for="event-ticker">Ticker:</label>
+                  <input id="event-ticker" name="event-ticker" type="text">
+                  <label for="event-costo">Monto:</label>
+                  <input id="event-costo" name="event-costo" type="text">
+                  <label for="event-comentario">Comentario:</label>
+                  <input id="event-comentario" name="event-comentario" type="text">
+                  <label for="event-date">Fecha Pago:</label>
+                  <input id="event-date" name="event-date" type="date">
+                  <label for="event-ex-derecho">Fecha Ex-Derecho:</label>
+                  <input id="event-ex-derecho" name="event-ex-derecho" type="date">
+                  <label for="event-aviso">Link Aviso:</label>
+                  <input id="event-aviso" name="event-aviso" type="text">
+                  <div class="button-content">
+                    <button type="button" class="act-event" onclick="saveEvent()">Guardar</button>
+                    <button type="button" class="del-event" onclick="deleteEvent()">Eliminar</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <script>
+            const calendarGrid = document.getElementById("calendar-grid");
+            const calendarTitle = document.getElementById("calendar-title");
+            const eventModal = document.getElementById("event-modal");
+            const eventTitle = document.getElementById("event-title");
+            const eventEmpresa = document.getElementById("event-empresa");
+            const eventTicker = document.getElementById("event-ticker");
+            const eventCosto = document.getElementById("event-costo");
+            const eventComentario = document.getElementById("event-comentario");
+            const eventDate = document.getElementById("event-date");
+            const eventExDerecho = document.getElementById("event-ex-derecho");
+            const eventAviso = document.getElementById("event-aviso");
+
+            const daysOfWeek = ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"];
+            let currentDate = new Date();
+            let currentEvent = null;
+
+            function formatDate(date) {
+              const year = date.getFullYear();
+              const month = String(date.getMonth() + 1).padStart(2, '0');
+              const day = String(date.getDate()).padStart(2, '0');
+              return `${year}-${month}-${day}`;
+            }
+
+            const events = [];
+
+            function prevMonth() {
+              currentDate.setMonth(currentDate.getMonth() - 1);
+              renderCalendar();
+            }
+
+            function nextMonth() {
+              currentDate.setMonth(currentDate.getMonth() + 1);
+              renderCalendar();
+            }
+
+            function closeModal() {
+              eventModal.style.display = "none";
+            }
+
+            window.onclick = function(event) {
+              if (event.target == eventModal) {
+                closeModal();
+              }
+            };
+            eventModal.style.display = "none";
+
+            function showModal(event) {
+              currentEvent = event;
+              loadCompanies();
+              if (event) {
+                eventTitle.textContent = event.empresa;
+                eventEmpresa.value = event.empresa;
+                eventTicker.value = event.ticker || "";
+                eventCosto.value = event.monto;
+                eventComentario.value = event.comentario || "";
+                eventDate.value = event.fecha_pago ? formatDate(event.fecha_pago) : "";
+                eventExDerecho.value = event.fecha_ex_derecho ? formatDate(event.fecha_ex_derecho) : "";
+                eventAviso.value = event.link_aviso || "";
+              } else {
+                eventTitle.textContent = "Nuevo Evento";
+                eventEmpresa.value = "";
+                eventTicker.value = "";
+                eventCosto.value = "";
+                eventComentario.value = "";
+                eventDate.value = "";
+                eventExDerecho.value = "";
+                eventAviso.value = "";
+              }
+              eventModal.style.display = "block";
+            }
+
+            function deleteEvent() {
+              if (!currentEvent) return;
+              const formData = new FormData();
+              formData.append('event-id', currentEvent.id);
+              fetch('php/delete_event.php', {
+                  method: 'POST',
+                  body: formData
+                })
+                .then(response => {
+                  if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                  }
+                  return response.json();
+                })
+                .then(data => {
+                  if (data.success) {
+                    alert('Evento eliminado correctamente');
+                    const index = events.indexOf(currentEvent);
+                    if (index > -1) {
+                      events.splice(index, 1);
+                      renderCalendar();
+                    }
+                  } else {
+                    alert('Error al eliminar el evento: ' + data.message);
+                  }
+                })
+                .catch(error => {
+                  console.error('Error:', error);
+                  alert('Error al eliminar el evento: ' + error.message);
+                });
+              closeModal();
+            }
+
+            function saveEvent() {
+              const formData = new FormData(document.getElementById("event-form"));
+              const empresaSelect = document.getElementById("event-empresa");
+              formData.set("event-empresa", empresaSelect.options[empresaSelect.selectedIndex].value);
+
+              if (currentEvent) {
+                formData.append("event-id", currentEvent.id);
+              }
+
+              fetch('php/save_event.php', {
+                  method: 'POST',
+                  body: formData
+                })
+                .then(response => {
+                  if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                  }
+                  return response.json();
+                })
+                .then(data => {
+                  if (data.success) {
+                    alert('Evento guardado correctamente');
+                    loadEventsFromDatabase();
+                    closeModal();
+                    renderCalendar();
+                  } else {
+                    alert('Error al guardar el evento: ' + data.message);
+                  }
+                })
+                .catch(error => {
+                  console.error('Error:', error);
+                  alert('Error al guardar el evento: ' + error.message);
+                });
+            }
+
+            function renderCalendar() {
+              calendarGrid.innerHTML = "";
+              calendarTitle.textContent = currentDate.toLocaleDateString("es-ES", {
+                month: "long",
+                year: "numeric",
+              });
+              daysOfWeek.forEach((day) => {
+                const cell = document.createElement("div");
+                cell.classList.add("calendar-cell", "calendar-cell-header");
+                cell.textContent = day;
+                calendarGrid.appendChild(cell);
+              });
+              const firstDayOfMonth = new Date(
+                currentDate.getFullYear(),
+                currentDate.getMonth(),
+                1
+              );
+              const lastDayOfMonth = new Date(
+                currentDate.getFullYear(),
+                currentDate.getMonth() + 1,
+                0
+              );
+              const startDay = firstDayOfMonth.getDay();
+              for (let i = 0; i < startDay; i++) {
+                const cell = document.createElement("div");
+                cell.classList.add("calendar-cell");
+                calendarGrid.appendChild(cell);
+              }
+              for (let i = 1; i <= lastDayOfMonth.getDate(); i++) {
+                const cell = document.createElement("div");
+                cell.classList.add("calendar-cell");
+                cell.textContent = i;
+                const dateToCheck = new Date(currentDate.getFullYear(), currentDate.getMonth(), i);
+                const eventsOfDay = events.filter(
+                  (e) =>
+                  e.fecha_pago.getDate() === dateToCheck.getDate() &&
+                  e.fecha_pago.getMonth() === dateToCheck.getMonth() &&
+                  e.fecha_pago.getFullYear() === dateToCheck.getFullYear()
+                );
+                if (eventsOfDay.length > 0) {
+                  cell.classList.add("calendar-cell-event");
+                  const eventList = document.createElement("div");
+                  eventList.classList.add("event-list");
+                  eventsOfDay.forEach((event) => {
+                    const eventItem = document.createElement("div");
+                    eventItem.classList.add("event-item");
+                    eventItem.textContent = event.ticker;
+                    eventItem.addEventListener("click", () => {
+                      showModal(event);
+                    });
+                    eventList.appendChild(eventItem);
+                  });
+                  cell.appendChild(eventList);
+                }
+
+                calendarGrid.appendChild(cell);
+              }
+            }
+
+            function parseDate(dateStr) {
+              const parts = dateStr.split('-');
+              return new Date(parts[0], parts[1] - 1, parts[2]);
+            }
+
+            function loadCompanies() {
+              fetch("php/get_companies.php")
+                .then(response => response.json())
+                .then(data => {
+                  const empresaSelect = document.getElementById("event-empresa");
+                  empresaSelect.innerHTML = "";
+                  data.forEach(company => {
+                    const option = document.createElement("option");
+                    option.value = company.nombre; 
+                    option.textContent = company.nombre; 
+                    empresaSelect.appendChild(option);
+                  });
+                })
+                .catch(error => console.error("Error cargando empresas:", error));
+            }
+
+            function loadEventsFromDatabase() {
+              fetch("php/database.php")
+                .then((response) => response.json())
+                .then((data) => {
+                  events.length = 0;
+                  data.forEach((event) => {
+                    const formattedEvent = {
+                      id: event.id,
+                      empresa: event.empresa,
+                      monto: event.monto,
+                      ticker: event.ticker,
+                      comentario: event.comentario,
+                      exento_impuesto: event.exento_impuesto,
+                      fecha_pago: parseDate(event.fecha_pago),
+                      fecha_ex_derecho: parseDate(event.fecha_ex_derecho),
+                      link_aviso: event.link_aviso,
+                    };
+                    events.push(formattedEvent);
+                  });
+                  renderCalendar();
+                })
+                .catch((error) => console.error("Error cargando eventos:", error));
+            }
+
+            loadEventsFromDatabase();
+            renderCalendar();
+          </script>
+        </div>
+      </main>
+
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
