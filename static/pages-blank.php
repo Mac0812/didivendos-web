@@ -13,224 +13,177 @@ if (!isset($_SESSION['nombre_completo'])) {
 
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta
+      name="description"
+      content="Responsive Admin & Dashboard Template based on Bootstrap 5"
+    />
+    <meta name="author" content="AdminKit" />
+    <meta
+      name="keywords"
+      content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web"
+    />
 
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <meta name="description" content="Responsive Admin & Dashboard Template based on Bootstrap 5" />
-  <meta name="author" content="AdminKit" />
-  <meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link rel="shortcut icon" href="/static/assets/Iconos/logo png-08.png" />
-  <link rel="canonical" href="https://demo-basic.adminkit.io/pages-blank.html" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="shortcut icon" href="/static/assets/Iconos/logo png-08.png" />
 
-  <title>Agenda de Dividendos</title>
-  <link href="static/css/app.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-    }
+    <link
+      rel="canonical"
+      href="https://demo-basic.adminkit.io/pages-blank.html"
+    />
 
-    .calendar {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 58%;
-    }
+    <title>Agenda de Dividendos</title>
 
-    .calendar-header {
-      display: flex;
-      justify-content: space-between;
-      width: 600px;
-      margin-bottom: 10px;
-    }
+    <link href="css/app.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
 
-    .calendar-header button {
-      background-color: #41e2ba;
-      color: white;
-      border: none;
-      padding: 10px;
-      cursor: pointer;
-    }
+    <!-- Include Babel -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-    .calendar-grid {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 5px;
-      max-width: 600px;
-    }
+    <!-- Include moment.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 
-    .calendar-cell {
-      padding: 20px;
-      border: 1px solid #ddd;
-      text-align: center;
-    }
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      .calendar {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 70%;
+      }
+      .calendar-header {
+        display: flex;
+        justify-content: space-between;
+        width: 600px;
+        margin-bottom: 10px;
+      }
+      .calendar-header button {
+        background-color: #41e2ba;
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+      }
+      .calendar-grid {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 5px;
+        max-width: 600px;
+      }
+      .calendar-cell {
+        padding: 20px;
+        border: 1px solid #ddd;
+        text-align: center;
+      }
+      .calendar-cell-header {
+        background-color: #f0f0f0;
+      }
+      .calendar-cell-today {
+        background-color: #41e2ba;
+      }
+      .modal {
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        position: fixed;
+        height: 100%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        align-items: center;
+      }
+      .calendar-cell-event {
+        position: relative;
+      }
 
-    .calendar-cell-header {
-      background-color: #f0f0f0;
-    }
+      .calendar-cell-event::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: rgb(111, 200, 186);
+      }
 
-    .calendar-cell-today {
-      background-color: #41e2ba;
-    }
+      .modal-content {
+        background-color: rgb(225, 251, 240);
+        border-radius: 8px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        width: 30%;
+        height: 100%;
+        margin-left: auto;
+      }
+      .event-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 5px;
+      }
 
-    .modal {
-      width: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      position: fixed;
-      height: 100%;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      display: flex;
-      justify-content: center;
-      padding: 20px;
-      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-      border-radius: 8px;
-      align-items: center;
-    }
+      .event-item {
+        background-color: #41e2ba;
+        padding: 5px 10px;
+        border-radius: 5px;
+        margin-bottom: 5px;
+        cursor: pointer;
+      }
 
-    .calendar-cell-event {
-      position: relative;
-    }
+      .event-item:hover {
+        background-color: #0ad8a1;
+      }
 
-    .calendar-cell-event::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background-color: rgb(111, 200, 186);
-    }
+      .event-item:last-child {
+        margin-bottom: 0;
+      }
 
-    .modal-content {
-      background-color: rgb(225, 251, 240);
-      border-radius: 8px;
-      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-      width: 30%;
-      height: 100%;
-      margin-left: auto;
-    }
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+      }
 
-    .event-list {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 5px;
-    }
-
-    .event-item {
-      background-color: #41e2ba;
-      padding: 5px 10px;
-      border-radius: 5px;
-      margin-bottom: 5px;
-      cursor: pointer;
-    }
-
-    .event-item:hover {
-      background-color: #0ad8a1;
-    }
-
-    .event-item:last-child {
-      margin-bottom: 0;
-    }
-
-    .close {
-      color: #aaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .close:hover,
-    .close:focus {
-      color: black;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    .content-title {
-      background-color: #41e2ba;
-      height: 100px;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-around;
-      align-items: center;
-      width: 100%;
-      padding: 20px;
-      border-radius: 8px 8px 0 0;
-    }
-
-    .content-modal {
-      background-color: rgb(225, 251, 240);
-      padding: 20px;
-      border-radius: 8px;
-    }
-
-    #event-title {
-      width: 75%;
-      font-size: 22px;
-      margin-top: 20px;
-    }
-
-    #event-form {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    input {
-      background-color: rgb(225, 251, 240);
-      border: 1px solid rgb(225, 251, 240);
-    }
-
-    .act-event {
-      background-color: #41e2ba;
-      color: white;
-      border: none;
-      padding: 10px;
-      cursor: pointer;
-    }
-
-    .del-event {
-      background-color: #41e2ba;
-      color: white;
-      border: none;
-      padding: 10px;
-      cursor: pointer;
-    }
-
-    .button-content {
-      display: flex;
-      justify-content: space-around;
-      flex-direction: row;
-      width: 100%;
-      align-items: center;
-      padding-top: 20px;
-
-    }
-
-    .add-event {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      text-align: center;
-      line-height: 100px;
-      font-size: 16px;
-      background-color: #41e2ba;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      .content-title {
+        background-color: #41e2ba;
+        height: 100px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        padding: 20px;
+        border-radius: 8px 8px 0 0;
+      }
+      .content-modal {
+        background-color: rgb(225, 251, 240);
+        padding: 20px;
+        border-radius: 8px;
+      }
+      
     .event-list-ex {
       display: flex;
       flex-direction: column;
@@ -267,8 +220,14 @@ if (!isset($_SESSION['nombre_completo'])) {
       height: 2px;
       background-color: rgb(166, 228, 246);
     }
-
-    @media (max-width: 600px) {
+    
+      #event-title {
+        width: 75%;
+        font-size: 22px;
+        margin-top: 20px;
+      }
+      
+      @media (max-width: 600px) {
       .calendar {
         width: 100%;
       }
@@ -287,7 +246,6 @@ if (!isset($_SESSION['nombre_completo'])) {
         font-size: 7px;
         padding: 3px;
       }
-
       .event-item-ex {
         font-size: 7px;
         padding: 3px;
@@ -300,7 +258,7 @@ if (!isset($_SESSION['nombre_completo'])) {
       }
 
       .calendar-header button {
-        margin: 2px 0;
+        margin: 5px 0;
       }
 
       .calendar-grid {
@@ -330,7 +288,7 @@ if (!isset($_SESSION['nombre_completo'])) {
       }
 
       .calendar-header button {
-        margin: 2px 0;
+        margin: 5px 0;
       }
 
       .calendar-grid {
@@ -347,7 +305,6 @@ if (!isset($_SESSION['nombre_completo'])) {
         font-size: 6px;
         padding: 2px;
       }
-
       .event-item-ex {
         font-size: 6px;
         padding: 2px;
@@ -362,33 +319,28 @@ if (!isset($_SESSION['nombre_completo'])) {
         font-size: 16px;
       }
     }
+    </style>
+  </head>
 
-    #event-ticker {
-      font-weight: bold;
-    }
-  </style>
-</head>
+  <body>
+    <div class="wrapper">
+      <nav id="sidebar" class="sidebar js-sidebar">
+        <div class="sidebar-content js-simplebar">
+          <a class="sidebar-brand" href="../index.php">
+            <span class="align-middle">+Dividendos</span>
+          </a>
+          <ul class="sidebar-nav">
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="/static/pages-blank.php">
+                <i class="align-middle" data-feather="book"></i>
+                <span class="align-middle">Agenda Dividendos</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
 
-<body>
-  <div class="wrapper">
-    <nav id="sidebar" class="sidebar js-sidebar">
-      <div class="sidebar-content js-simplebar">
-        <a class="sidebar-brand" href="index.php">
-          <img src="/static/assets/logo.png" alt="+Dividendos" class="align-middle">
-        </a>
-
-        <ul class="sidebar-nav">
-          <li class="sidebar-item">
-            <a class="sidebar-link" href="static/pages-blank.php">
-              <i class="align-middle" data-feather="book"></i>
-              <span class="align-middle">Agenda Dividendos</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-
-    <div class="main">
+      <div class="main">
       <nav class="navbar navbar-expand navbar-light navbar-bg">
         <a class="sidebar-toggle js-sidebar-toggle">
           <i class="hamburger align-self-center"></i>
@@ -400,10 +352,7 @@ if (!isset($_SESSION['nombre_completo'])) {
               <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
                 <i class="align-middle" data-feather="settings"></i>
               </a>
-              <button class="switch" id="switch">
-                <span><i class="fas fa-sun"></i></span>
-                <span><i class="fas fa-moon"></i></span>
-              </button>
+
               <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
 
                 <span class="text-dark">Bienvenido, <?php echo $_SESSION['nombre_completo']; ?></span>
@@ -431,27 +380,25 @@ if (!isset($_SESSION['nombre_completo'])) {
           <div id="event-modal" class="modal">
             <div class="modal-content">
               <div class="content-title">
-                <img id="dividendo-img" src="" alt="Dividendo Imagen" width="50" height="50">
                 <h2 id="event-title"></h2>
                 <span class="close" onclick="closeModal()">&times;</span>
               </div>
               <div class="content-modal">
                 <p id="event-description"></p>
-                <label>Ticker: </label>
-                <p id="event-ticker"></p>
                 <label>Monto: </label>
                 <p id="event-costo"></p>
-                <label>Comentario:</label>
-                <p id="event-comentario"></p>
-                <label>Fecha pago: </label>
-                <p id="event-date"></p>
+                <label>Ticker: </label>
+                <p id="event-ticker"></p>
                 <label>Fecha ex-derecho: </label>
                 <p id="event-ex"></p>
+                <label>Fecha pago: </label>
+                <p id="event-date"></p>
                 <label>Link aviso: </label>
                 <a id="event-aviso" href="" target="_blank"></a>
               </div>
             </div>
           </div>
+
           <script>
             const calendarGrid = document.getElementById("calendar-grid");
             const calendarTitle = document.getElementById("calendar-title");
@@ -462,14 +409,26 @@ if (!isset($_SESSION['nombre_completo'])) {
             const eventExDerecho = document.getElementById("event-ex");
             const eventDate = document.getElementById("event-date");
             const eventAviso = document.getElementById("event-aviso");
-            const eventComentario = document.getElementById("event-comentario");
-            const eventDescription = document.getElementById("event-description");
-            const daysOfWeek = ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"];
+
+
+            const eventDescription =
+              document.getElementById("event-description");
+            const daysOfWeek = [
+              "Dom",
+              "Lun",
+              "Mar",
+              "Mié",
+              "Jue",
+              "Vie",
+              "Sáb",
+            ];
             const date = new Date();
             const events = [];
 
             function formatDate(date) {
-              return `${date.getDate()}/${String(date.getMonth() + 1).padStart(2, "0")}/${date.getFullYear()}`;
+              return `${date.getDate()}/${String(
+                  date.getMonth() + 1
+                ).padStart(2, "0")}/${date.getFullYear()}`;
             }
 
             function prevMonth() {
@@ -484,25 +443,18 @@ if (!isset($_SESSION['nombre_completo'])) {
 
             eventModal.style.display = "none";
 
-            function setDividendoImage(event) {
-              const imagen = imagenes.find(img => img.titulo === event.title);
-              if (imagen) {
-                document.getElementById('dividendo-img').src = imagen.ruta;
-              } else {
-                document.getElementById('dividendo-img').src = 'LogosEmp/logoBlanck.png';
-              }
-            }
-
             function showModal(event) {
               eventTitle.textContent = event.title || "";
               eventCosto.textContent = event.monto || "";
               eventTicker.textContent = event.ticker || "";
-              eventComentario.textContent = event.comentario || "";
-              eventExDerecho.textContent = event.ex_derecho ? formatDate(event.ex_derecho) : "";
-              eventDate.textContent = event.date ? formatDate(event.date) : "";
+              eventExDerecho.textContent = event.ex_derecho ?
+                formatDate(event.ex_derecho) :
+                "";
+              eventDate.textContent = event.date ?
+                formatDate(event.date) :
+                "";
               eventAviso.textContent = event.aviso || "";
-              eventAviso.href = event.aviso;
-              setDividendoImage(event);
+              eventAviso.href = event.link_aviso;
               eventModal.style.display = "block";
             }
 
@@ -603,9 +555,12 @@ if (!isset($_SESSION['nombre_completo'])) {
               return new Date(parts[0], parts[1] - 1, parts[2]);
             }
 
+
+
             function loadEventsFromDatabase() {
-              fetch("static/php/database.php")
+              fetch("php/database.php")
                 .then((response) => {
+                  console.log(response)
                   if (!response.ok) {
                     throw new Error('Network response was not ok');
                   }
@@ -616,10 +571,10 @@ if (!isset($_SESSION['nombre_completo'])) {
                     const formattedEvent = {
                       title: event.empresa,
                       ticker: event.ticker,
-                      monto: `${event.monto}`,
+                      monto: `$${event.monto}`,
                       ex_derecho: parseDate(event.fecha_ex_derecho),
                       date: parseDate(event.fecha_pago),
-                      comentario: event.comentario,
+                      description: event.comentario,
                       aviso: event.link_aviso,
                     };
                     events.push(formattedEvent);
@@ -631,10 +586,8 @@ if (!isset($_SESSION['nombre_completo'])) {
                 );
             }
 
-            document.addEventListener("DOMContentLoaded", function() {
-              loadEventsFromDatabase();
-            });
-
+            loadEventsFromDatabase();
+            renderCalendar();
 
             function aceptarNotificaciones() {
               if (confirm('¿Está seguro de que desea recibir notificaciones?')) {
@@ -643,7 +596,7 @@ if (!isset($_SESSION['nombre_completo'])) {
                 xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
                 xhr.onreadystatechange = function() {
                   if (xhr.readyState == 4 && xhr.status == 200) {
-                    alert(xhr.responseText);
+                    alert(xhr.responseText); 
                   }
                 };
                 xhr.send('aceptar_notificaciones=1&id_usuario=id_usuario'); // Enviar los datos necesarios
@@ -657,17 +610,15 @@ if (!isset($_SESSION['nombre_completo'])) {
         <div class="container-fluid">
           <div class="row text-muted">
             <div class="col-6 text-start">
-
+         
               </ul>
             </div>
           </div>
         </div>
       </footer>
     </div>
-  </div>
+    </div>
 
-  <script src="static/js/app.js"></script>
-  <script src="static/js/logos.js"></script>
-</body>
-
+    <script src="js/app.js"></script>
+  </body>
 </html>

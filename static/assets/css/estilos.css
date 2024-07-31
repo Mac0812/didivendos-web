@@ -7,7 +7,7 @@
 }
 
 body{
-    background-image: url(../images/bg4.jpg);
+    background-image: url(../images/divendo_fondo\ \(1\).png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -35,7 +35,7 @@ main{
     justify-content: center;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-    background-color: rgba(38, 110, 24, 0.815);
+    background-color: rgba(39, 197, 184, 0.815);
 
 }
 
@@ -75,7 +75,7 @@ main{
 
 .caja__trasera button:hover{
     background: #fff;
-    color: #1a6b21;
+    color: #12b49f;
 }
 
 /*Formularios*/
@@ -99,13 +99,15 @@ main{
     background: white;
     position: absolute;
     border-radius: 20px;
+    border: 3px solid #0d695d;
 }
 
 .contenedor__login-register form h2{
     font-size: 30px;
     text-align: center;
     margin-bottom: 20px;
-    color:#1a6b21;
+    color:#12b49f;
+   
 }
 
 .contenedor__login-register form input{
@@ -116,6 +118,7 @@ main{
     background: #F2F2F2;
     font-size: 16px;
     outline: none;
+    
 }
 
 .contenedor__login-register form button{
@@ -123,7 +126,7 @@ main{
     margin-top: 40px;
     border: none;
     font-size: 14px;
-    background: #1a6b21;
+    background: #12b49f;
     font-weight: 600;
     cursor: pointer;
     color: white;
@@ -173,4 +176,51 @@ main{
     .contenedor__login-register form{
         position: relative;
     }
+    
+    /* Estilos para el contenedor del checkbox */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
 }
+
+/* Estilos para el checkbox */
+.checkbox-container input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+/* Estilos para la etiqueta "Mostrar Contraseña" */
+.checkbox-container label {
+    font-size: 14px;
+    color: #3bd9f5;
+}
+
+/* Opcional: ajustar el estilo del contenedor del formulario */
+.formulario__login, .formulario__register {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+}
+
+.conter {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.conter input[type="password"] {
+    width: calc(100% - 30px); /* Ajusta seg���n el tama���o del ���cono */
+    padding-right: 30px; /* Espacio para el ���cono */
+}
+
+.conter i.bx {
+    position: absolute;
+    right: 10px; /* Ajusta seg���n tu dise���o */
+    cursor: pointer;
+    color: #000; /* Cambia el color seg���n tu dise���o */
+   
+}
+
+
