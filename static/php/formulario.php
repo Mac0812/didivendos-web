@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($mailResult === true) {
             echo 
          '<script>
-        alert("Mensaje Enviado Correctamente!");
+     
          window.location = "/index.php";
     </script>';
 

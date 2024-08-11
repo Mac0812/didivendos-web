@@ -95,7 +95,6 @@ if (!isset($_SESSION['nombre_completo'])) {
                 <span class="text-dark">Bienvenido, <?php echo $_SESSION['nombre_completo']; ?></span>
               </a>
               <div class="dropdown-menu dropdown-menu-end">
-                <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="/static/php/cerrar_sesion.php">Cerrar sesión</a>
               </div>
             </li>

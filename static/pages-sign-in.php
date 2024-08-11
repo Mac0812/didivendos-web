@@ -1,7 +1,7 @@
 <?php
     session_start();
     if (isset($_SESSION['usuario'])) {
-        header ("location:/app.masdividendos.mx/index.mx");
+        header ("location:/index.php");
     }
 ?>
 
