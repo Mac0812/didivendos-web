@@ -189,7 +189,7 @@ main{
     margin-right: 5px;
 }
 
-/* Estilos para la etiqueta "Mostrar Contraseña" */
+/* Estilos para la etiqueta "Mostrar Contrase単a" */
 .checkbox-container label {
     font-size: 14px;
     color: #3bd9f5;
@@ -211,16 +211,14 @@ main{
 }
 
 .conter input[type="password"] {
-    width: calc(100% - 30px); /* Ajusta seg���n el tama���o del ���cono */
-    padding-right: 30px; /* Espacio para el ���cono */
+    width: calc(100% ); /* Ajusta el tamaño icono
+    padding-right: 30px; /* Espacio para el icono */
 }
 
 .conter i.bx {
     position: absolute;
-    right: 10px; /* Ajusta seg���n tu dise���o */
+    right: 10px;
+    top: 30px;
     cursor: pointer;
-    color: #000; /* Cambia el color seg���n tu dise���o */
-   
+    color: #000;
 }
-
-

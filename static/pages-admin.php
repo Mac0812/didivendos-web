@@ -320,6 +320,7 @@ if (!isset($_SESSION['nombre_completo'])) {
                   });
                   cell.appendChild(eventList);
                 }
+
                 calendarGrid.appendChild(cell);
               }
             }
