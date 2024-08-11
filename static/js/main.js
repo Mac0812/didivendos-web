@@ -14,4 +14,4 @@ btnSwitch.addEventListener('click', () => {
   chatButton.onclick = function() {
     chatModal.style.display = 'block';
   };
-
+ 

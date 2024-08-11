@@ -1,8 +1,11 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Nunito", sans-serif;
+  font-weight: 800;
   background: #ece8e8;
   transition: .3s ease all;
 }
+
+
 
 body.dark {
   background: #181717;
@@ -125,11 +128,12 @@ body.dark {
     }
 
     .event-item {
-      background-color: #41e2ba;
+      background-color: #025e73;
       padding: 5px 10px;
       border-radius: 5px;
       margin-bottom: 5px;
       cursor: pointer;
+      color: beige;
     }
 
     .event-item:hover {
@@ -336,7 +340,7 @@ body.dark {
   display: flex;
   outline: none;
   margin: auto;
-  margin-left: -10px;
+  margin-left: 400px;
 }
 
 .switch::after {
@@ -381,12 +385,12 @@ body.dark-mode {
 }
 
 body.dark-mode nav {
-  background-color: #1d1c1c;
+  background-color: #4a4f5a;
   color: #fff;
 }
 
 body.dark-mode main.content {
-  background-color: #0c0c0cfa;
+  background-color: #353b47;
   color: #fff;
 }
 
@@ -419,7 +423,7 @@ body.dark-mode p {
 }
 
 body.dark-mode .calendar-cell-header {
-  background-color: #1d1c1c;
+  background-color: #60cbb0;
 }
 
 body.dark-mode h1,
@@ -440,7 +444,7 @@ body.dark-mode footer.footer {
 }
 
 body.dark-mode .event-item {
-    color: #000000;
+    color: #ffffff;
 }
 
 body.dark-mode .event-item-ex {
@@ -459,10 +463,9 @@ body.dark-mode #event-title {
 }
 
 body.dark-mode .floating-form {
- 
 background-color: #2b2929e7;
- 
 }
+
 
 body.dark-mode h1, body.dark-mode h2 {
   color: #ede0e0;
@@ -471,6 +474,30 @@ body.dark-mode h1, body.dark-mode h2 {
 body.dark-mode .floating-form button {
   color: #1a1818;
 }
+
+body.dark-mode ul.nav-links a{
+  transform: scale(1.1);
+  color: #ebe1e1;
+  }
+
+  body.dark-mode .list-group{
+    background: #bcc5d1;
+  }
+
+  body.dark-mode .dropdown-menu-header{
+    border-bottom: 1px solid #959fab;
+    font-weight: 600;
+    padding: .75rem;
+    text-align: center;
+    color: beige;
+    background: #343a40;
+  }
+
+  
+  .dark-mode .iconoo img {
+    content: url('/static/assets/Iconos/+dB.svg'); /* Ruta de la imagen en modo oscuro */
+}
+/*NOTIFICACIONES*/
 
 .notificacion {
       padding: 15px;
@@ -497,11 +524,13 @@ body.dark-mode .floating-form button {
       .calendar-cell {
         padding: 3px;
         width: 50px;
+        border: 1px solid #577169
       }
 
       .event-item {
         font-size: 7px;
         padding: 3px;
+        
       }
 
       .event-item-ex {
@@ -579,7 +608,7 @@ body.dark-mode .floating-form button {
       }
     }
     
-   /* Bot¨®n de Chat */
+   /* Botï¿½ï¿½n de Chat */
 .chat-button {
   position: fixed;
   bottom: 20px;
@@ -593,6 +622,7 @@ body.dark-mode .floating-form button {
   cursor: pointer;
   display: flex;
   align-items: center;
+  
 }
 
 .chat-button i {
@@ -611,8 +641,6 @@ body.dark-mode .floating-form button {
   overflow: auto;
   background-color: rgba(55, 68, 66, 0.5);
 }
-
-
 
 .close {
   color: #aaa;
@@ -640,6 +668,7 @@ body.dark-mode .floating-form button {
  box-shadow: 0 4px 8px rgba(15, 199, 138, 0.479);
   width: 300px;
   z-index: 1000;
+ 
 }
 
 .floating-form h2 {
@@ -673,3 +702,53 @@ body.dark-mode .floating-form button {
 .floating-form button:hover {
   background-color: #79d3c7;
 }
+
+/* nuevos ajustes a la barra*/
+
+.iconoo {
+    color: #f8f9fa;
+    display: block;
+    font-size: 1.15rem;
+    font-weight: 600;
+    height: 80px;
+    width: auto;
+    cursor: pointer;
+    transition: all 0.3s;
+  
+  }
+
+  .iconoo img:hover{
+    transform: scale(1.2);
+  }
+
+  ul.nav-links{
+    list-style: none;
+  }
+  ul.nav-links li.un:hover{
+    transform: scale(1.2);
+  }
+  ul.nav-links li.do:hover{
+    transform: scale(1.2);
+  }
+  ul.nav-links li.te:hover{
+    transform: scale(1.2);
+  }
+
+  ul.nav-links li{
+    display: inline-block;
+    padding: 0 20px;
+  }
+
+  ul.nav-links a{
+    font-size: 700;
+    color: #121312;
+    text-decoration: none;
+  }
+  ul.nav-links li{
+  transform: scale(1.1);
+  }
+
+  ul.nav-links li a:hover{
+    color: #0ad8a1;
+  }
+
