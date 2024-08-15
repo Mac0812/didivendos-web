@@ -331,50 +331,51 @@ if (!isset($_SESSION['nombre_completo'])) {
             }
 
             function loadCompanies(event) {
-              fetch("php/get_companies.php")
-                .then(response => response.json())
-                .then(data => {
-                  const empresaSelect = document.getElementById("event-empresa");
-                  empresaSelect.innerHTML = "";
-                  data.forEach(company => {
-                    const option = document.createElement("option");
-                    option.value = company.nombre;
-                    option.textContent = company.nombre;
-                    empresaSelect.appendChild(option);
-                  });
+    fetch("php/get_companies.php")
+        .then(response => response.json())
+        .then(data => {
+            const empresaSelect = document.getElementById("event-empresa");
+            empresaSelect.innerHTML = "";
+            data.forEach(company => {
+                const option = document.createElement("option");
+                option.value = company.nombre;
+                option.textContent = company.nombre;
+                empresaSelect.appendChild(option);
+            });
 
-                  // Set the selected company if an event is provided
-                  if (event && event.empresa) {
-                    empresaSelect.value = event.empresa;
-                    console.log("Selected company:", event.empresa);
-                  }
-                })
-                .catch(error => console.error("Error cargando empresas:", error));
+            // Set the selected company if an event is provided
+            if (event && event.empresa) {
+                empresaSelect.value = event.empresa;
+                console.log("Selected company:", event.empresa);
             }
+        })
+        .catch(error => console.error("Error cargando empresas:", error));
+}
 
-            function loadEventsFromDatabase() {
-              fetch("php/database.php")
-                .then((response) => response.json())
-                .then((data) => {
-                  events.length = 0;
-                  data.forEach((event) => {
-                    const formattedEvent = {
-                      id: event.id,
-                      empresa: event.empresa,
-                      monto: event.monto,
-                      ticker: event.ticker,
-                      comentario: event.comentario,
-                      exento_impuesto: event.exento_impuesto,
-                      fecha_pago: parseDate(event.fecha_pago),
-                      fecha_ex_derecho: parseDate(event.fecha_ex_derecho),
-                      link_aviso: event.link_aviso,
-                    };
-                    events.push(formattedEvent);
-                  });
-                  renderCalendar();
-                })
-                .catch((error) => console.error("Error cargando eventos:", error));
-            }
+           function loadEventsFromDatabase() {
+    fetch("php/database.php")
+        .then(response => response.json())
+        .then(data => {
+            events.length = 0;
+            data.forEach(event => {
+                const formattedEvent = {
+                    id: event.id,
+                    empresa: event.empresa,
+                    monto: event.monto,
+                    ticker: event.ticker,
+                    comentario: event.comentario,
+                    exento_impuesto: event.exento_impuesto,
+                    fecha_pago: parseDate(event.fecha_pago),
+                    fecha_ex_derecho: parseDate(event.fecha_ex_derecho),
+                    link_aviso: event.link_aviso,
+                };
+                events.push(formattedEvent);
+            });
+            renderCalendar();
+        })
+        .catch(error => console.error("Error cargando eventos:", error));
+}
+
 
             loadEventsFromDatabase();
             renderCalendar();

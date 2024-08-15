@@ -60,7 +60,7 @@ function register() {
     }
 }
 
-// Funciï¿½ï¿½n para mostrar/ocultar la contraseï¿½0ï¿½9a de login
+// Funci¨®n para mostrar/ocultar la contrase0Š9a de login
 const toggleLoginPassword = document.querySelector('#pass_login + i');
 const passLogin = document.getElementById('pass_login');
 
@@ -76,7 +76,7 @@ toggleLoginPassword.addEventListener('click', () => {
     }
 });
 
-// Funciï¿½ï¿½n para mostrar/ocultar la contraseï¿½0ï¿½9a de registro
+// Funci¨®n para mostrar/ocultar la contrase0Š9a de registro
 const toggleRegisterPassword = document.querySelector('#pass_register + i');
 const passRegister = document.getElementById('pass_register');
 

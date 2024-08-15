@@ -37,14 +37,14 @@ if (!isset($_SESSION['nombre_completo'])) {
       rel="canonical"
       href="https://demo-basic.adminkit.io/pages-blank.html"
     />
-
     <title>Agenda de Dividendos</title>
-
     <link href="css/app.css" rel="stylesheet" />
+     <link href="static/css/estilos.css" rel="stylesheet" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
       rel="stylesheet"
     />
+     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
     <!-- Include Babel -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -363,8 +363,33 @@ if (!isset($_SESSION['nombre_completo'])) {
               </div>
             </li>
           </ul>
+           <button class="switch" id="switch">
+                        <span><i class='bx bxs-moon'></i></span>
+                        <span><i class='bx bx-moon' ></i></span>
+                      </button>
         </div>
       </nav>
+      
+         <!-- Botón de Chat -->
+<button class="chat-button" id="chatButton">
+  <i class="bx bx-chat"></i> Ayuda
+</button>
+
+<!-- Modal de Formulario -->
+<div id="chatModal" class="modal">
+    <div class="floating-form">
+        <form id="offerForm" action="/static/php/formulario.php" method="post">
+            <h2>Ayuda</h2>
+            <input type="text" name="name" placeholder="Nombre" required>
+            <input type="email" name="email" placeholder="Correo" required>
+            <textarea name="message" placeholder="Escribe el mensaje..." required></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+</div>
+          
+       
+     
       <main class="content">
         <div class="container-fluid p-0">
           <h1 class="h3 mb-3">Agenda de Dividendos</h1>
