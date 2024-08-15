@@ -1,15 +1,12 @@
-
 body {
-    font-family: Arial, sans-serif;
-    background: #ece8e8;
-    transition: .3s ease all;
-    &.dark { 
-        background: #181717;
-  }
- }
-  
+  font-family: Arial, sans-serif;
+  background: #ece8e8;
+  transition: .3s ease all;
+}
 
-
+body.dark {
+  background: #181717;
+}
     .calendar {
       display: flex;
       flex-direction: column;
@@ -84,6 +81,18 @@ body {
       background-color: rgb(111, 200, 186);
     }
 
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(100%);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    
     .modal-content {
       background-color: rgb(225, 251, 240);
       border-radius: 8px;
@@ -91,7 +100,24 @@ body {
       width: 30%;
       height: 100%;
       margin-left: auto;
+      animation: slideInRight 0.5s ease-in-out;
     }
+
+    @keyframes slideOutRight {
+      from {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      to {
+        opacity: 0;
+        transform: translateX(100%);
+      }
+    }
+
+    .fade-out {
+      animation: slideOutRight 0.5s forwards;
+    }
+    
 
     .event-list {
       display: flex;
@@ -243,7 +269,224 @@ body {
       background-color: rgb(166, 228, 246);
     }
 
-    @media (max-width: 600px) {
+    .notifi-check {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .title-notifi {
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .container-button-not {
+      display: flex;
+      justify-content: space-around;
+      flex-direction: row;
+      width: 100%;
+    }
+
+    .accept-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #38C738;
+      color: #ffffff;
+      text-decoration: none;
+      text-align: center;
+      border: none;
+      border-radius: 5px;
+      box-shadow: 0 5px 15px rgba(62, 243, 62, 0.4);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .accept-button:hover {
+      transform: translateY(-3px);
+    }
+
+    .no-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #e74c3c;
+      color: #ffffff;
+      text-decoration: none;
+      text-align: center;
+      border: none;
+      border-radius: 5px;
+      box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .no-button:hover {
+      transform: translateY(-3px);
+    }
+
+    #event-ticker {
+      font-weight: bold;
+    }
+
+/* Switch styles */
+.switch {
+  background: rgb(122, 214, 206);
+  border-radius: 1000px;
+  border: none;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  outline: none;
+  margin: auto;
+  margin-left: -10px;
+}
+
+.switch::after {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  background: #f1f1f1;
+  top: 0;
+  left: 0;
+  right: unset;
+  border-radius: 100px;
+  transition: .3s ease all;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, .2);
+}
+
+.switch.active {
+  background: #0ad8a1;
+  color: #000;
+}
+
+.switch.active::after {
+  right: 0;
+  left: unset;
+}
+
+.switch span {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  display: block;
+  background: none;
+  color: #fff;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+  background-color: #1d1c1c;
+  color: #fff;
+  transition: .3s ease all;
+}
+
+body.dark-mode nav {
+  background-color: #1d1c1c;
+  color: #fff;
+}
+
+body.dark-mode main.content {
+  background-color: #0c0c0cfa;
+  color: #fff;
+}
+
+body.dark-mode #calendar {
+  background-color: #1d1c1c;
+  color: #fff;
+}
+
+body.dark-mode .hamburger, 
+body.dark-mode .hamburger:after, 
+body.dark-mode .hamburger:before {
+  background-color: #e6d8d8;
+  color: #eeeff7;
+}
+
+body.dark-mode label {
+  color: #000000;
+}
+
+body.dark-mode p {
+  color: #000000;
+}
+
+
+.hamburger, 
+.hamburger:after, 
+.hamburger:before {
+  background: #e5e8eb;
+  transition: background .1s ease-in-out, color .1s ease-in-out;
+}
+
+body.dark-mode .calendar-cell-header {
+  background-color: #1d1c1c;
+}
+
+body.dark-mode h1,
+body.dark-mode h2 {
+  color: #faefef;
+}
+
+body.dark-mode .text-dark {
+  color: rgb(224 230 235) !important;
+}
+
+body.dark-mode .dropdown-toggle:after {
+  color: rgb(224, 217, 217);
+}
+
+body.dark-mode footer.footer {
+  background: #161515;
+}
+
+body.dark-mode .event-item {
+    color: #000000;
+}
+
+body.dark-mode .event-item-ex {
+    color: #000000;
+}
+
+body.dark-mode #event-title {
+    color: #000000;
+}
+
+/* Navbar adjustment */
+.navbar-expand .navbar-collapse {
+  display: flex !important;
+  flex-basis: auto;
+  flex-direction: row-reverse;
+}
+
+body.dark-mode .floating-form {
+ 
+background-color: #2b2929e7;
+ 
+}
+
+body.dark-mode h1, body.dark-mode h2 {
+  color: #ede0e0;
+}
+
+body.dark-mode .floating-form button {
+  color: #1a1818;
+}
+
+.notificacion {
+      padding: 15px;
+      border: 2px solid rgb(166, 228, 246);
+      margin: 5px;
+      background-color: #f0f0f0;
+    }
+    
+    .list-group{
+        height: 500px;
+        overflow-y: scroll;
+    }
+
+ @media (max-width: 600px) {
       .calendar {
         width: 100%;
       }
@@ -337,384 +580,98 @@ body {
         font-size: 16px;
       }
     }
-
-    #event-ticker {
-      font-weight: bold;
-    }
-
-  .calendar {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 70%;
-  }
-
-  .calendar-header {
-    display: flex;
-    justify-content: space-between;
-    width: 600px;
-    margin-bottom: 10px;
-  }
-
-  .calendar-header button {
-    background-color: #41e2ba;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-  }
-
-  .calendar-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 5px;
-    max-width: 600px;
-  }
-
-  .calendar-cell {
-    padding: 20px;
-    border: 1px solid #ddd;
-    text-align: center;
-  }
-
-  .calendar-cell-header {
-    background-color: #f0f0f0;
-  }
-
-  .calendar-cell-today {
-    background-color: #41e2ba;
-  }
-
-  .modal {
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    position: fixed;
-    height: 100%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    align-items: center;
-  }
-
-  .calendar-cell-event {
-    position: relative;
-  }
-
-  .calendar-cell-event::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: rgb(111, 200, 186);
-  }
-
-  .modal-content {
-    background-color: rgb(225, 251, 240);
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    width: 30%;
-    height: 100%;
-    margin-left: auto;
-  }
-
-  .event-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 5px;
-  }
-
-  .event-item {
-    background-color: #41e2ba;
-    padding: 5px 10px;
-    border-radius: 5px;
-    margin-bottom: 5px;
-    cursor: pointer;
-  }
-
-  .event-item:hover {
-    background-color: #0ad8a1;
-  }
-
-  .event-item:last-child {
-    margin-bottom: 0;
-  }
-
-  .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-
-  .close:hover,
-  .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-  }
-
-  .content-title {
-    background-color: #41e2ba;
-    height: 100px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    padding: 20px;
-    border-radius: 8px 8px 0 0;
-  }
-
-  .content-modal {
-    background-color: rgb(225, 251, 240);
-    padding: 20px;
-    border-radius: 8px;
-  }
-
-  #event-title {
-    width: 75%;
-    font-size: 22px;
-    margin-top: 20px;
-  }
-
-  #event-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  input {
-    background-color: rgb(225, 251, 240);
-    border: 1px solid rgb(225, 251, 240);
-  }
-
-  .act-event {
-    background-color: #41e2ba;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-  }
-
-  .del-event {
-    background-color: #41e2ba;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-  }
-
-  .button-content {
-    display: flex;
-    justify-content: space-around;
-    flex-direction: row;
-    width: 100%;
-    align-items: center;
-    padding-top: 20px;
-
-  }
-
-  .add-event {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 100px;
-    font-size: 16px;
-    background-color: #41e2ba;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .switch {
-    background: rgb(122, 214, 206);
-    border-radius: 1000px;
-    border: none;
-    position: relative;
-    cursor: pointer;
-    display: flex;
-    outline: none;
-    margin: auto;
+    
+   /* Bot車n de Chat */
+.chat-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #2cceab;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
-.switch::after {
-    content: "";
-    display: block;
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    background: #f1f1f1;
-    top: 0;
-    left: 0;
-    right: unset;
-    border-radius: 100px;
-    transition: .3s ease all;
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, .2);
+.chat-button i {
+  margin-right: 5px;
 }
 
-.switch.active {
-    background: #0ad8a1;
-    color: #000;
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2;
+  left: 50;
+  top: 50;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(55, 68, 66, 0.5);
 }
 
-.switch.active::after {
-    right: 0;
-    left: unset;
+
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
 }
 
-.switch span {
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
-    display: block;
-    background: none;
-    color: #fff;
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
-/* Estilos para el switch */
-.switch {
-    background: rgb(122, 214, 206);
-    border-radius: 1000px;
-    border: none;
-    position: relative;
-    cursor: pointer;
-    display: flex;
-    outline: none;
-    margin: auto;
-    margin-left: -10px;
-  }
-  
-  .switch::after {
-    content: "";
-    display: block;
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    background: #f1f1f1;
-    top: 0;
-    left: 0;
-    right: unset;
-    border-radius: 100px;
-    transition: .3s ease all;
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, .2);
-  }
-  
-  .switch.active {
-    background: #0ad8a1;
-    color: #000;
-  }
-  
-  .switch.active::after {
-    right: 0;
-    left: unset;
-  }
-  
-  .switch span {
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
-    display: block;
-    background: none;
-    color: #fff;
-  }
-  
-  /* Estilos para el modo oscuro */
-  body.dark-mode {
-    background-color: #1d1c1c;
-    color: #fff;
-    transition: .3s ease all;
-  }
-  
-  body.dark-mode nav {
-    background-color: #1d1c1c;
-    color: #fff;
-  }
-  
-  body.dark-mode main.content {
-    background-color: #0c0c0cfa;
-    color: #fff;
-  }
-  
-  body.dark-mode #calendar {
-    /* Estilos específicos para el calendario en modo oscuro */
-    background-color: #1d1c1c;
-    color: #fff;
-  }
-  
-  
-  body.dark-mode .hamburger, .hamburger:after, .hamburger:before {
-    /* Estilos específicos para el calendario en modo oscuro */
-    background-color: #e6d8d8;
-    color: #eeeff7;
-  }
 
-  .hamburger, .hamburger:after, .hamburger:before
-  {
-    background: #e5e8eb;
-    border-radius: 1px;
-    content: "";
-    cursor: pointer;
-    display: block;
-    height: 3px;
-    transition: background .1s ease-in-out, color .1s ease-in-out;
-    width: 24px;
-  }
+/* Formulario */
+.floating-form {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+ box-shadow: 0 4px 8px rgba(15, 199, 138, 0.479);
+  width: 300px;
+  z-index: 1000;
+}
 
-  body.dark-mode .calendar-cell-header{
-    background-color: #1d1c1c;
+.floating-form h2 {
+  margin-bottom: 20px;
+  color: #fff;
+  background: linear-gradient(135deg, #3ab9b3, #79d3c7);
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
 
-  }
+.floating-form input, .floating-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
 
-  body.dark-mode  h1 {
-    color: #faefef;
-    font-weight: 400;
-    line-height: 1.2;
-    margin-bottom: .5rem;
-    margin-top: 0;
-  }
+.floating-form button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #3ab9b3;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
 
-body.dark-mode  h2 {
-    color: #faefef;
-    font-weight: 400;
-    line-height: 1.2;
-    margin-bottom: .5rem;
-    margin-top: 0;
-  }
-
-  body.dark-mode .text-dark {
-    --bs-text-opacity: 1;
-    color: rgb(224 230 235) !important;}
-
-body.dark-mode .dropdown-toggle:after {
-        color: rgb(224, 217, 217);
-        border: solid;
-        border-width: 0 2px 2px 0;
-        display: inline-block;
-        padding: 2px;
-        transform: rotate(45deg);
-    }
-
-    body.dark-mode footer.footer {
-        background: #161515;
-        direction: ltr;
-        padding: 1rem .875rem;
-    }
-
-    /* ajuste de nav*/
-
-    .navbar-expand .navbar-collapse {
-    display: flex !important;
-    flex-basis: auto;
-    flex-direction: row-reverse;
+.floating-form button:hover {
+  background-color: #79d3c7;
 }

@@ -3,6 +3,7 @@ session_start();
 if (!isset($_SESSION['nombre_completo'])) {
   echo '
 		<script> 
+		
 		 window.location = "../static/pages-sign-in.php";
 		</script>
 		';
@@ -18,19 +19,19 @@ if (!isset($_SESSION['nombre_completo'])) {
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <meta name="description" content="Responsive Admin & Dashboard Template based on Bootstrap 5" />
   <meta name="author" content="AdminKit" />
   <meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web" />
   <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link rel="shortcut icon" href="/static/assets/Iconos/logo png-08.png" />
+  <link rel="shortcut icon" href="/static/assets/Iconos/logo.png" />
   <link rel="canonical" href="https://demo-basic.adminkit.io/pages-blank.html" />
-
   <title>Agenda de Dividendos</title>
   <link href="static/css/app.css" rel="stylesheet" />
   <link href="static/css/estilos.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
 </head>
 
 <body>
@@ -38,12 +39,12 @@ if (!isset($_SESSION['nombre_completo'])) {
     <nav id="sidebar" class="sidebar js-sidebar">
       <div class="sidebar-content js-simplebar">
         <a class="sidebar-brand" href="index.php">
-          <img src="/static/assets/logo.png" alt="+Dividendos" class="align-middle">
+          <img src="/static/assets/Iconos/logo.png" alt="+Dividendos" class="align-middle" width="70" height="70">
         </a>
 
         <ul class="sidebar-nav">
           <li class="sidebar-item">
-            <a class="sidebar-link" href="static/pages-blank.php">
+            <a class="sidebar-link" href="index.php">
               <i class="align-middle" data-feather="book"></i>
               <span class="align-middle">Agenda Dividendos</span>
             </a>
@@ -61,13 +62,34 @@ if (!isset($_SESSION['nombre_completo'])) {
         <div class="navbar-collapse collapse">
           <ul class="navbar-nav navbar-align">
             <li class="nav-item dropdown">
+              <a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-bs-toggle="dropdown">
+                <div class="position-relative">
+                  <i class="align-middle" data-feather="bell"></i>
+                  <span class="indicator" id="contador-notificaciones"></span>
+                </div>
+              </a>
+              <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="alertsDropdown">
+                <div class="dropdown-menu-header">
+                  Nuevas Notificaciones
+                </div>
+                <!-- <div class="notifi-check">
+                  <p class="title-notifi">¿Desea recibir notificaciones sobre nuevas publicaciones?</p>
+                  <div class="container-button-not">
+                    <button class="accept-button" onclick="aceptarNotificaciones()">Sí</button>
+                    <button class="no-button">No</button>
+                  </div>
+                </div> -->
+
+                <div class="list-group" id="lista-notificaciones">
+                  <!-- Las notificaciones se cargarán aquí dinámicamente -->
+                </div>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
               <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
                 <i class="align-middle" data-feather="settings"></i>
               </a>
-              <button class="switch" id="switch">
-                <span><i class="fas fa-sun"></i></span>
-                <span><i class="fas fa-moon"></i></span>
-              </button>
+
               <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
 
                 <span class="text-dark">Bienvenido, <?php echo $_SESSION['nombre_completo']; ?></span>
@@ -78,8 +100,32 @@ if (!isset($_SESSION['nombre_completo'])) {
               </div>
             </li>
           </ul>
+          <button class="switch" id="switch">
+            <span><i class='bx bxs-moon'></i></span>
+            <span><i class='bx bx-moon'></i></span>
+          </button>
         </div>
       </nav>
+
+      <!-- Botón de Chat -->
+      <button class="chat-button" id="chatButton">
+        <i class="bx bx-chat"></i> Ayuda
+      </button>
+
+      <!-- Modal de Formulario -->
+      <div id="chatModal" class="modal">
+        <div class="floating-form">
+          <form id="offerForm" action="/static/php/formulario.php" method="post">
+            <h2>Ayuda</h2>
+            <input type="text" name="name" placeholder="Nombre" required>
+            <input type="email" name="email" placeholder="Correo" required>
+            <textarea name="message" placeholder="Escribe el mensaje..." required></textarea>
+            <button type="submit">Enviar</button>
+          </form>
+        </div>
+      </div>
+
+
       <main class="content">
         <div class="container-fluid p-0">
           <h1 class="h3 mb-3">Agenda de Dividendos</h1>
@@ -93,9 +139,9 @@ if (!isset($_SESSION['nombre_completo'])) {
           </div>
 
           <div id="event-modal" class="modal">
-            <div class="modal-content">
+            <div id="modal-content" class="modal-content">
               <div class="content-title">
-                <img id="dividendo-img" src="" alt="Dividendo Imagen" width="50" height="50">
+                <img id="dividendo-img" src="" alt="Dividendo Imagen" width="70" height="70">
                 <h2 id="event-title"></h2>
                 <span class="close" onclick="closeModal()">&times;</span>
               </div>
@@ -120,6 +166,8 @@ if (!isset($_SESSION['nombre_completo'])) {
             const calendarGrid = document.getElementById("calendar-grid");
             const calendarTitle = document.getElementById("calendar-title");
             const eventModal = document.getElementById("event-modal");
+            const contentModal = document.getElementById("modal-content");
+            const eventChatModal = document.getElementById("chatModal");
             const eventTitle = document.getElementById("event-title");
             const eventCosto = document.getElementById("event-costo");
             const eventTicker = document.getElementById("event-ticker");
@@ -153,7 +201,7 @@ if (!isset($_SESSION['nombre_completo'])) {
               if (imagen) {
                 document.getElementById('dividendo-img').src = imagen.ruta;
               } else {
-                document.getElementById('dividendo-img').src = 'LogosEmp/logoBlanck.png';
+                document.getElementById('dividendo-img').src = '';
               }
             }
 
@@ -171,11 +219,23 @@ if (!isset($_SESSION['nombre_completo'])) {
             }
 
             function closeModal() {
-              eventModal.style.display = "none";
+              // Añade la clase de animación
+              contentModal.classList.add('fade-out');
+              eventChatModal.style.display = 'none';
+
+              // Espera a que termine la animación antes de ocultar el elemento
+              setTimeout(() => {
+                eventModal.style.display = 'none';
+                
+                // Remueve la clase de animación para que pueda ser reutilizada
+                contentModal.classList.remove('fade-out');
+              }, 500); // La duración de la animación en milisegundos
             }
 
             window.onclick = function(event) {
               if (event.target == eventModal) {
+                closeModal();
+              } else if (event.target == eventChatModal) {
                 closeModal();
               }
             };
@@ -313,6 +373,45 @@ if (!isset($_SESSION['nombre_completo'])) {
                 xhr.send('aceptar_notificaciones=1&id_usuario=id_usuario'); // Enviar los datos necesarios
               }
             }
+
+            function actualizarNotificaciones() {
+              fetch("static/php/obtener_notificaciones.php")
+                .then((response) => {
+                  if (!response.ok) {
+                    throw new Error('Error en la respuesta de la red');
+                  }
+                  return response.json();
+                })
+                .then((data) => {
+                  console.log(data);
+                  try {
+                    const contadorNotificaciones = document.getElementById("contador-notificaciones");
+                    if (contadorNotificaciones) {
+                      contadorNotificaciones.textContent = data.contador;
+                    } else {
+                      console.error("Error: No se encontró el elemento 'contador-notificaciones' en el DOM.");
+                    }
+
+                    const listaNotificaciones = document.getElementById("lista-notificaciones");
+                    if (listaNotificaciones) {
+                      listaNotificaciones.innerHTML = "";
+
+                      data.notificaciones.forEach((notificacion) => {
+                        const itemNotificacion = document.createElement("div");
+                        itemNotificacion.classList.add("notificacion");
+                        itemNotificacion.textContent = notificacion.mensaje;
+                        listaNotificaciones.appendChild(itemNotificacion);
+                      });
+                    } else {
+                      console.error("Error: No se encontró el elemento 'lista-notificaciones' en el DOM.");
+                    }
+                  } catch (error) {
+                    console.error("Error al procesar las notificaciones:", error);
+                  }
+                })
+                .catch((error) => console.error("Error al obtener notificaciones:", error));
+            }
+            actualizarNotificaciones();
           </script>
         </div>
       </main>
@@ -332,6 +431,7 @@ if (!isset($_SESSION['nombre_completo'])) {
 
   <script src="static/js/app.js"></script>
   <script src="static/js/logos.js"></script>
+  <script src="static/js/main.js"></script>
 </body>
 
 </html>
