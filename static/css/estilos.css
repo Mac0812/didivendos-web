@@ -743,8 +743,6 @@ ul.nav-links li a:hover {
   color: #0ad8a1;
 }
 
-
-
 body {
   background-color: #f3f3f3;
   margin: 0;
@@ -983,11 +981,11 @@ aside {
 }
 
 .follow-content {
-    width: 20%;
-    display: flex;
-    margin-left: 50px;
-    margin-top: 30px;
-  }
+  width: 20%;
+  display: flex;
+  margin-left: 50px;
+  margin-top: 30px;
+}
 
 .user-card {
   background-color: #fff;
@@ -1063,42 +1061,75 @@ aside {
   font-weight: bold;
 }
 
-footer{
-    display: block;
-    bottom: auto;
-    height: 30px;
-    background-color: #5ee1c9;
+footer {
+  display: block;
+  bottom: auto;
+  height: 30px;
+  background-color: #5ee1c9;
 }
 
 .burger-button {
-    display: none;
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {
-    nav ul {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 50px;
-        left: 0;
-        background-color: #333;
-        width: 100%;
-    }
+  nav ul {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    background-color: #fffefe;
+    width: 100%;
+  }
 
-    nav ul li {
-        margin: 10px 0;
-        text-align: center;
-    }
+  nav ul li {
+    margin: 10px 0;
+    text-align: center;
+  }
 
-    nav ul li a {
-        color: white;
-    }
+  nav ul li a {
+    color: black;
+  }
 
-    .burger-button {
-        display: block;
-    }
+  .burger-button {
+    display: block;
+  }
+
+  .user {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 170px;
+    right: 0;
+    background-color: #fffefe;
+    width: 100%;
+    padding: 10px;
+  }
+
+  .profile {
+    display: none;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .profile img {
+    margin-right: 10px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+  }
+
+  .container-info-perfil {
+    display: none;
+    flex-direction: column;
+  }
+
+  .container-info-perfil span{
+    color: black;
+  }
 }

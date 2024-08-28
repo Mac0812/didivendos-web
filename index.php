@@ -55,18 +55,18 @@ if (!isset($_SESSION['nombre_completo'])) {
             <li><a href="#">EDUCACIÓN</a></li>
           </ul>
         </nav>
-        <div class="user">
-        <button class="switch" id="switch">
-          <span><i class='bx bxs-moon'></i></span>
-          <span><i class='bx bx-moon'></i></span>
-        </button>
+        <div class="user" id="user">
+          <button class="switch" id="switch">
+            <span><i class='bx bxs-moon'></i></span>
+            <span><i class='bx bx-moon'></i></span>
+          </button>
           <button class="notification-button" id="alertsDropdown" data-bs-toggle="dropdown">
             <span class="material-symbols-outlined"> notifications </span>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="alertsDropdown">
-                <div class="dropdown-menu-header">
-                  Nuevas Notificaciones
-                </div>
-                <!-- <div class="notifi-check">
+              <div class="dropdown-menu-header">
+                Nuevas Notificaciones
+              </div>
+              <!-- <div class="notifi-check">
                             <p class="title-notifi">¿Desea recibir notificaciones sobre nuevas publicaciones?</p>
                             <div class="container-button-not">
                               <button class="accept-button" onclick="aceptarNotificaciones()">Sí</button>
@@ -74,20 +74,20 @@ if (!isset($_SESSION['nombre_completo'])) {
                             </div>
                           </div> -->
 
-                <div class="list-group" id="lista-notificaciones">
-                  <!-- Las notificaciones se cargarán aquí dinámicamente -->
-                </div>
+              <div class="list-group" id="lista-notificaciones">
+                <!-- Las notificaciones se cargarán aquí dinámicamente -->
+              </div>
 
           </button>
-          <div class="profile">
+          <div class="profile" id="profile">
             <img
               src="./assets/logo editable_page-0001.jpg"
               alt="Profile Picture" />
-            <div class="container-info-perfil">
+            <div class="container-info-perfil" id="container-info-perfil">
               <span>Karla Cardozo Ramirez</span>
               <span class="material-symbols-outlined" data-bs-toggle="dropdown"> stat_minus_1 </span>
               <div class="dropdown-menu dropdown-menu-end">
-              <a class="dropdown-item" href="/static/php/cerrar_sesion.php">Editar Perfil</a>
+                <a class="dropdown-item" href="/static/php/cerrar_sesion.php">Editar Perfil</a>
                 <a class="dropdown-item" href="/static/php/cerrar_sesion.php">Cerrar sesión</a>
               </div>
             </div>
