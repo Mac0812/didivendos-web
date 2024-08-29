@@ -383,12 +383,21 @@ body.dark-mode {
 
 body.dark-mode nav {
   background-color: #4a4f5a;
-  color: #fff;
+  
+}
+
+body.dark-mode .profile span{
+  background-color: #4a4f5a;
+}
+
+body.dark-mode .main {
+  background-color: #4a4f5a;
+  
 }
 
 body.dark-mode main.content {
   background-color: #353b47;
-  color: #fff;
+ 
 }
 
 body.dark-mode #calendar {
@@ -489,8 +498,8 @@ body.dark-mode .dropdown-menu-header {
   background: #343a40;
 }
 
-.dark-mode .iconoo img {
-  content: url("/static/assets/Iconos/+dB.svg"); /* Ruta de la imagen en modo oscuro */
+.dark-mode header img {
+  content: url("/static/assets/Iconos/+divWHITE.svg"); /* Ruta de la imagen en modo oscuro */
 }
 /*NOTIFICACIONES*/
 
@@ -697,7 +706,7 @@ body.dark-mode .dropdown-menu-header {
 
 /* nuevos ajustes a la barra*/
 
-.iconoo {
+.header img {
   color: #f8f9fa;
   display: block;
   font-size: 1.15rem;
@@ -708,38 +717,38 @@ body.dark-mode .dropdown-menu-header {
   transition: all 0.3s;
 }
 
-.iconoo img:hover {
+header img:hover {
   transform: scale(1.2);
 }
 
-ul.nav-links {
+nav ul.menu{
   list-style: none;
 }
-ul.nav-links li.un:hover {
+nav ul.menu li.un:hover {
   transform: scale(1.2);
 }
-ul.nav-links li.do:hover {
+nav ul.menu li.do:hover {
   transform: scale(1.2);
 }
-ul.nav-links li.te:hover {
+nav ul.menu li.te:hover {
   transform: scale(1.2);
 }
 
-ul.nav-links li {
+nav ul.menu  li {
   display: inline-block;
   padding: 0 20px;
 }
 
-ul.nav-links a {
+nav ul.menu a {
   font-size: 700;
-  color: #41e2ba;
+  color: #131414;
   text-decoration: none;
 }
-ul.nav-links li {
+nav ul.menu li{
   transform: scale(1.1);
 }
 
-ul.nav-links li a:hover {
+nav ul.menu li a:hover {
   color: #0ad8a1;
 }
 

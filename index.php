@@ -46,13 +46,13 @@ if (!isset($_SESSION['nombre_completo'])) {
   <div class="wrapper">
     <div class="main">
       <header>
-        <img src="./static/assets/images/logo editable_page-0001.jpg" width="150px" />
+        <img class=""src="./static/assets/images/+diVblack.svg" width="150px" />
         <button class="burger-button" onclick="toggleMenu()">&#9776;</button>
         <nav>
-          <ul id="menu">
-            <li><a href="./index.php">INVERSIONES</a></li>
-            <li><a href="./static/Comunidad/comunidad.html">COMUNIDAD</a></li>
-            <li><a href="#">EDUCACIÓN</a></li>
+          <ul class="menu">
+            <li class="un"><a href="./index.php">INVERSIONES</a></li>
+            <li class="do"><a href="./static/Comunidad/comunidad.html">COMUNIDAD</a></li>
+            <li class="te"><a href="#">EDUCACIÓN</a></li>
           </ul>
         </nav>
         <div class="user" id="user">
@@ -81,7 +81,7 @@ if (!isset($_SESSION['nombre_completo'])) {
           </button>
           <div class="profile" id="profile">
             <img
-              src="./assets/logo editable_page-0001.jpg"
+             src="./static/assets/images/+diVblack.svg"
               alt="Profile Picture" />
             <div class="container-info-perfil" id="container-info-perfil">
               <span>Karla Cardozo Ramirez</span>
