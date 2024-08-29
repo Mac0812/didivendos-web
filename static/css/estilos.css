@@ -180,6 +180,9 @@ body.dark {
   font-size: 22px;
   margin-top: 20px;
 }
+nav ul.menu li {
+  /* display: inline-block; */
+  padding: 0 10px; }
 
 #event-form {
   display: flex;
@@ -496,6 +499,11 @@ body.dark-mode .dropdown-menu-header {
   text-align: center;
   color: beige;
   background: #343a40;
+}
+
+body.dark-mode nav ul.menu a
+{
+  color: beige;
 }
 
 .dark-mode header img {
