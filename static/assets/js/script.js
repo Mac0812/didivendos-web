@@ -60,7 +60,7 @@ function register() {
     }
 }
 
-// Funci¨®n para mostrar/ocultar la contrase0Š9a de login
+// Funciï¿½ï¿½n para mostrar/ocultar la contraseï¿½0ï¿½9a de login
 const toggleLoginPassword = document.querySelector('#pass_login + i');
 const passLogin = document.getElementById('pass_login');
 
@@ -76,7 +76,7 @@ toggleLoginPassword.addEventListener('click', () => {
     }
 });
 
-// Funci¨®n para mostrar/ocultar la contrase0Š9a de registro
+// Funciï¿½ï¿½n para mostrar/ocultar la contraseï¿½0ï¿½9a de registro
 const toggleRegisterPassword = document.querySelector('#pass_register + i');
 const passRegister = document.getElementById('pass_register');
 
@@ -91,4 +91,54 @@ toggleRegisterPassword.addEventListener('click', () => {
         toggleRegisterPassword.classList.add('bx-show-alt');
     }
 });
+//formulario de contraseÃ±a recuperada
+document.addEventListener('DOMContentLoaded', function() {
+    const btnRecuperar = document.getElementById('btn__recuperar');
+    const formularioLogin = document.querySelector('.formulario__login');
+    const formularioRecuperar = document.querySelector('.formulario__recuperar');
 
+    btnRecuperar.addEventListener('click', function(event) {
+        event.preventDefault();
+        formularioLogin.style.display = 'none';
+        formularioRecuperar.style.display = 'block';
+    });
+});
+
+ // Script para manejar el cambio de formularios
+ document.getElementById('btn__iniciar-sesion').addEventListener('click', () => {
+    document.querySelector('.formulario__login').style.display = 'block';
+    document.querySelector('.formulario__register').style.display = 'none';
+    document.querySelector('.formulario__recuperar').style.display = 'none';
+});
+
+document.getElementById('btn__registrarse').addEventListener('click', () => {
+    document.querySelector('.formulario__register').style.display = 'block';
+    document.querySelector('.formulario__login').style.display = 'none';
+    document.querySelector('.formulario__recuperar').style.display = 'none';
+});
+
+document.getElementById('btn__recuperar').addEventListener('click', (e) => {
+    e.preventDefault();
+    document.querySelector('.formulario__recuperar').style.display = 'block';
+    document.querySelector('.formulario__login').style.display = 'none';
+    document.querySelector('.formulario__register').style.display = 'none';
+});
+
+document.getElementById('btn__cancelar').addEventListener('click', () => {
+    document.querySelector('.formulario__recuperar').style.display = 'none';
+    document.querySelector('.formulario__login').style.display = 'block';
+});
+
+
+// Mostrar mensajes de Ã©xito o error desde el PHP
+document.getElementById('form-recuperar').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var formData = new FormData(this);
+    fetch(this.action, {
+        method: 'POST',
+        body: formData
+    }).then(response => response.text())
+      .then(text => {
+          document.getElementById('mensaje-recuperacion').innerText = text;
+      });
+});

@@ -5,12 +5,11 @@
     }
 ?>
 
-<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link rel="shortcut icon" href="/static/assets/Iconos/logo.png" />
+    <link rel="shortcut icon" href="/static/assets/Iconos/logo.png" />
     <title>Dividendos MX</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet" />
@@ -41,6 +40,7 @@
                         <i class='bx bx-show-alt' id="toggleLoginPassword"></i>
                     </div>
                     <button>Entrar</button>
+                    <p><a href="#" id="btn__recuperar">¿Olvidaste tu contraseña?</a></p>
                 </form>
 
                 <form action="/static/php/registro_usuario_be.php" method="POST" class="formulario__register">
@@ -52,6 +52,16 @@
                         <i class='bx bx-show-alt' id="toggleRegisterPassword"></i>
                     </div>
                     <button>Regístrarse</button>
+                </form>
+
+                <!-- Recuperar contraseña -->
+                <form action="/static/php/recuperar_contra.php" method="POST" class="formulario__recuperar">
+                    <h2>Recuperar Contraseña</h2>
+                    <input type="text" placeholder="Correo Electronico" name="correo" required />
+                    <button>Enviar</button>
+                    <button type="button" id="btn__cancelar">Cancelar</button>
+                     <!-- Mensaje de éxito/error -->
+                     <p id="mensaje-recuperacion"></p>
                 </form>
             </div>
         </div>

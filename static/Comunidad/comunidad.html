@@ -38,6 +38,24 @@
           </div>
         </div>
       </header>
+        <!-- Botón de Chat -->
+        <button class="chat-button" id="chatButton">
+          <i class="bx bx-chat"></i> Ayuda
+        </button>
+  
+        <!-- Modal de Formulario -->
+        <div id="chatModal" class="modal">
+          <div class="floating-form">
+            <form id="offerForm" action="/static/php/formulario.php" method="post">
+              <h2>Ayuda</h2>
+              <input type="text" name="name" placeholder="Nombre" required>
+              <input type="email" name="email" placeholder="Correo" required>
+              <textarea name="message" placeholder="Escribe el mensaje..." required></textarea>
+              <button type="submit">Enviar</button>
+            </form>
+          </div>
+        </div>
+        
       <main>
         <section class="content-left">
           <section class="post-form">
